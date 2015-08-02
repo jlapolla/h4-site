@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use HTML::TreeBuilder -weak;
+
+my $sPageTemplate = shift;
+my $sArticleContent = shift;
+
+my $page = HTML::TreeBuilder->new;
+$page->ignore_unknown(0);
+$page->implicit_tags(0);
+$page->store_comments(1);
+$page->warn(1);
+
+my $content = HTML::TreeBuilder->new;
+$content->ignore_unknown(0);
+$content->implicit_tags(0);
+$content->store_comments(1);
+$content->warn(1);
+
+
+$page->parse_file($sPageTemplate)
+  or die $!;
+$content->parse_file($sArticleContent)
+  or die $!;
+
+my $contentWrapper = $page->find_by_tag_name('body');
+foreach ($content->disembowel()) {
+  $contentWrapper->push_content($_);
+}
+
+print $page->as_HTML(undef, '  ', {});
