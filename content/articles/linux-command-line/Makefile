@@ -1,13 +1,13 @@
 .PHONY: clean
 
 clean:
-	rm -rf index.html build
+	rm -rf main.html build
 
 build/check-for-bash.sh: src/check-for-bash.sh
 	$(call MKDIR)
 	$(call LINK)
 
-index.html: src/main.html build/check-for-bash.html
+main.html: src/main.html build/check-for-bash.html
 	static-include $< > $@
 
 include $(INC_DIR)/common.mk
