@@ -1,0 +1,29 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use HTML::TreeBuilder -weak;
+
+my $sFile = shift;
+my $baseurl = shift;
+
+my $traverseCallback = sub {
+  return HTML::Element::OK unless ($_[1]);
+  my $el = $_[0];
+  foreach ('src', 'href') {
+    my $attr = $el->attr($_);
+    if (defined $attr and $attr =~ /^\//){
+      $el->attr($_, $baseurl . $attr);
+    }
+  }
+  return HTML::Element::OK;
+};
+
+my $tree = HTML::TreeBuilder->new;
+$tree->ignore_unknown(0);
+$tree->implicit_tags(0);
+$tree->store_comments(1);
+$tree->warn(1);
+$tree->parse_file($sFile);
+$tree->traverse($traverseCallback, 1);
+print $tree->as_HTML();
