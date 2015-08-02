@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $fn;
+$fn = sub {
+  my $sFile = shift;
+  my $pFile;
+  my $br;
+
+  open($pFile, "<", $sFile)
+    or die "cannot open $sFile for input: $!";
+
+  while (<$pFile>) {
+    $br = chomp;
+    if (/<!--#static-include\s+file="[^"]*"\s+-->/) {
+      my $str = $_;
+      my $pos = tell $pFile;
+      close $pFile;
+
+      while (1) {
+        if ($str =~ /(.*)<!--#static-include\s+file="([^"]*)"\s+-->(.*)/) {
+          print $1;
+          # Call recursively on the included file.
+          $fn->($2);
+          $str = $3;
+        }
+        else {
+          print $str;
+          last;
+        }
+      }
+
+      open($pFile, "<", $sFile)
+        or die "cannot open $sFile for input: $!";
+      seek $pFile, $pos, 0;
+    }
+    else {
+      print;
+    }
+    print $/ if $br;
+  }
+
+  close $pFile;
+};
+
+$fn->(@ARGV);
