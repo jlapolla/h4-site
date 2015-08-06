@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-all:
+all: build/main.html
 
 clean:
 	rm -rf build
