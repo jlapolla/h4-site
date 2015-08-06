@@ -30,4 +30,4 @@ foreach ($content->disembowel()) {
   $contentWrapper->push_content($_);
 }
 
-print $page->as_HTML(undef, '  ', {});
+print $page->as_HTML(undef, undef, {});
