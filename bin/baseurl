@@ -25,5 +25,17 @@ $tree->implicit_tags(0);
 $tree->store_comments(1);
 $tree->warn(1);
 $tree->parse_file($sFile);
+  or die $!;
 $tree->traverse($traverseCallback, 1);
-print $tree->as_HTML();
+
+# Output HTML and DTD.
+# Refer to http://www.perlmonks.org/?node_id=721332.
+print $tree->attr('_decl')->as_HTML(undef, undef, {}) . $/ if ($tree->attr('_decl'));
+foreach ($tree->guts()) {
+  if (ref) {
+    print $_->as_HTML(undef, undef, {});
+  }
+  else {
+    print;
+  }
+}

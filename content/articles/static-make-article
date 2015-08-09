@@ -30,4 +30,14 @@ foreach ($content->disembowel()) {
   $contentWrapper->push_content($_);
 }
 
-print $page->as_HTML(undef, undef, {});
+# Output HTML and DTD.
+# Refer to http://www.perlmonks.org/?node_id=721332.
+print $page->attr('_decl')->as_HTML(undef, undef, {}) . $/ if ($page->attr('_decl'));
+foreach ($page->guts()) {
+  if (ref) {
+    print $_->as_HTML(undef, undef, {});
+  }
+  else {
+    print;
+  }
+}
