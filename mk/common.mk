@@ -9,6 +9,7 @@ ln -s $(abspath $<) $@
 endef
 
 # Make target directory.
+# $(call MKDIR)
 define MKDIR
 @mkdir -p $(@D)
 endef

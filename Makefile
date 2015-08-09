@@ -1,11 +1,13 @@
 # Store include directory in global variable.
 export INC_DIR := $(abspath mk)
+include $(INC_DIR)/common.mk
 
 # Add project utilities to PATH.
-export PATH := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bin:$(PATH)
+export PATH := $(abspath bin):$(PATH)
 
 # Directory to deploy to.
-export DIST_DIR := /usr/local/apache2/htdocs/blog2
+export DOC_ROOT := /usr/local/apache2/htdocs
+export DIST_DIR := $(DOC_ROOT)/blog2
 
 HELP_TEXT = $(info Targets:)
 
@@ -21,15 +23,25 @@ $(foreach VAR,$(RECURSE),$(eval $(call RECURSE_TEMPLATE,$(VAR))))
 
 .DEFAULT_GOAL := help
 
+HELP_TEXT += $(info [all] Build project and deploy to $(DIST_DIR).)
 all: $(addsuffix /all,$(RECURSE))
 
+HELP_TEXT += $(info [clean] Delete built files, leaving only source files.)
 clean: $(addsuffix /clean,$(RECURSE))
 	rm -rf $(DIST_DIR)
 
-HELP_TEXT += $(info [check] Run validators and linters on files deployed in the distribution directory.)
-check:
-	vnu --skip-non-html $(DIST_DIR)
+HELP_TEXT += $(info [check] Check deployed files. Be sure to build [all] first.)
+check: $(patsubst $(DIST_DIR)/%,$(DIST_DIR)/check/%,$(shell find $(DIST_DIR) -path $(DIST_DIR)/check -prune -o -type f -name '*.html' -print))
+
+HELP_TEXT += $(info [check-clean] Delete results of last [check].)
+check-clean:
+	rm -rf $(DIST_DIR)/check
 
 HELP_TEXT += $(info [help] Display this help text.)
 help:
 	$(HELP_TEXT)
+
+$(DIST_DIR)/check/%.html: $(DIST_DIR)/%.html
+	$(call MKDIR)
+	-vnu $< 1>$@ 2>&1
+	printf '%s\n' '<li><a href="$(patsubst $(DOC_ROOT)/%,/%,$<)">Original file</a> [<a href="$(patsubst $(DOC_ROOT)/%,/%,$@)">Error report</a>] - $<</li>' >> $(DIST_DIR)/check/report.html
