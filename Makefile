@@ -13,11 +13,8 @@ HELP_TEXT = $(info Targets:)
 
 # Define directories that Make should recurse into.
 RECURSE := content
-define RECURSE_TEMPLATE
-$(1)/%:
-	$$(MAKE) -C $(1) $$*
-endef
 $(foreach VAR,$(RECURSE),$(eval $(call RECURSE_TEMPLATE,$(VAR))))
+$(foreach VAR,downloads,$(eval $(call RECURSE_TEMPLATE,$(VAR))))
 
 .PHONY: all clean help
 
@@ -37,11 +34,15 @@ HELP_TEXT += $(info [check-clean] Delete results of last [check].)
 check-clean:
 	rm -rf $(DIST_DIR)/check
 
+HELP_TEXT += $(info [servers] Start servers used in development. Currently starts the v.Nu HTML validator server.)
+servers: | downloads/vnu/vnu.jar
+	validate-server >/dev/null 2>&1
+
 HELP_TEXT += $(info [help] Display this help text.)
 help:
 	$(HELP_TEXT)
 
 $(DIST_DIR)/check/%.html: $(DIST_DIR)/%.html
 	$(call MKDIR)
-	-vnu $< 1>$@ 2>&1
+	-validate-html5 $< 1>$@ 2>&1
 	printf '%s\n' '<li><a href="$(patsubst $(DOC_ROOT)/%,/%,$<)">Original file</a> [<a href="$(patsubst $(DOC_ROOT)/%,/%,$@)">Error report</a>] - $<</li>' >> $(DIST_DIR)/check/report.html
