@@ -1,5 +1,21 @@
 #!/bin/sh
 
+make downloads/vnu/vnu.jar
+bin/validate-server &
+PID=$!
+
+trap "kill $PID" 2 15
 while sleep 1 ; do
-  make -q all > /dev/null || make all
+  if make -q all >/dev/null 2>&1; then
+    true
+  else
+    make check-clean
+    until make -q all >/dev/null 2>&1; do
+      make all
+    done
+  fi
+
+  until make -q check >/dev/null 2>&1; do
+    make check
+  done
 done

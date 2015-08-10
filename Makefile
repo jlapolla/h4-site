@@ -34,10 +34,6 @@ HELP_TEXT += $(info [check-clean] Delete results of last [check].)
 check-clean:
 	rm -rf $(DIST_DIR)/check
 
-HELP_TEXT += $(info [servers] Start servers used in development. Currently starts the v.Nu HTML validator server.)
-servers: | downloads/vnu/vnu.jar
-	validate-server >/dev/null 2>&1
-
 HELP_TEXT += $(info [help] Display this help text.)
 help:
 	$(HELP_TEXT)
