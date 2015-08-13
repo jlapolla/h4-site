@@ -40,5 +40,6 @@ help:
 
 $(DIST_DIR)/check/%.html: $(DIST_DIR)/%.html
 	$(call MKDIR)
-	-validate-html5 $< 1>$@ 2>&1
-	printf '%s\n' '<li><a href="$(patsubst $(DOC_ROOT)/%,/%,$<)">Original file</a> [<a href="$(patsubst $(DOC_ROOT)/%,/%,$@)">Error report</a>] - $<</li>' >> $(DIST_DIR)/check/report.html
+	(test-html5 $< && touch $@) || \
+	(validate-html5 $< 1>$@ 2>&1; \
+	printf '%s\n' '<li><a href="$(patsubst $(DOC_ROOT)/%,/%,$<)">Original file</a> [<a href="$(patsubst $(DOC_ROOT)/%,/%,$@)">Error report</a>] - $<</li>' >> $(DIST_DIR)/check/report.html)
