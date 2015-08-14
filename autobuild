@@ -1,8 +1,9 @@
 #!/bin/sh
+PID=$$
 
 make downloads/vnu/vnu.jar
 bin/validate-server &
-PID=$!
+PID="$PID $!"
 
 trap "kill $PID" 2 15
 while sleep 1 ; do
