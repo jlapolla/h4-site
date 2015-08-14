@@ -29,6 +29,12 @@ define MKDIR
 @mkdir -p $(@D)
 endef
 
+# Make target as empty file.
+# $(call MKFILE)
+define MKFILE
+touch $@
+endef
+
 # Call make recursively for files in a directory.
 # $(eval $(call RECURSE_TEMPLATE,dir_name))
 define RECURSE_TEMPLATE
