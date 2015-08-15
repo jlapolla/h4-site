@@ -3,31 +3,57 @@
 use strict;
 use warnings;
 use HTML::TreeBuilder -weak;
+use YAML::XS ();
 
 my $sPageTemplate = shift;
 my $sArticleContent = shift;
+my $sArticleHead = shift;
+my $sArticleConfig = shift;
 
+# Load the template.
 my $page = HTML::TreeBuilder->new;
 $page->ignore_unknown(0);
 $page->implicit_tags(0);
 $page->store_comments(1);
 $page->warn(1);
+$page->parse_file($sPageTemplate)
+  or die $!;
 
+# Insert article header content into the template.
 my $content = HTML::TreeBuilder->new;
 $content->ignore_unknown(0);
 $content->implicit_tags(0);
 $content->store_comments(1);
 $content->warn(1);
-
-
-$page->parse_file($sPageTemplate)
+$content->parse_file($sArticleHead)
   or die $!;
+my $wrapper = $page->find_by_tag_name('head');
+foreach ($content->disembowel()) {
+  $wrapper->push_content($_);
+}
+
+# Insert article content into the template.
+$content = HTML::TreeBuilder->new;
+$content->ignore_unknown(0);
+$content->implicit_tags(0);
+$content->store_comments(1);
+$content->warn(1);
 $content->parse_file($sArticleContent)
   or die $!;
-
-my $contentWrapper = $page->find_by_tag_name('body');
+$wrapper = $page->find_by_tag_name('body');
 foreach ($content->disembowel()) {
-  $contentWrapper->push_content($_);
+  $wrapper->push_content($_);
+}
+
+# Populate template based on article config information.
+#print $sArticleConfig;
+$content = YAML::XS::LoadFile($sArticleConfig)
+  or die $!;
+if (exists $content->{'title'}) {
+  $page->find_by_tag_name('title')->delete_content()->push_content($content->{'title'} . ' - 4He');
+}
+else {
+  $page->find_by_tag_name('title')->delete_content()->push_content('Untitled Article - 4He');
 }
 
 # Output HTML and DTD.

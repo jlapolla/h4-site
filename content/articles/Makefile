@@ -20,9 +20,9 @@ HELP_TEXT += $(info [help] Display this help text.)
 help:
 	$(HELP_TEXT)
 
-# Rules to deploy articles.
-$(DIST_DIR)/articles/%/index.html: %/out/main.html %/out/head.html | %/assets
+# Template population.
+$(DIST_DIR)/articles/%/index.html: %/out/main.html %/out/head.html %/out/config.yml | %/assets
 	$(call MKDIR)
-	./static-make-article static-template.html $< > $@
+	./static-make-article static-template.html $^ > $@
 
 $(foreach VAR,$(RECURSE),$(eval $(call RECURSE_TEMPLATE,$(VAR))))
