@@ -40,7 +40,7 @@ $content->store_comments(1);
 $content->warn(1);
 $content->parse_file($sArticleContent)
   or die $!;
-$wrapper = $page->find_by_tag_name('body');
+$wrapper = $page->look_down('id', 'article-content');
 foreach ($content->disembowel()) {
   $wrapper->push_content($_);
 }
