@@ -25,9 +25,12 @@ $(DIST_DIR)/articles/%/index.html: %/out/main.html %/out/head.html %/out/config.
 	$(call MKDIR)
 	./static-make-article static-template.html $^ > $@
 
-$(DIST_DIR)/articles/%/assets: %/assets
-	$(call MKDIR)
-	@rm -rf $@
-	cp -R $< $@
+define TEMPLATE
+$$(DIST_DIR)/articles/$(1)/assets: $$(shell find $(1)/assets -type f)
+	$$(call MKDIR)
+	@rm -rf $$@
+	cp -R $(1)/assets $$@
+endef
+$(foreach VAR,$(patsubst ./%,%,$(shell find . -mindepth 1 -maxdepth 1 -type d)),$(eval $(call TEMPLATE,$(VAR))))
 
 $(foreach VAR,$(RECURSE),$(eval $(call RECURSE_TEMPLATE,$(VAR))))
