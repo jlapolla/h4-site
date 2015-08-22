@@ -5,4 +5,75 @@ Fortunately, we can use Cygwin, VirtualBox, and Vagrant to learn Linux without t
 Then you can play around with Linux in the virtual machine, and if you break something, you can spawn a new virtual machine with a fresh Linux install.</p>
 <h1>Cygwin</h1>
 <p>The first piece of software we'll need is Cygwin.
-Cygwin provides us with Linux-like command line environment within Windows.</p>
+Cygwin provides us with a Linux-like command line environment within Windows.</p>
+<h2>Cygwin Intro</h2>
+<p>The first thing you need to understand about Cygwin is that Cygwin is <strong>NOT</strong> a single program.
+Cygwin is an environment that contains many programs and packages.
+You can add or remove programs and packages from your Cygwin environment using the Cygwin Setup program.
+The "setup.exe" file that you download from the Cygwin website is the Cygwin Setup program.</p>
+<h2>Download Cygwin Setup</h2>
+<p>Please use the button below to download Cygwin Setup now.</p>
+<p><a href="https://cygwin.com/install.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Cygwin</a></p>
+<p>After you've downloaded the Cygwin Setup program, move the "setup.exe" file to a convenient permanent location.
+Cygwin Setup will cache downloaded packages and package metadata in the same directory as the "setup.exe" file.
+Typically, you keep this file in the same place to take advantage of the caching feature.
+I usually place my "setup.exe" file in <code>C:\cygwin-setup</code></p>
+<h2>Run Cygwin Setup</h2>
+<p>Now we're ready to run Cygwin Setup and install our first Cygwin packages.
+Double click the "setup.exe" file to run Cygwin Setup.</p>
+<h3>1. Welcome Screen</h3>
+<p>This welcome screen has some good information.
+Give it a read, then click <code>Next &gt;</code>.</p>
+<p><img src="assets/png/cygwin-setup-01.png" class="img-responsive center-block" alt="Cygwin Setup: Welcome screen"></p>
+<h3>2. Choose Package Source</h3>
+<p>Choose "Install from Internet".</p>
+<p>Click <code>Next &gt;</code>.</p>
+<p><img src="assets/png/cygwin-setup-02.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package source"></p>
+<h3>3. Choose Cygwin Root Directory</h3>
+<p>Select the root directory where your Cygwin environment will be installed.
+I usually choose <code>C:\cygwin</code> for my Cygwin root directory.</p>
+<p>Click <code>Next &gt;</code>.</p>
+<p><img src="assets/png/cygwin-setup-03.png" class="img-responsive center-block" alt="Cygwin Setup: Choose Cygwin root directory"></p>
+<h3>4. Choose Package Cache Directory</h3>
+<p>Choose where you want Cygwin Setup to store its cached package files.
+I usually store cached package files right next to "setup.exe" in <code>C:\cygwin-setup</code>.</p>
+<p>Click <code>Next &gt;</code>.</p>
+<p><img src="assets/png/cygwin-setup-04.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package cache directory"></p>
+<h3>5. Configure Network Settings</h3>
+<p>Configure network settings appropriate for your Internet connection. I find that "Direct Connection" works well for me.</p>
+<p>Click <code>Next &gt;</code>.</p>
+<p><img src="assets/png/cygwin-setup-05.png" class="img-responsive center-block" alt="Cygwin Setup: Configure network settings"></p>
+<h3>6. Choose a Mirror</h3>
+<p>The official Cygwin package repository is available from multiple servers throughout the world.
+They all have the same Cygwin packages available, but download times vary from server to server.
+I usually just pick one at random.</p>
+<p>If you get slow download speeds, try a different mirror.
+You can check out the <a href="https://cygwin.com/mirrors.html">Cygwin mirrors list</a> and select a mirror that is close to your geographic location.</p>
+<p>Choose a mirror, then click <code>Next &gt;</code>.</p>
+<p><img src="assets/png/cygwin-setup-06.png" class="img-responsive center-block" alt="Cygwin Setup: Choose a mirror"></p>
+<h3>7. Downloading Package Metadata</h3>
+<p>Cygwin Setup downloads the latest package metadata from your selected mirror and updates its local cache.</p>
+<p>Sit back and let the download finish.</p>
+<p><img src="assets/png/cygwin-setup-07.png" class="img-responsive center-block" alt="Cygwin Setup: Downloading package metadata"></p>
+<h3>8. Select Packages to Install</h3>
+<p>Now we're ready to browse for packages and select the packages we want to install.</p>
+<p>But first, let's explore the Cygwin package browser a little. Right now, we're looking at all Cygwin packages, organized by category.</p>
+<p>Click the <code>View</code> button twice to see the packages that are currently selected for installation. (Hover your mouse over the <code>View</code> button for an explanation of the different "views".)</p>
+<p><img src="assets/png/cygwin-setup-08.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+<p>Right now all of the packages under the "Base" category are selected for installation. (The Base category includes all packages required for a minimal Cygwin installation.)</p>
+<p><img src="assets/png/cygwin-setup-09.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+<p>In addition to the base packages, we want to install the packages required for Cygwin/X. (Cygwin/X is required for us to run GUI applications in our Linux virtual machine.)
+According to the Cygwin/X website, Cygwin/X requires the following packages:</p>
+<ul>
+  <li>xorg-server</li>
+  <li>xinit</li>
+  <li>openssh</li>
+</ul>
+<p>Switch to "Full" view, and type "xorg-server" into the search box.</p>
+<p><img src="assets/png/cygwin-setup-10.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+<p>The first package seems to be what we want.</p>
+<p>Click the <code><span class="glyphicon glyphicon-refresh"></span> Skip</code> button to cycle through options until the "New" column shows the latest version of xorg-server.</p>
+<p><img src="assets/png/cygwin-setup-11.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+<p><img src="assets/png/cygwin-setup-12.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+<p><img src="assets/png/cygwin-setup-13.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+<p><img src="assets/png/cygwin-setup-14.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
