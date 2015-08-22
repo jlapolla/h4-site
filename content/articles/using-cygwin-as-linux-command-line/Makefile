@@ -5,7 +5,7 @@ include $(INC_DIR)/common.mk
 all: out/main.html out/head.html out/config.yml | assets
 
 clean:
-	rm -rf assets build out
+	rm -rf build out
 
 out/main.html: src/main.html
 	$(call MKDIR)
@@ -18,8 +18,5 @@ out/head.html:
 out/config.yml: src/config.yml
 	$(call MKDIR)
 	$(call LINK)
-
-assets:
-	@mkdir -p $@
 
 include $(INC_DIR)/syntax.mk
