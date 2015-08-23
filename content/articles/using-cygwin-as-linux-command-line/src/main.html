@@ -1,72 +1,184 @@
 <p>The first major hurdle you encounter when learning Linux is actually getting Linux installed on your computer.
 Installing a completely foreign operating system is daunting, and you are not willing to risk breaking your current Windows installation.
-Fortunately we can use Cygwin, VirtualBox, and Vagrant to learn Linux without touching our current Windows installation.</p>
-<p>In this article we'll create a virtual machine that has Linux already installed.
-Then you can play around with Linux in the virtual machine, and if you break something you can spawn a new virtual machine with a fresh Linux install.
-Using a virtual machine is a great way to work with Linux without altering your current Windows setup.</p>
-<h1>Cygwin</h1>
-<p>The first piece of software we'll need is Cygwin.
-Cygwin provides us with a Linux-like command line environment within Windows.</p>
-<h2>Cygwin Intro</h2>
-<p>The first thing you need to understand about Cygwin is that Cygwin is not a single program.
-Cygwin is an environment that contains many programs and packages.
-You can add or remove programs and packages from your Cygwin environment using the Cygwin Setup program.
-The "setup.exe" file that you download from the Cygwin website is the Cygwin Setup program.</p>
-<h2>Download Cygwin Setup</h2>
-<p>Please use the button below to download Cygwin Setup now.</p>
-<p><a href="https://cygwin.com/install.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Cygwin</a></p>
-<p>After you've downloaded the Cygwin Setup program, move the setup.exe file to a convenient permanent location.
-Cygwin Setup will cache downloaded packages and package metadata in the same directory as the setup.exe file.
-Typically, you keep setup.exe in the same place to take advantage of the caching feature.
-I usually place my setup.exe file in <code>C:\cygwin-setup</code>.</p>
-<h2>Run Cygwin Setup</h2>
-<p>Now we're ready to run Cygwin Setup and install our first Cygwin packages.
-Double click the setup.exe file to run Cygwin Setup.</p>
+Fortunately we can use a virtual machine to learn Linux without touching our current Windows installation.</p>
+<p>In this article we'll create a Linux virtual machine.
+Then you can play around with Linux in the virtual machine, and if you break something you can spawn a new virtual machine with a fresh Linux install.</p>
+<p>To work with Linux virtual machines in Windows, we'll need to install the following programs:</p>
+<dl class="dl-horizontal">
+  <dt>Notepad++</dt>
+  <dd>A text editor that works with both Linux style line endings and Windows style line endings.</dd>
+  <dt>VirtualBox</dt>
+  <dd>Virtualization software which provides an environment for virtual machines.</dd>
+  <dt>Vagrant</dt>
+  <dd>A command line tool for configuring, creating, and connecting to virtual machines.</dd>
+  <dt>Cygwin</dt>
+  <dd>A Linux-like command line environment for Windows.</dd>
+</dl>
+<div class="page-header"><h1>Notepad++</h1></div>
+<h2>Download Notepad++</h2>
+<p>Use the button below to download the Notepad++ installer.</p>
+<p><a href="https://notepad-plus-plus.org/download" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Notepad++</a></p>
+<h2>Install Notepad++</h2>
+<p>Double click the downloaded <code>npp.Installer.exe</code> file to run the Notepad++ installer.</p>
+<h3>1. Choose a Language</h3>
+<p>Select a language from the dropdown, then click <button class="btn btn-default btn-xs">OK</button>.</p>
+<p><img src="assets/png/npp-install-01.png" class="img-responsive center-block" alt="Notepad++ Setup: Select a language"></p>
+<h3>2. Welcome Screen</h3>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/npp-install-02.png" class="img-responsive center-block" alt="Notepad++ Setup: Welcome screen"></p>
+<h3>3. License Agreement</h3>
+<p>Review the license agreement, then click <button class="btn btn-default btn-xs">I Agree</button>.</p>
+<p><img src="assets/png/npp-install-03.png" class="img-responsive center-block" alt="Notepad++ Setup: License agreement"></p>
+<h3>4. Choose Installation Directory</h3>
+<p>Choose an installation directory.
+I use the default.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/npp-install-04.png" class="img-responsive center-block" alt="Notepad++ Setup: Choose installation directory"></p>
+<h3>5. Choose Program Features</h3>
+<p>Choose the program features you wish to install.
+I use the defaults.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/npp-install-05.png" class="img-responsive center-block" alt="Notepad++ Setup: Choose program features"></p>
+<h3>6. Choose Additional Options</h3>
+<p>Choose any additional options you want.
+You may wish to create a desktop shortcut.</p>
+<p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
+<p><img src="assets/png/npp-install-06.png" class="img-responsive center-block" alt="Notepad++ Setup: Choose additional options"></p>
+<h3>7. Installing Notepad++</h3>
+<p>The Notepad++ installer installs Notepad++.</p>
+<p>Wait for it to finish.</p>
+<p><img src="assets/png/npp-install-07.png" class="img-responsive center-block" alt="Notepad++ Setup: Installing"></p>
+<h3>8. Finish</h3>
+<p>Uncheck "Run Notepad++", then click <button class="btn btn-default btn-xs">Finish</button>.</p>
+<p><img src="assets/png/npp-install-09.png" class="img-responsive center-block" alt="Notepad++ Setup: Finished"></p>
+<p>Notepad++ appears in your Windows start menu after installation.</p>
+<p><img src="assets/png/npp-01.png" class="img-responsive center-block" alt="Notepad++ start menu entry"></p>
+<div class="page-header"><h1>VirtualBox</h1></div>
+<h2>Download VirtualBox</h2>
+<p>Use the button below to download the VirtualBox installer.</p>
+<p><span class="text-muted"><i>Hint: Download "VirtualBox for Windows hosts".</i></span></p>
+<p><a href="https://www.virtualbox.org/wiki/Downloads" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download VirtualBox</a></p>
+<h2>Install VirtualBox</h2>
+<p>Double click the downloaded <code>VirtualBox-Win.exe</code> file to run the VirtualBox installer.</p>
 <h3>1. Welcome Screen</h3>
-<p>This welcome screen has some good information.
-Give it a read, then click <code>Next &gt;</code>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/virtualbox-install-01.png" class="img-responsive center-block" alt="VirtualBox Setup: Welcome screen"></p>
+<h3>2. Choose Program Features</h3>
+<p>Use the defaults.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/virtualbox-install-02.png" class="img-responsive center-block" alt="VirtualBox Setup: Choose program features"></p>
+<h3>3. Choose Additional Options</h3>
+<p>Choose any additional options you want.
+You may wish to create a desktop shortcut.</p>
+<p>Make sure "Register file associations" is checked, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/virtualbox-install-04.png" class="img-responsive center-block" alt="VirtualBox Setup: Choose additional options"></p>
+<h3>4. Network Interfaces Warning</h3>
+<p>Read the warning.
+Expect a temporary network disconnect.</p>
+<p>Click <button class="btn btn-default btn-xs">Yes</button>.</p>
+<p><img src="assets/png/virtualbox-install-05.png" class="img-responsive center-block" alt="VirtualBox Setup: Network interfaces warning"></p>
+<h3>5. Confirm Install</h3>
+<p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
+<p><img src="assets/png/virtualbox-install-06.png" class="img-responsive center-block" alt="VirtualBox Setup: Confirm install"></p>
+<h3>6. Installing VirtualBox</h3>
+<p>The VirtualBox installer installs VirtualBox.</p>
+<p>Wait for it to finish.</p>
+<p><img src="assets/png/virtualbox-install-07.png" class="img-responsive center-block" alt="VirtualBox Setup: Installing"></p>
+<h3>7. Finish</h3>
+<p>Uncheck "Start Oracle VM VirtualBox after installation", then click <button class="btn btn-default btn-xs">Finish</button>.</p>
+<p><img src="assets/png/virtualbox-install-09.png" class="img-responsive center-block" alt="VirtualBox Setup: Finished"></p>
+<p>VirtualBox appears in your Windows start menu after installation.</p>
+<p><img src="assets/png/virtualbox-02.png" class="img-responsive center-block" alt="VirtualBox start menu entry"></p>
+<div class="page-header"><h1>Vagrant</h1></div>
+<h2>Download Vagrant</h2>
+<p>Use the button below to download the Vagrant installer.</p>
+<p><a href="https://www.vagrantup.com/downloads.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Vagrant</a></p>
+<h2>Install Vagrant</h2>
+<p>Double click the downloaded <code>vagrant.msi</code> file to run the Vagrant installer.</p>
+<h3>1. Welcome Screen</h3>
+<p>Click <button class="btn btn-default btn-xs">Next</button>.</p>
+<p><img src="assets/png/vagrant-install-01.png" class="img-responsive center-block" alt="Vagrant Setup: Welcome screen"></p>
+<h3>2. License Agreement</h3>
+<p>Review the license agreement.</p>
+<p>Check "I accept the terms in the License Agreement", then click <button class="btn btn-default btn-xs">Next</button>.</p>
+<p><img src="assets/png/vagrant-install-03.png" class="img-responsive center-block" alt="Vagrant Setup: License agreement"></p>
+<h3>3. Choose Installation Directory</h3>
+<p>Use the default installation directory.</p>
+<p>Click <button class="btn btn-default btn-xs">Next</button>.</p>
+<p><img src="assets/png/vagrant-install-04.png" class="img-responsive center-block" alt="Vagrant Setup: Choose installation directory"></p>
+<h3>4. Confirm Install</h3>
+<p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
+<p><img src="assets/png/vagrant-install-05.png" class="img-responsive center-block" alt="Vagrant Setup: Confirm install"></p>
+<h3>5. Installing Vagrant</h3>
+<p>The Vagrant installer installs Vagrant.</p>
+<p>Wait for it to finish.</p>
+<p><img src="assets/png/vagrant-install-06.png" class="img-responsive center-block" alt="Vagrant Setup: Installing"></p>
+<h3>6. Finish</h3>
+<p>Click <button class="btn btn-default btn-xs">Finish</button>.</p>
+<p><img src="assets/png/vagrant-install-08.png" class="img-responsive center-block" alt="Vagrant Setup: Finished"></p>
+<h3>7. Restart Your Computer</h3>
+<p>Close any open programs, then click <button class="btn btn-default btn-xs">Yes</button> to restart your computer.</p>
+<p><img src="assets/png/vagrant-install-09.png" class="img-responsive center-block" alt="Vagrant Setup: Restart your computer"></p>
+<p>Vagrant does not appear in the Windows start menu because it is a command line utility.</p>
+<div class="page-header"><h1>Cygwin</h1></div>
+<h2>Cygwin Intro</h2>
+<p>The first thing you need to understand about Cygwin is that it is not a single program.
+Cygwin is a Linux-like environment that contains many programs and packages.
+You can add or remove programs and packages from your Cygwin environment using the Cygwin Setup program.
+The <code>setup.exe</code> file that you download from the Cygwin website is the Cygwin Setup program.</p>
+<h2>Download Cygwin Setup</h2>
+<p>Use the button below to download Cygwin Setup.</p>
+<p><a href="https://cygwin.com/install.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Cygwin</a></p>
+<p>After you've downloaded Cygwin Setup, move the downloaded <code>setup.exe</code> file to a convenient permanent location.
+Cygwin Setup will cache downloaded packages and package metadata in the same directory as the setup.exe file.
+Typically, you keep <code>setup.exe</code> in the same place to take advantage of the caching feature.
+I usually put my <code>setup.exe</code> file in <code>C:\cygwin-setup</code>.</p>
+<h2>Install Cygwin Packages</h2>
+<p>Double click the downloaded <code>setup.exe</code> file to run Cygwin Setup.</p>
+<h3>1. Welcome Screen</h3>
+<p>This welcome screen has some good information.</p>
+<p>Read the welcome screen, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-01.png" class="img-responsive center-block" alt="Cygwin Setup: Welcome screen"></p>
 <h3>2. Choose Package Source</h3>
-<p>Choose "Install from Internet".</p>
-<p>Click <code>Next &gt;</code>.</p>
+<p>Choose "Install from Internet", then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-02.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package source"></p>
-<h3>3. Choose Cygwin Root Directory</h3>
-<p>Select the root directory where your Cygwin environment will be installed.
+<h3>3. Choose Installation Directory</h3>
+<p>Choose the root directory where your Cygwin environment will be installed.
 I usually choose <code>C:\cygwin</code> for my Cygwin root directory.</p>
-<p>Click <code>Next &gt;</code>.</p>
-<p><img src="assets/png/cygwin-setup-03.png" class="img-responsive center-block" alt="Cygwin Setup: Choose Cygwin root directory"></p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/cygwin-setup-03.png" class="img-responsive center-block" alt="Cygwin Setup: Choose installation directory"></p>
 <h3>4. Choose Package Cache Directory</h3>
 <p>Choose where you want Cygwin Setup to store its cached package files.
-I usually store cached package files right next to setup.exe in <code>C:\cygwin-setup</code>.</p>
-<p>Click <code>Next &gt;</code>.</p>
+I usually store cached package files in <code>C:\cygwin-setup</code>, right next to <code>setup.exe</code>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-04.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package cache directory"></p>
 <h3>5. Configure Network Settings</h3>
-<p>Configure network settings appropriate for your Internet connection. I find that "Direct Connection" works well for me.</p>
-<p>Click <code>Next &gt;</code>.</p>
+<p>Configure network settings appropriate for your Internet connection. "Direct Connection" works well for me.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-05.png" class="img-responsive center-block" alt="Cygwin Setup: Configure network settings"></p>
 <h3>6. Choose a Mirror</h3>
 <p>The official Cygwin package repository is available from multiple servers throughout the world.
 They all have the same Cygwin packages available, but download times vary from server to server.
 I usually just pick one at random.</p>
 <p>If you get slow download speeds, try a different mirror.
-You can check out the <a href="https://cygwin.com/mirrors.html">Cygwin mirrors list</a> and select a mirror that is close to your geographic location.</p>
-<p>Choose a mirror, then click <code>Next &gt;</code>.</p>
+You can check out the <a href="https://cygwin.com/mirrors.html" target="_blank">Cygwin mirrors list</a> to select a mirror that is close to your geographic location.</p>
+<p>Choose a mirror, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-06.png" class="img-responsive center-block" alt="Cygwin Setup: Choose a mirror"></p>
 <h3>7. Downloading Package Metadata</h3>
 <p>Cygwin Setup downloads the latest package metadata from your selected mirror and updates its local cache.</p>
-<p>Sit back and let the download finish.</p>
+<p>Wait for it to finish.</p>
 <p><img src="assets/png/cygwin-setup-07.png" class="img-responsive center-block" alt="Cygwin Setup: Downloading package metadata"></p>
 <h3>8. Select Packages to Install</h3>
-<p>Now we're ready to browse for packages and select the packages we want to install.</p>
-<p>But first, let's explore the Cygwin package browser a little.
+<p>Now we're ready to browse for packages and select the Cygwin packages we want to install.</p>
+<p>Let's take some time to get familiar with the Cygwin package browser first.
 Right now we're looking at all Cygwin packages, organized by category.</p>
 <p><img src="assets/png/cygwin-setup-08.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Click the <code>View</code> button twice to switch to the "Pending" view.
-The "Pending" view shows the packages that are currently selected for installation.
-Hover your mouse over the <code>View</code> button for an explanation of the different views.</p>
+<p>Click <button class="btn btn-default btn-xs">View</button> twice to switch to "Pending" view.
+"Pending" view shows the packages that are currently selected for installation.
+Hover your mouse over the <button class="btn btn-default btn-xs">View</button> button for an explanation of the different views.</p>
 <p>Right now all of the packages under the "Base" category are selected for installation. The Base category includes all packages required for a minimal Cygwin installation.</p>
 <p><img src="assets/png/cygwin-setup-09.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>In addition to the base packages, we want to install the packages required for Cygwin/X. Cygwin/X is required for us to run GUI applications in our Linux virtual machine.
+<p>In addition to the base packages, we want to install the packages required for Cygwin/X. Cygwin/X is required to run GUI applications in our Linux virtual machine.
 According to the Cygwin/X website, Cygwin/X requires the following packages:</p>
 <ul>
   <li>xorg-server</li>
@@ -75,44 +187,51 @@ According to the Cygwin/X website, Cygwin/X requires the following packages:</p>
 </ul>
 <p>Switch to "Full" view, and type "xorg-server" in the search box.</p>
 <p><img src="assets/png/cygwin-setup-10.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>The first package seems to be what we want.</p>
-<p>Click the <code><span class="glyphicon glyphicon-refresh"></span> Skip</code> button to cycle through options until the "New" column shows the latest version of xorg-server.</p>
+<p>The first package is the one we want.</p>
+<p>Click <code><span class="glyphicon glyphicon-refresh"></span></code> to cycle through options until it shows the latest version of xorg-server.
+This selects xorg-server for installation.</p>
 <p><img src="assets/png/cygwin-setup-11.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Switch back to the "Pending" view to confirm that xorg-server is selected for installation.
+<p>Switch to "Pending" view to confirm that xorg-server is selected for installation.
 Notice that the base packages are hidden since we have typed "xorg-server" into the search filter box.</p>
 <p><img src="assets/png/cygwin-setup-12.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Click <code>Clear</code> to clear the search filter and see the full list of all pending operations.
+<p>Click <button class="btn btn-default btn-xs">Clear</button> to clear the search filter and see the full list of all pending operations.
 This unhides the base packages that are selected for installation.</p>
 <p><img src="assets/png/cygwin-setup-13.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Return to the "Full" view and use the search filter to find xinit and openssh.
-Select xinit and openssh for installation.
-Return to the "Pending" view to review your pending operations.</p>
-<p>Click <code>Next &gt;</code> to execute the pending operations.</p>
-<p><img src="assets/png/cygwin-setup-14.png" class="img-responsive center-block" alt="Cygwin Setup: Resolving dependencies"></p>
+<p>Switch to "Full" view and use the search filter to find xinit and openssh.
+Click <code><span class="glyphicon glyphicon-refresh"></span></code> to select xinit and openssh for installation.
+Switch to "Pending" view to review your pending operations.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to execute the pending operations.</p>
+<h3>9. Resolve Dependencies</h3>
 <p>Some of the packages we've selected depend on other packages.
-Cygwin Setup computes the required dependencies and offers to install them for us.
-This is a good thing.</p>
-<p>Check the "Select required pacakges" checkbox, and click <code>Next &gt;</code>.</p>
+Cygwin Setup computes the required dependencies and offers to install them for us.</p>
+<p>Check "Select required pacakges", then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p><img src="assets/png/cygwin-setup-14.png" class="img-responsive center-block" alt="Cygwin Setup: Resolve dependencies"></p>
+<h3>10. Installing Selected Packages and Dependencies</h3>
+<p>Cygwin Setup downloads and installs the selected packages and dependencies.</p>
+<p>Wait for it to finish.</p>
 <p><img src="assets/png/cygwin-setup-16.png" class="img-responsive center-block" alt="Cygwin Setup: Downloading and installing packages"></p>
-<p>Cygwin Setup downloads and installs the selected packages.</p>
-<p>Sit back and let it run.</p>
-<p><img src="assets/png/cygwin-setup-18.png" class="img-responsive center-block" alt="Cygwin Setup: Create icons and finish installation"></p>
-<p>Congratulations! You've installed a base Cygwin environment with Cygwin/X.</p>
-<p>Click <code>Finish</code> to exit Cygwin Setup.</p>
-<p>Any time you want to install, uninstall, update, or reinstall packages in your Cygwin envirnoment, run the Cygwin Setup program.
-Remember that clicking the <code><span class="glyphicon glyphicon-refresh"></span> Skip</code> button cycles through the possible options for a package.
-It's a confusing user interface, but you get used to it eventually.</p>
+<h3>11. Finish</h3>
+<p>Click <button class="btn btn-default btn-xs">Finish</button>.</p>
+<p><img src="assets/png/cygwin-setup-18.png" class="img-responsive center-block" alt="Cygwin Setup: Finished"></p>
+<p>Use Cygwin Setup any time you want to install, uninstall, update, or reinstall packages in your Cygwin envirnoment.
+Remember that clicking <code><span class="glyphicon glyphicon-refresh"></span></code> in the package browser cycles through the possible actions for a package.
+It's a confusing user interface, but you don't have to use it often.</p>
+<p>Cygwin Terminal and XWin Server appear in your Windows start menu after installation.</p>
+<p><span class="text-muted"><i>Hint: XWin Server is Cygwin/X.</i></span></p>
+<p><img src="assets/png/cygwin-terminal-8.png" class="img-responsive center-block" alt="Cygwin Terminal start menu entry"></p>
+<p><img src="assets/png/xwin-01.png" class="img-responsive center-block" alt="XWin Server start menu entry"></p>
+<div class="page-header"><h1>Virtual Machine Setup</h1></div>
 <h2>Cygwin Directory Structure</h2>
-<p>Cygwin Setup installs all packages into the Cygwin root directory that you select.
-The Cygwin root directory no different from any other directory on your computer.
-It just happens to be the directory that the Cygwin environment considers to be it's root directory.
-You can browse the Cygwin root directory in Windows Explorer to see the files that are installed.</p>
-<p>The rest of this article will assume that <code>C:\cygwin</code> is the Cygwin root directory.</p>
-<p>The Cygwin environment also has a home directory for each user on your system.
-If your user name is "jdoe", then your Cygwin home directory is at <code>C:\cygwin\home\jdoe</code>.</p>
-<p>Cygwin also creates a <code>C:\cygwin\cygdrive</code> directory.
-The <code>C:\cygwin\cygdrive</code> directory contains shortcut links to each drive on your computer.
-For example, <code>C:\cygwin\cygdrive\c\Users</code> is a shortcut to <code>C:\Users</code>.
+<p>The rest of this article will assume that the Cygwin root directory is <code>C:\cygwin</code>.</p>
+<p>There are a few directories under <code>C:\cygwin</code> that I'd like to point out.
+Open <code>C:\cygwin</code> in Windows File Explorer.</p>
+<h3>User Home Directories</h3>
+<p>Cygwin Setup creates a home directory for each user on your computer under <code>C:\cygwin\home</code>.
+If your user name is "jdoe", then your Cygwin home directory is <code>C:\cygwin\home\jdoe</code>.</p>
+<h3><code>cygdrive</code> Directory</h3>
+<p>Cygwin Setup creates a <code>C:\cygwin\cygdrive</code> directory.
+<code>C:\cygwin\cygdrive</code> contains shortcut links to each drive on your computer.
+For example, <code>C:\cygwin\cygdrive\c</code> is a shortcut to <code>C:\</code>.
 If you have a <code>D:\</code> drive, you can access it via <code>C:\cygwin\cygdrive\d</code>.
 The shortcut links in <code>C:\cygwin\cygdrive</code> allow you to access all files on your computer from within the Cygwin environment.</p>
 <h2>Customize Cygwin and Cygwin/X</h2>
