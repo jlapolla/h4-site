@@ -2,7 +2,7 @@
 Installing a completely foreign operating system is daunting, and you are not willing to risk breaking your current Windows installation.
 Fortunately we can use a virtual machine to learn Linux without touching our current Windows installation.</p>
 <p>In this article we'll create a Linux virtual machine.
-Then you can play around with Linux in the virtual machine, and if you break something you can spawn a new virtual machine with a fresh Linux install.</p>
+Then you can try out Linux in the virtual machine, and if you break something you can spawn a new virtual machine with a fresh Linux install.</p>
 <p>To work with Linux virtual machines in Windows, we'll need to install the following programs:</p>
 <dl class="dl-horizontal">
   <dt>Notepad++</dt>
@@ -130,9 +130,9 @@ The <code>setup.exe</code> file that you download from the Cygwin website is the
 <p>Use the button below to download Cygwin Setup.</p>
 <p><a href="https://cygwin.com/install.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Cygwin</a></p>
 <p>After you've downloaded Cygwin Setup, move the downloaded <code>setup.exe</code> file to a convenient permanent location.
-Cygwin Setup will cache downloaded packages and package metadata in the same directory as the setup.exe file.
-Typically, you keep <code>setup.exe</code> in the same place to take advantage of the caching feature.
-I usually put my <code>setup.exe</code> file in <code>C:\cygwin-setup</code>.</p>
+Cygwin Setup will cache downloaded packages and package metadata in the same directory as <code>setup.exe</code>.
+Typically you keep <code>setup.exe</code> in the same place to take advantage of the caching feature.
+I usually create a <code>C:\cygwin-setup</code> directory and put <code>setup.exe</code> in that directory.</p>
 <h2>Install Cygwin Packages</h2>
 <p>Double click the downloaded <code>setup.exe</code> file to run Cygwin Setup.</p>
 <h3>1. Welcome Screen</h3>
@@ -153,7 +153,7 @@ I usually store cached package files in <code>C:\cygwin-setup</code>, right next
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-04.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package cache directory"></p>
 <h3>5. Configure Network Settings</h3>
-<p>Configure network settings appropriate for your Internet connection. "Direct Connection" works well for me.</p>
+<p>Configure network settings appropriate for your Internet connection. I use "Direct Connection".</p>
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-05.png" class="img-responsive center-block" alt="Cygwin Setup: Configure network settings"></p>
 <h3>6. Choose a Mirror</h3>
@@ -161,7 +161,7 @@ I usually store cached package files in <code>C:\cygwin-setup</code>, right next
 They all have the same Cygwin packages available, but download times vary from server to server.
 I usually just pick one at random.</p>
 <p>If you get slow download speeds, try a different mirror.
-You can check out the <a href="https://cygwin.com/mirrors.html" target="_blank">Cygwin mirrors list</a> to select a mirror that is close to your geographic location.</p>
+You can check the <a href="https://cygwin.com/mirrors.html" target="_blank">Cygwin mirrors list</a> to find a mirror that is close to your geographic location.</p>
 <p>Choose a mirror, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
 <p><img src="assets/png/cygwin-setup-06.png" class="img-responsive center-block" alt="Cygwin Setup: Choose a mirror"></p>
 <h3>7. Downloading Package Metadata</h3>
@@ -213,30 +213,125 @@ Cygwin Setup computes the required dependencies and offers to install them for u
 <h3>11. Finish</h3>
 <p>Click <button class="btn btn-default btn-xs">Finish</button>.</p>
 <p><img src="assets/png/cygwin-setup-18.png" class="img-responsive center-block" alt="Cygwin Setup: Finished"></p>
-<p>Use Cygwin Setup any time you want to install, uninstall, update, or reinstall packages in your Cygwin envirnoment.
+<p>Run Cygwin Setup any time you want to install, uninstall, update, or reinstall packages in your Cygwin envirnoment.
 Remember that clicking <code><span class="glyphicon glyphicon-refresh"></span></code> in the package browser cycles through the possible actions for a package.
 It's a confusing user interface, but you don't have to use it often.</p>
 <p>Cygwin Terminal and XWin Server appear in your Windows start menu after installation.</p>
 <p><span class="text-muted"><i>Hint: XWin Server is Cygwin/X.</i></span></p>
 <p><img src="assets/png/cygwin-terminal-8.png" class="img-responsive center-block" alt="Cygwin Terminal start menu entry"></p>
 <p><img src="assets/png/xwin-01.png" class="img-responsive center-block" alt="XWin Server start menu entry"></p>
-<div class="page-header"><h1>Virtual Machine Setup</h1></div>
 <h2>Cygwin Directory Structure</h2>
-<p>The rest of this article will assume that the Cygwin root directory is <code>C:\cygwin</code>.</p>
+<p>The rest of this article will assume that <code>C:\cygwin</code> is the Cygwin root directory.</p>
 <p>There are a few directories under <code>C:\cygwin</code> that I'd like to point out.
 Open <code>C:\cygwin</code> in Windows File Explorer.</p>
 <h3>User Home Directories</h3>
-<p>Cygwin Setup creates a home directory for each user on your computer under <code>C:\cygwin\home</code>.
+<p>Cygwin Setup creates a home directory for each user on your computer.
+Home directories appear under <code>C:\cygwin\home</code>.
 If your user name is "jdoe", then your Cygwin home directory is <code>C:\cygwin\home\jdoe</code>.</p>
 <h3><code>cygdrive</code> Directory</h3>
 <p>Cygwin Setup creates a <code>C:\cygwin\cygdrive</code> directory.
 <code>C:\cygwin\cygdrive</code> contains shortcut links to each drive on your computer.
 For example, <code>C:\cygwin\cygdrive\c</code> is a shortcut to <code>C:\</code>.
 If you have a <code>D:\</code> drive, you can access it via <code>C:\cygwin\cygdrive\d</code>.
-The shortcut links in <code>C:\cygwin\cygdrive</code> allow you to access all files on your computer from within the Cygwin environment.</p>
-<h2>Customize Cygwin and Cygwin/X</h2>
-<p>To access the Cygwin command line environment, search for "Cygwin" in your Windows start menu.</p>
-<p>When you first start the Cygwin terminal, it will look something like this:</p>
-<p><img src="assets/png/terminal-01.png" class="img-responsive center-block" alt="Cygwin terminal"></p>
-<p>Let's make this look a bit more attractive.
-This is important since the look and feel of your environment affects your productivity.</p>
+These shortcut links allow you to access all files on your computer from within the Cygwin environment.</p>
+<h2>Cygwin Terminal Appearance</h2>
+<p>The default Cygwin Terminal appearance is difficult to read.
+Let's customize the terminal appearance.</p>
+<p>Start Cygwin Terminal from the Windows start menu.</p>
+<p><img src="assets/png/cygwin-terminal-2.png" class="img-responsive center-block" alt="Cygwin Terminal"></p>
+<p>Right click on the Cygwin Terminal window, and choose <code>Options...</code></p>
+<p><img src="assets/png/cygwin-terminal-3.png" class="img-responsive center-block" alt="Cygwin Terminal context menu"></p>
+<p>In the "Looks" section, change the cursor style to "Block".</p>
+<p><img src="assets/png/cygwin-terminal-5.png" class="img-responsive center-block" alt="Cygwin Terminal looks options"></p>
+<p>In the "Text" section, check "Show bold as font" and "Show bold as colour".
+Set "Font smoothing" to "Default".
+Select an attractive font and font size.</p>
+<p>Click <button class="btn btn-default btn-xs">OK</button>.</p>
+<p><img src="assets/png/cygwin-terminal-6.png" class="img-responsive center-block" alt="Cygwin Terminal text options"></p>
+<h2>Cygwin/X</h2>
+<p>To run GUI applications in our Linux virtual machine, we must start Cygwin Terminal through Cygwin/X.
+Let's try that now.</p>
+<p>Start XWin Server from the Windows start menu.</p>
+<p><img src="assets/png/xwin-01.png" class="img-responsive center-block" alt="XWin Server start menu entry"></p>
+<p>This adds two icons to your Windows system tray:</p>
+<ul>
+  <li>XWin Server (X with an orange circle)</li>
+  <li>Cygwin/X (C with a green X)</li>
+</ul>
+<p><img src="assets/png/xwin-02.png" class="img-responsive center-block" alt="XWin Server and Cygwin/X system tray icons"></p>
+<p>Click on the Cygwin/X icon.</p>
+<p><img src="assets/png/xwin-03.png" class="img-responsive center-block" alt="Cygwin/X menu"></p>
+<p>Select <code>System Tools</code> &gt; <code>Cygwin Terminal</code>.</p>
+<p><img src="assets/png/xwin-04.png" class="img-responsive center-block" alt="Cygwin/X menu with Cygwin Terminal highlighted"></p>
+<p>This is how you start Cygwin Terminal through Cygwin/X.</p>
+<div class="page-header"><h1>Virtual Machine Setup</h1></div>
+<h2>Intro</h2>
+<p>To create our Linux virtual machine, we'll start by using Vagrant to generate a generic Vagrantfile.
+The Vagrantfile is a configuration file that tells Vagrant what kind of virtual machine we want Vagrant to make.
+We'll create a generic Vagrantfile using the <code>vagrant init</code> command on the command line.
+Then we'll use Notepad++ to edit a few lines in the Vagrantfile to customize our virtual machine.</p>
+<p>Once we have our Vagrantfile, we'll run <code>vagrant up</code> to create the virtual machine.
+Vagrant reads the configuration in the Vagrantfile, then uses VirtualBox to create the virtual machine for us.
+After the virtual machine is created, Vagrant turns on the virtual machine.
+This is just like pressing the power button to turn on a physical computer.</p>
+<p>Once the virtual machine is up and running, we need to connect to it.
+We'll run <code>vagrant ssh</code> to begin an SSH session on the virtual machine.
+While we are in the SSH session, all commands we enter on the command line are sent straight to the virtual machine.
+Using SSH is basically like opening a terminal on the virtual machine; the only difference is that we're doing it remotely through SSH.
+When we're ready to quit the SSH session, we'll run <code>exit</code> to close the SSH connection and return to our local command line.</p>
+<p>After we exit the SSH session, the virtual machine is still running.
+We'll run <code>vagrant halt</code> to shut down the virtual machine.
+This is just like pressing the power button to shut down a physical computer.</p>
+<h2>Walkthrough</h2>
+<p>We need to create a directory to put our Vagrantfile in.
+Let's create a <code>virt\linux</code> directory under our Cygwin home directory, and put our Vagrantfile there.
+Open your Cygwin home directory in Windows File Explorer.
+Use Windows File Explorer to create the <code>virt\linux</code> directory under your Cygwin home directory.</p>
+<p>Now we need to run <code>vagrant init</code> in our newly-created <code>virt\linux</code> directory to generate a generic Vagrantfile.
+We'll use Cygwin Terminal to do this.
+Start Cygwin Terminal through Cygwin/X.</p>
+<p><img src="assets/png/cygwin-terminal-2.png" class="img-responsive center-block" alt="Cygwin Terminal"></p>
+<p>Right now the terminal is in our Cygwin home directory.
+If we run <code>vagrant init</code> right now, it will create the generic Vagrantfile in our home directory.
+We want to create the Vagrantfile in the <code>virt\linux</code> directory we just created, not in our home directory.
+So, we have to change directories to the <code>virt\linux</code> directory before we run <code>vagrant init</code>.</p>
+<p>Run <code>cd virt/linux</code> to move to the <code>virt\linux</code> directory you created.</p>
+<p><span class="text-muted"><i>Hint: Windows uses "\" (backslash) as a directory separator.
+Cygwin and Linux use "/" (forward slash) as a directory separator.</i></span></p>
+<p>Now the terminal is in the <code>virt\linux</code> directory, and we are ready to run <code>vagrant init</code>.
+Run <code>vagrant init</code> to generate a generic VagrantFile in the <code>virt\linux</code> directory.
+You can open the <code>virt\linux</code> directory in Windows File Explorer to see the newly-created Vagrantfile.</p>
+<p><img src="assets/png/vm-01.png" class="img-responsive center-block" alt="Creating a generic Vagrantfile"></p>
+<p>Now it's time to edit the generic Vagrantfile to customize our virtual machine configuration.
+Use Notepad++ to open the Vagrantfile you just created.</p>
+<p>First, we'll tell Vagrant that we want to use the "ubuntu/trusty32" box for our virtual machine template.
+Let me explain this a bit.</p>
+<p>Vagrant creates a virtual machine by cloning a "box".
+A "box" is a Vagrant virtual machine image.
+The "ubuntu/trusty32" box is a virtual machine image with Ubuntu installed.
+Ubuntu is a common Linux operating system.
+"Trusty" is a codename for Ubuntu version 14.04.
+There are many boxes to choose from, and you can even make your own.
+For now, we'll start with the "ubuntu/trusty32" box.</p>
+<p>To use the "ubuntu/trusty32" box, we need to edit the Vagrantfile.
+Use Notepad++ to change the line that reads <code>config.vm.box = "base"</code> to <code>config.vm.box = "ubuntu/trusty32"</code>.
+This tells Vagrant to use the "ubuntu/trusty32" box as the template for our virtual machine.</p>
+<p>Next, we need to tell Vagrant to allow X11 forwarding over SSH.
+X11 forwarding allows us to launch GUI applications during our SSH session.
+To do this, use Notepad++ to add a new line after <code>config.vm.box = "ubuntu/trusty32"</code>.
+Type <code>config.ssh.forward_x11 = true</code> on the new line.</p>
+<p>Save the edited Vagrantfile.</p>
+<p>Now it's time to create the virtual machine.
+Go to the Cygwin Terminal and run <code>vagrant up</code>.</p>
+<p><img src="assets/png/vm-02.png" class="img-responsive center-block" alt="Creating the virtual machine"></p>
+<p>Vagrant reads the Vagrantfile, and gets to work downloading and cloning the "ubuntu/trusty32" box.
+After the box is cloned, Vagrant starts up the newly-created virtual machine.</p>
+<p>Now that the virtual machine has been created and started up, we can connect to it via SSH.
+Run <code>vagrant ssh</code> to start a new SSH session on the virtual machine.</p>
+<p><img src="assets/png/vm-03.png" class="img-responsive center-block" alt="SSH into the virtual machine"></p>
+<p>Now we are in an SSH session on the virtual machine.
+Any commands we type are sent directly to the virtual machine, and run on the virtual machine.</p>
+<p>Let's check the operating system version that is running on the virtual machine. To do this, run <code>lsb_release -a</code></p>
+<p><img src="" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>The command runs on the virtual machine, and we see the response. <strong>MORE DETAIL HERE ON THE RESPONSE!</strong></p>
+<p>Now, let's shut down the virtual machine. To shut down the virtual machine, we need to end our SSH session first. Run <code>exit</code> to </p>
