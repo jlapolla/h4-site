@@ -1,4 +1,5 @@
-<p>The first major hurdle you encounter when learning Linux is actually getting Linux installed on your computer.
+<div class="page-header"><h1>Intro</h1></div>
+<p>The first hurdle you encounter when learning Linux is actually getting Linux installed on your computer.
 Installing a completely foreign operating system is daunting, and you are not willing to risk breaking your current Windows installation.
 Fortunately we can use a virtual machine to learn Linux without touching our current Windows installation.</p>
 <p>In this article we'll create a Linux virtual machine.
@@ -264,6 +265,8 @@ Let's try that now.</p>
 <p>Select <code>System Tools</code> &gt; <code>Cygwin Terminal</code>.</p>
 <p><img src="assets/png/xwin-04.png" class="img-responsive center-block" alt="Cygwin/X menu with Cygwin Terminal highlighted"></p>
 <p>This is how you start Cygwin Terminal through Cygwin/X.</p>
+<p>To shut down XWin Server and Cygwin/X, click on the Cygwin/X icon in the system tray and select <code>XDG Menu</code> &gt; <code>Exit</code>.</p>
+<p><img src="assets/png/xwin-05.png" class="img-responsive center-block" alt="Cygwin/X menu with Exit highlighted"></p>
 <div class="page-header"><h1>Virtual Machine Setup</h1></div>
 <h2>Intro</h2>
 <p>To create our Linux virtual machine, we'll start by using Vagrant to generate a generic Vagrantfile.
@@ -331,7 +334,42 @@ Run <code>vagrant ssh</code> to start a new SSH session on the virtual machine.<
 <p><img src="assets/png/vm-03.png" class="img-responsive center-block" alt="SSH into the virtual machine"></p>
 <p>Now we are in an SSH session on the virtual machine.
 Any commands we type are sent directly to the virtual machine, and run on the virtual machine.</p>
-<p>Let's check the operating system version that is running on the virtual machine. To do this, run <code>lsb_release -a</code></p>
-<p><img src="" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Let's check the operating system version that is running on the virtual machine.
+To do this, run <code>lsb_release -a</code>.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
 <p>The command runs on the virtual machine, and we see the response. <strong>MORE DETAIL HERE ON THE RESPONSE!</strong></p>
-<p>Now, let's shut down the virtual machine. To shut down the virtual machine, we need to end our SSH session first. Run <code>exit</code> to </p>
+<p>Now, let's shut down the virtual machine. To shut down the virtual machine, we need to end our SSH session first.
+Run <code>exit</code> to end the SSH session, and return to your local computer's command line.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Now that we're back on our local computer, we can use Vagrant to shut down the virtual machine.
+Run <code>vagrant halt</code> to shut down the virtual machine.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Vagrant shuts down the virtual machine.
+You can verify the status of the virtual machine by running <code>vagrant status</code>.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>If we wanted to delete the virtal machine entirely, we could run <code>vagrant destroy</code>.
+Let's keep the virtual machine for now.</p>
+<div class="page-header"><h1>Virtual Machine Exploration</h1></div>
+<h2>Intro</h2>
+<p>Let's explore our Linux virtual machine a bit.</p>
+<p>We'll start this exploration by installing the following programs on the virtual machine:</p>
+<dl class="dl-horizontal">
+  <dt>Leafpad</dt>
+  <dd>A program for editing text files (similar to Windows Notepad).</dd>
+  <dt>PCManFM</dt>
+  <dd>A program for navigating files and folders (similar to Windows File Explorer).</dd>
+</dl>
+<p>We'll use Leafpad and PCManFM to create a new text file on the virtual machine.
+Then we'll copy the new file to a shared folder and view the file from Windows.</p>
+<p>Leafpad and PCManFM are GUI applications.
+To use these GUI applications on our virtual machine, we'll need to run Cygwin Terminal through Cygwin/X.</p>
+<p>Let's get started.</p>
+<h2>Walkthrough</h2>
+<p>Using the skills you've learned:</p>
+<ol>
+  <li>Start Cygwin Terminal through Cygwin/X.</li>
+  <li>Change to the <code>virt\linux</code> directory (<code>cd virt/linux</code>).</li>
+  <li>Start the virtual machine (<code>vagrant up</code>).</li>
+  <li>SSH into the virtual machine (<code>vagrant ssh</code>).</li>
+</ol>
+
