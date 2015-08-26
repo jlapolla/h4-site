@@ -365,11 +365,76 @@ Then we'll copy the new file to a shared folder and view the file from Windows.<
 To use these GUI applications on our virtual machine, we'll need to run Cygwin Terminal through Cygwin/X.</p>
 <p>Let's get started.</p>
 <h2>Walkthrough</h2>
-<p>Using the skills you've learned:</p>
+<p>Complete the following steps using the skills you've learned:</p>
 <ol>
   <li>Start Cygwin Terminal through Cygwin/X.</li>
   <li>Change to the <code>virt\linux</code> directory (<code>cd virt/linux</code>).</li>
   <li>Start the virtual machine (<code>vagrant up</code>).</li>
   <li>SSH into the virtual machine (<code>vagrant ssh</code>).</li>
 </ol>
-
+<p>Now we're ready to install Leafpad and PCManFM on the virtual machine.
+To do this, we'll use Ubuntu's package manager, which is called "APT".
+APT is similar to the Cygwin Setup program we used before: you select packages you want to install, the package manager resolves dependencies, and the package manager downloads and installs the packages and dependencies.
+Let's ask APT to install Leafpad and PCManFM.</p>
+<p>First, we should make sure APT has downloaded the most up-to-date package metadata.
+(Recall that Cygwin setup performed a similar step.)
+To download the latest package metadata, run <code>sudo apt-get update</code>.</p>
+<p><span class="text-muted"><i>Hint: Installing packages requires administrator privileges. The <code>sudo</code> command is used to run a command with administrator privileges.</i></span></p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Run <code>sudo apt-get install leafpad pcmanfm</code> to ask APT to install Leafpad and PCManFM.
+APT resolves the dependencies for Leafpad and PCManFM, and confirms the installation.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Enter <code>y</code> to confirm that you would like to install Leafpad and PCManFM, as well as the listed dependencies.
+APT gets to work downloading and installing the required packages.</p>
+<p>Wait for it to finish.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Leafpad and PCManFM are now installed on the virtual machine.
+Now we can run Leafpad and PCManFM from the command line.
+Let's run PCManFM to take a look at the files and folders on our virtual machine.</p>
+<p>Run <code>pcmanfm</code>.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>The PCManFM GUI appears in a new window. To display the folders as a tree, click on the <code>Places</code> dropdown.</p>
+<p><img src="assets/png/pcmanfm-02.png" class="img-responsive center-block" alt="PCManFM places dropdown"></p>
+<p>Select <code>Directory Tree</code>.</p>
+<p><img src="assets/png/pcmanfm-03.png" class="img-responsive center-block" alt="PCManFM directory tree view"></p>
+<p>Now we can see all the files and directories on the virtual machine.
+Browse around the files to convince yourself that these are not the files on your computer.</p>
+<p>Let's use Leafpad to make a new text file on our virtual machine.
+Navigate back to <code>/home/vagrant</code> in PCManFM, and right click to bring up a context menu.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Select <code>Create New...</code> &gt; <code>Empty File</code> to create a new empty file.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Name the new file <code>test-file</code>.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Click <button class="btn btn-default btn-xs">OK</button> to create the new file.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Let's edit <code>test-file</code> in Leafpad. Right click on <code>test-file</code> to bring up a context menu.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Select <code>Leafpad</code> from the context menu.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>A new Leafpad window opens our empty <code>test-file</code>.
+Type something silly in Leafpad.
+I typed "Hello Windows! My name is Linux!".</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Let's save our edits to <code>test-file</code>. Click <code>File</code> &gt; <code>Save</code>.</p>
+<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p>Let's share our new <code>test-file</code> with Windows.
+We can do this by copying <code>test-file</code> into a shared directory.
+Conveniently, Vagrant has already created a shared directory for us.</p>
+<p>By default, Vagrant shares the directory that our Vagrantfile is in with the virtual machine.
+The shared directory is accessed at <code>/vagrant</code> on the virtual machine.
+Navigate to <code>/vagrant</code> in PCManFM.
+You can see our Vagrantfile there.
+This is the same Vagrantfile that is on our Windows host in the <code>virt/linux</code> directory, under our Cygwin home directory.</p>
+<p>Use PCManFM to copy and paste our <code>test-file</code> from <code>/home/vagrant</code> to <code>/vagrant</code>.
+Open the <code>virt/linux</code> directory in Windows File Explorer to confirm that the new <code>test-file</code> is there.
+Now open the <code>test-file</code> in Notepad++ to see the message we wrote on the Linux virtual machine.</p>
+<div class="page-header"><h1>Conclusion</h1></div>
+<p>The skills you've learned in this tutorial enable you to interact with Linux on Windows.
+No Linux tutorial is out of your reach now.
+You can run commands on your Linux virtual machine with reckless abandon.
+If something breaks, run <code>vagrant destroy --force</code> to destroy the virtual machine, then run <code>vagrant up</code> to create a fresh virtual machine.</p>
+<p>Keep in mind, the files under your shared directory are accessible from the Linux virtual machine, so they will be wiped out if you run something like <code>rm -r /vagrant</code> to delete the <code>/vagrant</code> directory.
+If you do run destructive commands like that, only the files and directories under the shared directory will be wiped out.
+Be mindful of this, and watch where you place your Vagrantfiles.
+Any subdirectory below the Vagrantfile can be wiped out by running <code>rm -r /vagrant</code> on the virtual machine.</p>
