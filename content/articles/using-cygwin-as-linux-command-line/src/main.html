@@ -293,7 +293,7 @@ Use Windows File Explorer to create the <code>virt\linux</code> directory under 
 <p>Now we need to run <code>vagrant init</code> in our newly-created <code>virt\linux</code> directory to generate a generic Vagrantfile.
 We'll use Cygwin Terminal to do this.
 Start Cygwin Terminal through Cygwin/X.</p>
-<p><img src="assets/png/vm-00.png" class="img-responsive center-block" alt="NEED IMAGE HERE Cygwin Terminal"></p>
+<p><img src="assets/png/vm-00.png" class="img-responsive center-block" alt="Cygwin Terminal"></p>
 <p>Right now the terminal is in our Cygwin home directory.
 If we run <code>vagrant init</code> right now, it will create the generic Vagrantfile in our home directory.
 We want to create the Vagrantfile in the <code>virt\linux</code> directory we just created, not in our home directory.
@@ -304,6 +304,16 @@ Cygwin and Linux use "/" (forward slash) as a directory separator.</i></span></p
 <p>Now the terminal is in the <code>virt\linux</code> directory, and we are ready to run <code>vagrant init</code>.
 Run <code>vagrant init</code> to generate a generic VagrantFile in the <code>virt\linux</code> directory.
 Open the <code>virt\linux</code> directory in Windows File Explorer to see the newly-created Vagrantfile.</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Note: "command not found" error</div>
+  <div class="panel-body">
+    If you get a "command not found" error when you run <code>vagrant init</code>, it is because the <code>vagrant.exe</code> executable is not on your command line search path.
+    The <code>vagrant.exe</code> file is installed in <code>/cygdrive/c/HashiCorp/Vagrant/bin</code>.
+    <br>
+    <br>
+    Run <code>PATH="${PATH}:/cygdrive/c/HashiCorp/Vagrant/bin"</code> to add the directory to your command line search path.
+  </div>
+</div>
 <p><img src="assets/png/vm-01.png" class="img-responsive center-block" alt="Creating a generic Vagrantfile"></p>
 <p>Now it's time to edit the generic Vagrantfile to customize our virtual machine configuration.</p>
 <p>First, we'll tell Vagrant that we want to use the "ubuntu/trusty32" box for our virtual machine template.
