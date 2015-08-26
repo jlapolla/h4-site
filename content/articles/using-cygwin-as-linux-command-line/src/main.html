@@ -270,7 +270,7 @@ Let's try that now.</p>
 <div class="page-header"><h1>Virtual Machine Setup</h1></div>
 <h2>Intro</h2>
 <p>To create our Linux virtual machine, we'll start by using Vagrant to generate a generic Vagrantfile.
-The Vagrantfile is a configuration file that tells Vagrant what kind of virtual machine we want Vagrant to make.
+The Vagrantfile is a configuration file that tells Vagrant what kind of virtual machine we want.
 We'll create a generic Vagrantfile using the <code>vagrant init</code> command on the command line.
 Then we'll use Notepad++ to edit a few lines in the Vagrantfile to customize our virtual machine.</p>
 <p>Once we have our Vagrantfile, we'll run <code>vagrant up</code> to create the virtual machine.
@@ -293,7 +293,7 @@ Use Windows File Explorer to create the <code>virt\linux</code> directory under 
 <p>Now we need to run <code>vagrant init</code> in our newly-created <code>virt\linux</code> directory to generate a generic Vagrantfile.
 We'll use Cygwin Terminal to do this.
 Start Cygwin Terminal through Cygwin/X.</p>
-<p><img src="assets/png/cygwin-terminal-2.png" class="img-responsive center-block" alt="Cygwin Terminal"></p>
+<p><img src="assets/png/vm-00.png" class="img-responsive center-block" alt="NEED IMAGE HERE Cygwin Terminal"></p>
 <p>Right now the terminal is in our Cygwin home directory.
 If we run <code>vagrant init</code> right now, it will create the generic Vagrantfile in our home directory.
 We want to create the Vagrantfile in the <code>virt\linux</code> directory we just created, not in our home directory.
@@ -303,10 +303,9 @@ So, we have to change directories to the <code>virt\linux</code> directory befor
 Cygwin and Linux use "/" (forward slash) as a directory separator.</i></span></p>
 <p>Now the terminal is in the <code>virt\linux</code> directory, and we are ready to run <code>vagrant init</code>.
 Run <code>vagrant init</code> to generate a generic VagrantFile in the <code>virt\linux</code> directory.
-You can open the <code>virt\linux</code> directory in Windows File Explorer to see the newly-created Vagrantfile.</p>
+Open the <code>virt\linux</code> directory in Windows File Explorer to see the newly-created Vagrantfile.</p>
 <p><img src="assets/png/vm-01.png" class="img-responsive center-block" alt="Creating a generic Vagrantfile"></p>
-<p>Now it's time to edit the generic Vagrantfile to customize our virtual machine configuration.
-Use Notepad++ to open the Vagrantfile you just created.</p>
+<p>Now it's time to edit the generic Vagrantfile to customize our virtual machine configuration.</p>
 <p>First, we'll tell Vagrant that we want to use the "ubuntu/trusty32" box for our virtual machine template.
 Let me explain this a bit.</p>
 <p>Vagrant creates a virtual machine by cloning a "box".
@@ -317,7 +316,7 @@ Ubuntu is a common Linux operating system.
 There are many boxes to choose from, and you can even make your own.
 For now, we'll start with the "ubuntu/trusty32" box.</p>
 <p>To use the "ubuntu/trusty32" box, we need to edit the Vagrantfile.
-Use Notepad++ to change the line that reads <code>config.vm.box = "base"</code> to <code>config.vm.box = "ubuntu/trusty32"</code>.
+Open the Vagrantfile in Notepad++, and change the line that reads <code>config.vm.box = "base"</code> to <code>config.vm.box = "ubuntu/trusty32"</code>.
 This tells Vagrant to use the "ubuntu/trusty32" box as the template for our virtual machine.</p>
 <p>Next, we need to tell Vagrant to allow X11 forwarding over SSH.
 X11 forwarding allows us to launch GUI applications during our SSH session.
@@ -328,26 +327,27 @@ Type <code>config.ssh.forward_x11 = true</code> on the new line.</p>
 Go to the Cygwin Terminal and run <code>vagrant up</code>.</p>
 <p><img src="assets/png/vm-02.png" class="img-responsive center-block" alt="Creating the virtual machine"></p>
 <p>Vagrant reads the Vagrantfile, and gets to work downloading and cloning the "ubuntu/trusty32" box.
-After the box is cloned, Vagrant starts up the newly-created virtual machine.</p>
+After the box is downloaded and cloned, Vagrant starts up the newly-created virtual machine.</p>
 <p>Now that the virtual machine has been created and started up, we can connect to it via SSH.
 Run <code>vagrant ssh</code> to start a new SSH session on the virtual machine.</p>
 <p><img src="assets/png/vm-03.png" class="img-responsive center-block" alt="SSH into the virtual machine"></p>
 <p>Now we are in an SSH session on the virtual machine.
 Any commands we type are sent directly to the virtual machine, and run on the virtual machine.</p>
-<p>Let's check the operating system version that is running on the virtual machine.
+<p>Let's check the operating system version on the virtual machine.
 To do this, run <code>lsb_release -a</code>.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
-<p>The command runs on the virtual machine, and we see the response. <strong>MORE DETAIL HERE ON THE RESPONSE!</strong></p>
-<p>Now, let's shut down the virtual machine. To shut down the virtual machine, we need to end our SSH session first.
-Run <code>exit</code> to end the SSH session, and return to your local computer's command line.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/vm-04.png" class="img-responsive center-block" alt="Terminal: lsb_release -a"></p>
+<p>The command runs on the virtual machine, and tells us that the operating system is Ubuntu 14.04.</p>
+<p>Now, let's shut down the virtual machine.
+To shut down the virtual machine, we need to end our SSH session first.</p>
+<p>Run <code>exit</code> to end the SSH session, and return to your local computer's command line.</p>
+<p><img src="assets/png/vm-05.png" class="img-responsive center-block" alt="Terminal: exit"></p>
 <p>Now that we're back on our local computer, we can use Vagrant to shut down the virtual machine.
 Run <code>vagrant halt</code> to shut down the virtual machine.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/vm-06.png" class="img-responsive center-block" alt="Terminal: vagrant halt"></p>
 <p>Vagrant shuts down the virtual machine.
-You can verify the status of the virtual machine by running <code>vagrant status</code>.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
-<p>If we wanted to delete the virtal machine entirely, we could run <code>vagrant destroy</code>.
+Verify the status of the virtual machine by running <code>vagrant status</code>.</p>
+<p><img src="assets/png/vm-07.png" class="img-responsive center-block" alt="Terminal: vagrant status"></p>
+<p>If we wanted to delete the virtal machine entirely, we could run <code>vagrant destroy --force</code>.
 Let's keep the virtual machine for now.</p>
 <div class="page-header"><h1>Virtual Machine Exploration</h1></div>
 <h2>Intro</h2>
@@ -379,45 +379,45 @@ Let's ask APT to install Leafpad and PCManFM.</p>
 <p>First, we should make sure APT has downloaded the most up-to-date package metadata.
 (Recall that Cygwin setup performed a similar step.)
 To download the latest package metadata, run <code>sudo apt-get update</code>.</p>
-<p><span class="text-muted"><i>Hint: Installing packages requires administrator privileges. The <code>sudo</code> command is used to run a command with administrator privileges.</i></span></p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><span class="text-muted"><i>Hint: Installing packages requires administrator privileges. <code>sudo</code> is used to run a command with administrator privileges.</i></span></p>
+<p><img src="assets/png/explore-1-01.png" class="img-responsive center-block" alt="Terminal: sudo apt-get update"></p>
 <p>Run <code>sudo apt-get install leafpad pcmanfm</code> to ask APT to install Leafpad and PCManFM.
 APT resolves the dependencies for Leafpad and PCManFM, and confirms the installation.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-02.png" class="img-responsive center-block" alt="Terminal: Confirm package installation"></p>
 <p>Enter <code>y</code> to confirm that you would like to install Leafpad and PCManFM, as well as the listed dependencies.
 APT gets to work downloading and installing the required packages.</p>
 <p>Wait for it to finish.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-03.png" class="img-responsive center-block" alt="APT finished installing Leafpad and PCManFM"></p>
 <p>Leafpad and PCManFM are now installed on the virtual machine.
 Now we can run Leafpad and PCManFM from the command line.
 Let's run PCManFM to take a look at the files and folders on our virtual machine.</p>
 <p>Run <code>pcmanfm</code>.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-04.png" class="img-responsive center-block" alt="PCManFM window"></p>
 <p>The PCManFM GUI appears in a new window. To display the folders as a tree, click on the <code>Places</code> dropdown.</p>
-<p><img src="assets/png/pcmanfm-02.png" class="img-responsive center-block" alt="PCManFM places dropdown"></p>
+<p><img src="assets/png/explore-1-05.png" class="img-responsive center-block" alt="PCManFM places dropdown"></p>
 <p>Select <code>Directory Tree</code>.</p>
-<p><img src="assets/png/pcmanfm-03.png" class="img-responsive center-block" alt="PCManFM directory tree view"></p>
+<p><img src="assets/png/explore-1-06.png" class="img-responsive center-block" alt="PCManFM directory tree view"></p>
 <p>Now we can see all the files and directories on the virtual machine.
-Browse around the files to convince yourself that these are not the files on your computer.</p>
+Browse around the files to convince yourself that these are not the files on your Windows computer.</p>
 <p>Let's use Leafpad to make a new text file on our virtual machine.
 Navigate back to <code>/home/vagrant</code> in PCManFM, and right click to bring up a context menu.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-07.png" class="img-responsive center-block" alt="PCManFM: Create new empty file"></p>
 <p>Select <code>Create New...</code> &gt; <code>Empty File</code> to create a new empty file.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-08.png" class="img-responsive center-block" alt="PCManFM: New file name"></p>
 <p>Name the new file <code>test-file</code>.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-09.png" class="img-responsive center-block" alt="PCManFM: New file name is test-file"></p>
 <p>Click <button class="btn btn-default btn-xs">OK</button> to create the new file.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-10.png" class="img-responsive center-block" alt="PCManFM: New test-file created"></p>
 <p>Let's edit <code>test-file</code> in Leafpad. Right click on <code>test-file</code> to bring up a context menu.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-11.png" class="img-responsive center-block" alt="PCManFM: Leafpad selected in context menu"></p>
 <p>Select <code>Leafpad</code> from the context menu.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-12.png" class="img-responsive center-block" alt="Leafpad window"></p>
 <p>A new Leafpad window opens our empty <code>test-file</code>.
 Type something silly in Leafpad.
 I typed "Hello Windows! My name is Linux!".</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
-<p>Let's save our edits to <code>test-file</code>. Click <code>File</code> &gt; <code>Save</code>.</p>
-<p><img src="noexist" class="img-responsive center-block" alt="NEED IMAGE HERE"></p>
+<p><img src="assets/png/explore-1-13.png" class="img-responsive center-block" alt="Silly message in Leafpad"></p>
+<p>Let's save the edited <code>test-file</code>. Click <code>File</code> &gt; <code>Save</code>.</p>
+<p><img src="assets/png/explore-1-14.png" class="img-responsive center-block" alt="Leafpad: File save menu"></p>
 <p>Let's share our new <code>test-file</code> with Windows.
 We can do this by copying <code>test-file</code> into a shared directory.
 Conveniently, Vagrant has already created a shared directory for us.</p>
@@ -430,7 +430,7 @@ This is the same Vagrantfile that is on our Windows host in the <code>virt/linux
 Open the <code>virt/linux</code> directory in Windows File Explorer to confirm that the new <code>test-file</code> is there.
 Now open the <code>test-file</code> in Notepad++ to see the message we wrote on the Linux virtual machine.</p>
 <div class="page-header"><h1>Conclusion</h1></div>
-<p>The skills you've learned in this tutorial enable you to interact with Linux on Windows.
+<p>The skills you've learned in this article enable you to interact with Linux on Windows.
 No Linux tutorial is out of your reach now.
 You can run commands on your Linux virtual machine with reckless abandon.
 If something breaks, run <code>vagrant destroy --force</code> to destroy the virtual machine, then run <code>vagrant up</code> to create a fresh virtual machine.</p>
