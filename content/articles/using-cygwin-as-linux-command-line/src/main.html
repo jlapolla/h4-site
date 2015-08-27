@@ -1,10 +1,21 @@
-<div class="page-header"><h1>Intro</h1></div>
-<p>The first hurdle you encounter when learning Linux is actually getting Linux installed on your computer.
-Installing a completely foreign operating system is daunting, and you are not willing to risk breaking your current Windows installation.
-Fortunately we can use a virtual machine to learn Linux without touching our current Windows installation.</p>
-<p>In this article we'll create a Linux virtual machine.
-Then you can try out Linux in the virtual machine, and if you break something you can spawn a new virtual machine with a fresh Linux install.</p>
-<p>To work with Linux virtual machines in Windows, we'll need to install the following programs:</p>
+<div class="page-header">
+  <h1>Intro</h1>
+</div>
+
+<p>The first hurdle you encounter when learning Linux is actually
+getting Linux installed on your computer. Installing a completely
+foreign operating system is daunting, and you are not willing to risk
+breaking your current Windows installation. Fortunately we can use a
+virtual machine to learn Linux without touching our current Windows
+installation.</p>
+
+<p>In this article we'll create a Linux virtual machine. Then you can
+try out Linux in the virtual machine, and if you break something you can
+spawn a new virtual machine with a fresh Linux install.</p>
+
+<p>To work with Linux virtual machines in Windows, we'll need to install
+the following programs:</p>
+
 <dl class="dl-horizontal">
   <dt>Notepad++</dt>
   <dd>A text editor that works with both Linux style line endings and Windows style line endings.</dd>
@@ -15,436 +26,935 @@ Then you can try out Linux in the virtual machine, and if you break something yo
   <dt>Cygwin</dt>
   <dd>A Linux-like command line environment for Windows.</dd>
 </dl>
-<div class="page-header"><h1>Notepad++</h1></div>
+
+<div class="page-header">
+  <h1>Notepad++</h1>
+</div>
+
 <h2>Download Notepad++</h2>
+
 <p>Use the button below to download the Notepad++ installer.</p>
-<p><a href="https://notepad-plus-plus.org/download" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Notepad++</a></p>
+
+<p><a href="https://notepad-plus-plus.org/download" class="btn btn-lg
+  btn-success" target="_blank"><span class="glyphicon
+glyphicon-download-alt"></span> Download Notepad++</a></p>
+
 <h2>Install Notepad++</h2>
-<p>Double click the downloaded <code>npp.Installer.exe</code> file to run the Notepad++ installer.</p>
+
+<p>Double click the downloaded <code>npp.Installer.exe</code> file to
+run the Notepad++ installer.</p>
+
 <h3>1. Choose a Language</h3>
-<p>Select a language from the dropdown, then click <button class="btn btn-default btn-xs">OK</button>.</p>
-<p><img src="assets/png/npp-install-01.png" class="img-responsive center-block" alt="Notepad++ Setup: Select a language"></p>
+
+<p>Select a language from the dropdown, then click <button class="btn
+  btn-default btn-xs">OK</button>.</p>
+
+<p><img src="assets/png/npp-install-01.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Select a language"></p>
+
 <h3>2. Welcome Screen</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/npp-install-02.png" class="img-responsive center-block" alt="Notepad++ Setup: Welcome screen"></p>
+
+<p><img src="assets/png/npp-install-02.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Welcome screen"></p>
+
 <h3>3. License Agreement</h3>
-<p>Review the license agreement, then click <button class="btn btn-default btn-xs">I Agree</button>.</p>
-<p><img src="assets/png/npp-install-03.png" class="img-responsive center-block" alt="Notepad++ Setup: License agreement"></p>
+
+<p>Review the license agreement, then click <button class="btn
+  btn-default btn-xs">I Agree</button>.</p>
+
+<p><img src="assets/png/npp-install-03.png" class="img-responsive
+center-block" alt="Notepad++ Setup: License agreement"></p>
+
 <h3>4. Choose Installation Directory</h3>
-<p>Choose an installation directory.
-I use the default.</p>
+
+<p>Choose an installation directory. I use the default.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/npp-install-04.png" class="img-responsive center-block" alt="Notepad++ Setup: Choose installation directory"></p>
+
+<p><img src="assets/png/npp-install-04.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Choose installation directory"></p>
+
 <h3>5. Choose Program Features</h3>
-<p>Choose the program features you wish to install.
-I use the defaults.</p>
+
+<p>Choose the program features you wish to install. I use the
+defaults.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/npp-install-05.png" class="img-responsive center-block" alt="Notepad++ Setup: Choose program features"></p>
+
+<p><img src="assets/png/npp-install-05.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Choose program features"></p>
+
 <h3>6. Choose Additional Options</h3>
-<p>Choose any additional options you want.
-You may wish to create a desktop shortcut.</p>
+
+<p>Choose any additional options you want. You may wish to create a
+desktop shortcut.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
-<p><img src="assets/png/npp-install-06.png" class="img-responsive center-block" alt="Notepad++ Setup: Choose additional options"></p>
+
+<p><img src="assets/png/npp-install-06.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Choose additional options"></p>
+
 <h3>7. Installing Notepad++</h3>
+
 <p>The Notepad++ installer installs Notepad++.</p>
+
 <p>Wait for it to finish.</p>
-<p><img src="assets/png/npp-install-07.png" class="img-responsive center-block" alt="Notepad++ Setup: Installing"></p>
+
+<p><img src="assets/png/npp-install-07.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Installing"></p>
+
 <h3>8. Finish</h3>
-<p>Uncheck "Run Notepad++", then click <button class="btn btn-default btn-xs">Finish</button>.</p>
-<p><img src="assets/png/npp-install-09.png" class="img-responsive center-block" alt="Notepad++ Setup: Finished"></p>
+
+<p>Uncheck "Run Notepad++", then click <button class="btn btn-default
+  btn-xs">Finish</button>.</p>
+
+<p><img src="assets/png/npp-install-09.png" class="img-responsive
+center-block" alt="Notepad++ Setup: Finished"></p>
+
 <p>Notepad++ appears in your Windows start menu after installation.</p>
-<p><img src="assets/png/npp-01.png" class="img-responsive center-block" alt="Notepad++ start menu entry"></p>
+
+<p><img src="assets/png/npp-01.png" class="img-responsive center-block"
+alt="Notepad++ start menu entry"></p>
+
 <div class="page-header"><h1>VirtualBox</h1></div>
+
 <h2>Download VirtualBox</h2>
+
 <p>Use the button below to download the VirtualBox installer.</p>
-<p><span class="text-muted"><i>Hint: Download "VirtualBox for Windows hosts".</i></span></p>
-<p><a href="https://www.virtualbox.org/wiki/Downloads" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download VirtualBox</a></p>
+
+<p><span class="text-muted"><i>Hint: Download "VirtualBox for Windows
+    hosts".</i></span></p>
+
+<p><a href="https://www.virtualbox.org/wiki/Downloads" class="btn btn-lg
+  btn-success" target="_blank"><span class="glyphicon
+glyphicon-download-alt"></span> Download VirtualBox</a></p>
+
 <h2>Install VirtualBox</h2>
-<p>Double click the downloaded <code>VirtualBox-Win.exe</code> file to run the VirtualBox installer.</p>
+
+<p>Double click the downloaded <code>VirtualBox-Win.exe</code> file to
+run the VirtualBox installer.</p>
+
 <h3>1. Welcome Screen</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/virtualbox-install-01.png" class="img-responsive center-block" alt="VirtualBox Setup: Welcome screen"></p>
+
+<p><img src="assets/png/virtualbox-install-01.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Welcome screen"></p>
+
 <h3>2. Choose Program Features</h3>
+
 <p>Use the defaults.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/virtualbox-install-02.png" class="img-responsive center-block" alt="VirtualBox Setup: Choose program features"></p>
+
+<p><img src="assets/png/virtualbox-install-02.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Choose program features"></p>
+
 <h3>3. Choose Additional Options</h3>
-<p>Choose any additional options you want.
-You may wish to create a desktop shortcut.</p>
-<p>Make sure "Register file associations" is checked, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/virtualbox-install-04.png" class="img-responsive center-block" alt="VirtualBox Setup: Choose additional options"></p>
+
+<p>Choose any additional options you want. You may wish to create a
+desktop shortcut.</p>
+
+<p>Make sure "Register file associations" is checked, then click <button
+  class="btn btn-default btn-xs">Next &gt;</button>.</p>
+
+<p><img src="assets/png/virtualbox-install-04.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Choose additional options"></p>
+
 <h3>4. Network Interfaces Warning</h3>
-<p>Read the warning.
-Expect a temporary network disconnect.</p>
+
+<p>Read the warning. Expect a temporary network disconnect.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Yes</button>.</p>
-<p><img src="assets/png/virtualbox-install-05.png" class="img-responsive center-block" alt="VirtualBox Setup: Network interfaces warning"></p>
+
+<p><img src="assets/png/virtualbox-install-05.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Network interfaces warning"></p>
+
 <h3>5. Confirm Install</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
-<p><img src="assets/png/virtualbox-install-06.png" class="img-responsive center-block" alt="VirtualBox Setup: Confirm install"></p>
+
+<p><img src="assets/png/virtualbox-install-06.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Confirm install"></p>
+
 <h3>6. Installing VirtualBox</h3>
+
 <p>The VirtualBox installer installs VirtualBox.</p>
+
 <p>Wait for it to finish.</p>
-<p><img src="assets/png/virtualbox-install-07.png" class="img-responsive center-block" alt="VirtualBox Setup: Installing"></p>
+
+<p><img src="assets/png/virtualbox-install-07.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Installing"></p>
+
 <h3>7. Finish</h3>
-<p>Uncheck "Start Oracle VM VirtualBox after installation", then click <button class="btn btn-default btn-xs">Finish</button>.</p>
-<p><img src="assets/png/virtualbox-install-09.png" class="img-responsive center-block" alt="VirtualBox Setup: Finished"></p>
+
+<p>Uncheck "Start Oracle VM VirtualBox after installation", then click
+<button class="btn btn-default btn-xs">Finish</button>.</p>
+
+<p><img src="assets/png/virtualbox-install-09.png" class="img-responsive
+center-block" alt="VirtualBox Setup: Finished"></p>
+
 <p>VirtualBox appears in your Windows start menu after installation.</p>
-<p><img src="assets/png/virtualbox-02.png" class="img-responsive center-block" alt="VirtualBox start menu entry"></p>
+
+<p><img src="assets/png/virtualbox-02.png" class="img-responsive
+center-block" alt="VirtualBox start menu entry"></p>
+
 <div class="page-header"><h1>Vagrant</h1></div>
+
 <h2>Download Vagrant</h2>
+
 <p>Use the button below to download the Vagrant installer.</p>
-<p><a href="https://www.vagrantup.com/downloads.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Vagrant</a></p>
+
+<p><a href="https://www.vagrantup.com/downloads.html" class="btn btn-lg
+  btn-success" target="_blank"><span class="glyphicon
+glyphicon-download-alt"></span> Download Vagrant</a></p>
+
 <h2>Install Vagrant</h2>
-<p>Double click the downloaded <code>vagrant.msi</code> file to run the Vagrant installer.</p>
+
+<p>Double click the downloaded <code>vagrant.msi</code> file to run the
+Vagrant installer.</p>
+
 <h3>1. Welcome Screen</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Next</button>.</p>
-<p><img src="assets/png/vagrant-install-01.png" class="img-responsive center-block" alt="Vagrant Setup: Welcome screen"></p>
+
+<p><img src="assets/png/vagrant-install-01.png" class="img-responsive
+center-block" alt="Vagrant Setup: Welcome screen"></p>
+
 <h3>2. License Agreement</h3>
+
 <p>Review the license agreement.</p>
-<p>Check "I accept the terms in the License Agreement", then click <button class="btn btn-default btn-xs">Next</button>.</p>
-<p><img src="assets/png/vagrant-install-03.png" class="img-responsive center-block" alt="Vagrant Setup: License agreement"></p>
+
+<p>Check "I accept the terms in the License Agreement", then click
+<button class="btn btn-default btn-xs">Next</button>.</p>
+
+<p><img src="assets/png/vagrant-install-03.png" class="img-responsive
+center-block" alt="Vagrant Setup: License agreement"></p>
+
 <h3>3. Choose Installation Directory</h3>
+
 <p>Use the default installation directory.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next</button>.</p>
-<p><img src="assets/png/vagrant-install-04.png" class="img-responsive center-block" alt="Vagrant Setup: Choose installation directory"></p>
+
+<p><img src="assets/png/vagrant-install-04.png" class="img-responsive
+center-block" alt="Vagrant Setup: Choose installation directory"></p>
+
 <h3>4. Confirm Install</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
-<p><img src="assets/png/vagrant-install-05.png" class="img-responsive center-block" alt="Vagrant Setup: Confirm install"></p>
+
+<p><img src="assets/png/vagrant-install-05.png" class="img-responsive
+center-block" alt="Vagrant Setup: Confirm install"></p>
+
 <h3>5. Installing Vagrant</h3>
+
 <p>The Vagrant installer installs Vagrant.</p>
+
 <p>Wait for it to finish.</p>
-<p><img src="assets/png/vagrant-install-06.png" class="img-responsive center-block" alt="Vagrant Setup: Installing"></p>
+
+<p><img src="assets/png/vagrant-install-06.png" class="img-responsive
+center-block" alt="Vagrant Setup: Installing"></p>
+
 <h3>6. Finish</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Finish</button>.</p>
-<p><img src="assets/png/vagrant-install-08.png" class="img-responsive center-block" alt="Vagrant Setup: Finished"></p>
+
+<p><img src="assets/png/vagrant-install-08.png" class="img-responsive
+center-block" alt="Vagrant Setup: Finished"></p>
+
 <h3>7. Restart Your Computer</h3>
-<p>Close any open programs, then click <button class="btn btn-default btn-xs">Yes</button> to restart your computer.</p>
-<p><img src="assets/png/vagrant-install-09.png" class="img-responsive center-block" alt="Vagrant Setup: Restart your computer"></p>
-<p>Vagrant does not appear in the Windows start menu because it is a command line utility.</p>
+
+<p>Close any open programs, then click <button class="btn btn-default
+  btn-xs">Yes</button> to restart your computer.</p>
+
+<p><img src="assets/png/vagrant-install-09.png" class="img-responsive
+center-block" alt="Vagrant Setup: Restart your computer"></p>
+
+<p>Vagrant does not appear in the Windows start menu because it is a
+command line utility.</p>
+
 <div class="page-header"><h1>Cygwin</h1></div>
+
 <h2>Cygwin Intro</h2>
-<p>The first thing you need to understand about Cygwin is that it is not a single program.
-Cygwin is a Linux-like environment that contains many programs and packages.
-You can add or remove programs and packages from your Cygwin environment using the Cygwin Setup program.
-The <code>setup.exe</code> file that you download from the Cygwin website is the Cygwin Setup program.</p>
+
+<p>The first thing you need to understand about Cygwin is that it is not
+a single program. Cygwin is a Linux-like environment that contains many
+programs and packages. You can add or remove programs and packages from
+your Cygwin environment using the Cygwin Setup program. The
+<code>setup.exe</code> file that you download from the Cygwin website is
+the Cygwin Setup program.</p>
+
 <h2>Download Cygwin Setup</h2>
+
 <p>Use the button below to download Cygwin Setup.</p>
-<p><a href="https://cygwin.com/install.html" class="btn btn-lg btn-success" target="_blank"><span class="glyphicon glyphicon-download-alt"></span> Download Cygwin</a></p>
-<p>After you've downloaded Cygwin Setup, move the downloaded <code>setup.exe</code> file to a convenient permanent location.
-Cygwin Setup will cache downloaded packages and package metadata in the same directory as <code>setup.exe</code>.
-Typically you keep <code>setup.exe</code> in the same place to take advantage of the caching feature.
-I usually create a <code>C:\cygwin-setup</code> directory and put <code>setup.exe</code> in that directory.</p>
+
+<p><a href="https://cygwin.com/install.html" class="btn btn-lg
+  btn-success" target="_blank"><span class="glyphicon
+glyphicon-download-alt"></span> Download Cygwin</a></p>
+
+<p>After you've downloaded Cygwin Setup, move the downloaded
+<code>setup.exe</code> file to a convenient permanent location. Cygwin
+Setup will cache downloaded packages and package metadata in the same
+directory as <code>setup.exe</code>. Typically you keep
+<code>setup.exe</code> in the same place to take advantage of the
+caching feature. I usually create a <code>C:\cygwin-setup</code>
+directory and put <code>setup.exe</code> in that directory.</p>
+
 <h2>Install Cygwin Packages</h2>
-<p>Double click the downloaded <code>setup.exe</code> file to run Cygwin Setup.</p>
+
+<p>Double click the downloaded <code>setup.exe</code> file to run Cygwin
+Setup.</p>
+
 <h3>1. Welcome Screen</h3>
+
 <p>This welcome screen has some good information.</p>
-<p>Read the welcome screen, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-01.png" class="img-responsive center-block" alt="Cygwin Setup: Welcome screen"></p>
+
+<p>Read the welcome screen, then click <button class="btn btn-default
+  btn-xs">Next &gt;</button>.</p>
+
+<p><img src="assets/png/cygwin-setup-01.png" class="img-responsive
+center-block" alt="Cygwin Setup: Welcome screen"></p>
+
 <h3>2. Choose Package Source</h3>
-<p>Choose "Install from Internet", then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-02.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package source"></p>
+
+<p>Choose "Install from Internet", then click <button class="btn
+  btn-default btn-xs">Next &gt;</button>.</p>
+
+<p><img src="assets/png/cygwin-setup-02.png" class="img-responsive
+center-block" alt="Cygwin Setup: Choose package source"></p>
+
 <h3>3. Choose Installation Directory</h3>
-<p>Choose the root directory where your Cygwin environment will be installed.
-I usually choose <code>C:\cygwin</code> for my Cygwin root directory.</p>
+
+<p>Choose the root directory where your Cygwin environment will be
+installed. I usually choose <code>C:\cygwin</code> for my Cygwin root
+directory.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-03.png" class="img-responsive center-block" alt="Cygwin Setup: Choose installation directory"></p>
+
+<p><img src="assets/png/cygwin-setup-03.png" class="img-responsive
+center-block" alt="Cygwin Setup: Choose installation directory"></p>
+
 <h3>4. Choose Package Cache Directory</h3>
+
 <p>Choose where you want Cygwin Setup to store its cached package files.
-I usually store cached package files in <code>C:\cygwin-setup</code>, right next to <code>setup.exe</code>.</p>
+I usually store cached package files in <code>C:\cygwin-setup</code>,
+right next to <code>setup.exe</code>.</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-04.png" class="img-responsive center-block" alt="Cygwin Setup: Choose package cache directory"></p>
+
+<p><img src="assets/png/cygwin-setup-04.png" class="img-responsive
+center-block" alt="Cygwin Setup: Choose package cache directory"></p>
+
 <h3>5. Configure Network Settings</h3>
-<p>Configure network settings appropriate for your Internet connection. I use "Direct Connection".</p>
+
+<p>Configure network settings appropriate for your Internet connection.
+I use "Direct Connection".</p>
+
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-05.png" class="img-responsive center-block" alt="Cygwin Setup: Configure network settings"></p>
+
+<p><img src="assets/png/cygwin-setup-05.png" class="img-responsive
+center-block" alt="Cygwin Setup: Configure network settings"></p>
+
 <h3>6. Choose a Mirror</h3>
-<p>The official Cygwin package repository is available from multiple servers throughout the world.
-They all have the same Cygwin packages available, but download times vary from server to server.
-I usually just pick one at random.</p>
-<p>If you get slow download speeds, try a different mirror.
-You can check the <a href="https://cygwin.com/mirrors.html" target="_blank">Cygwin mirrors list</a> to find a mirror that is close to your geographic location.</p>
-<p>Choose a mirror, then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-06.png" class="img-responsive center-block" alt="Cygwin Setup: Choose a mirror"></p>
+
+<p>The official Cygwin package repository is available from multiple
+servers throughout the world. They all have the same Cygwin packages
+available, but download times vary from server to server. I usually just
+pick one at random.</p>
+
+<p>If you get slow download speeds, try a different mirror. You can
+check the <a href="https://cygwin.com/mirrors.html"
+target="_blank">Cygwin mirrors list</a> to find a mirror that is close
+to your geographic location.</p>
+
+<p>Choose a mirror, then click <button class="btn btn-default
+  btn-xs">Next &gt;</button>.</p>
+
+<p><img src="assets/png/cygwin-setup-06.png" class="img-responsive
+center-block" alt="Cygwin Setup: Choose a mirror"></p>
+
 <h3>7. Downloading Package Metadata</h3>
-<p>Cygwin Setup downloads the latest package metadata from your selected mirror and updates its local cache.</p>
+
+<p>Cygwin Setup downloads the latest package metadata from your selected
+mirror and updates its local cache.</p>
+
 <p>Wait for it to finish.</p>
-<p><img src="assets/png/cygwin-setup-07.png" class="img-responsive center-block" alt="Cygwin Setup: Downloading package metadata"></p>
+
+<p><img src="assets/png/cygwin-setup-07.png" class="img-responsive
+center-block" alt="Cygwin Setup: Downloading package metadata"></p>
+
 <h3>8. Select Packages to Install</h3>
-<p>Now we're ready to browse for packages and select the Cygwin packages we want to install.</p>
-<p>Let's take some time to get familiar with the Cygwin package browser first.
-Right now we're looking at all Cygwin packages, organized by category.</p>
-<p><img src="assets/png/cygwin-setup-08.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Click <button class="btn btn-default btn-xs">View</button> twice to switch to "Pending" view.
-"Pending" view shows the packages that are currently selected for installation.
-Hover your mouse over the <button class="btn btn-default btn-xs">View</button> button for an explanation of the different views.</p>
-<p>Right now all of the packages under the "Base" category are selected for installation. The Base category includes all packages required for a minimal Cygwin installation.</p>
-<p><img src="assets/png/cygwin-setup-09.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>In addition to the base packages, we want to install the packages required for Cygwin/X. Cygwin/X is required to run GUI applications in our Linux virtual machine.
-According to the Cygwin/X website, Cygwin/X requires the following packages:</p>
+
+<p>Now we're ready to browse for packages and select the Cygwin packages
+we want to install.</p>
+
+<p>Let's take some time to get familiar with the Cygwin package browser
+first. Right now we're looking at all Cygwin packages, organized by
+category.</p>
+
+<p><img src="assets/png/cygwin-setup-08.png" class="img-responsive
+center-block" alt="Cygwin Setup: Package browser"></p>
+
+<p>Click <button class="btn btn-default btn-xs">View</button> twice to
+switch to "Pending" view. "Pending" view shows the packages that are
+currently selected for installation. Hover your mouse over the <button
+class="btn btn-default btn-xs">View</button> button for an explanation
+of the different views.</p>
+
+<p>Right now all of the packages under the "Base" category are selected
+for installation. The Base category includes all packages required for a
+minimal Cygwin installation.</p>
+
+<p><img src="assets/png/cygwin-setup-09.png" class="img-responsive
+center-block" alt="Cygwin Setup: Package browser"></p>
+
+<p>In addition to the base packages, we want to install the packages
+required for Cygwin/X. Cygwin/X is required to run GUI applications in
+our Linux virtual machine. According to the Cygwin/X website, Cygwin/X
+requires the following packages:</p>
+
 <ul>
   <li>xorg-server</li>
   <li>xinit</li>
   <li>openssh</li>
 </ul>
+
 <p>Switch to "Full" view, and type "xorg-server" in the search box.</p>
-<p><img src="assets/png/cygwin-setup-10.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
+
+<p><img src="assets/png/cygwin-setup-10.png" class="img-responsive
+center-block" alt="Cygwin Setup: Package browser"></p>
+
 <p>The first package is the one we want.</p>
-<p>Click <code><span class="glyphicon glyphicon-refresh"></span></code> to cycle through options until it shows the latest version of xorg-server.
-This selects xorg-server for installation.</p>
-<p><img src="assets/png/cygwin-setup-11.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Switch to "Pending" view to confirm that xorg-server is selected for installation.
-Notice that the base packages are hidden since we have typed "xorg-server" into the search filter box.</p>
-<p><img src="assets/png/cygwin-setup-12.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Click <button class="btn btn-default btn-xs">Clear</button> to clear the search filter and see the full list of all pending operations.
-This unhides the base packages that are selected for installation.</p>
-<p><img src="assets/png/cygwin-setup-13.png" class="img-responsive center-block" alt="Cygwin Setup: Package browser"></p>
-<p>Switch to "Full" view and use the search filter to find xinit and openssh.
-Click <code><span class="glyphicon glyphicon-refresh"></span></code> to select xinit and openssh for installation.
-Switch to "Pending" view to review your pending operations.</p>
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to execute the pending operations.</p>
+
+<p>Click <code><span class="glyphicon glyphicon-refresh"></span></code>
+to cycle through options until it shows the latest version of
+xorg-server. This selects xorg-server for installation.</p>
+
+<p><img src="assets/png/cygwin-setup-11.png" class="img-responsive
+center-block" alt="Cygwin Setup: Package browser"></p>
+
+<p>Switch to "Pending" view to confirm that xorg-server is selected for
+installation. Notice that the base packages are hidden since we have
+typed "xorg-server" into the search filter box.</p>
+
+<p><img src="assets/png/cygwin-setup-12.png" class="img-responsive
+center-block" alt="Cygwin Setup: Package browser"></p>
+
+<p>Click <button class="btn btn-default btn-xs">Clear</button> to clear
+the search filter and see the full list of all pending operations. This
+unhides the base packages that are selected for installation.</p>
+
+<p><img src="assets/png/cygwin-setup-13.png" class="img-responsive
+center-block" alt="Cygwin Setup: Package browser"></p>
+
+<p>Switch to "Full" view and use the search filter to find xinit and
+openssh. Click <code><span class="glyphicon
+glyphicon-refresh"></span></code> to select xinit and openssh for
+installation. Switch to "Pending" view to review your pending
+operations.</p>
+
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+execute the pending operations.</p>
+
 <h3>9. Resolve Dependencies</h3>
-<p>Some of the packages we've selected depend on other packages.
-Cygwin Setup computes the required dependencies and offers to install them for us.</p>
-<p>Check "Select required pacakges", then click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
-<p><img src="assets/png/cygwin-setup-14.png" class="img-responsive center-block" alt="Cygwin Setup: Resolve dependencies"></p>
+
+<p>Some of the packages we've selected depend on other packages. Cygwin
+Setup computes the required dependencies and offers to install them for
+us.</p>
+
+<p>Check "Select required pacakges", then click <button class="btn
+  btn-default btn-xs">Next &gt;</button>.</p>
+
+<p><img src="assets/png/cygwin-setup-14.png" class="img-responsive
+center-block" alt="Cygwin Setup: Resolve dependencies"></p>
+
 <h3>10. Installing Selected Packages and Dependencies</h3>
-<p>Cygwin Setup downloads and installs the selected packages and dependencies.</p>
+
+<p>Cygwin Setup downloads and installs the selected packages and
+dependencies.</p>
+
 <p>Wait for it to finish.</p>
-<p><img src="assets/png/cygwin-setup-16.png" class="img-responsive center-block" alt="Cygwin Setup: Downloading and installing packages"></p>
+
+<p><img src="assets/png/cygwin-setup-16.png" class="img-responsive
+center-block" alt="Cygwin Setup: Downloading and installing
+packages"></p>
+
 <h3>11. Finish</h3>
+
 <p>Click <button class="btn btn-default btn-xs">Finish</button>.</p>
-<p><img src="assets/png/cygwin-setup-18.png" class="img-responsive center-block" alt="Cygwin Setup: Finished"></p>
-<p>Run Cygwin Setup any time you want to install, uninstall, update, or reinstall packages in your Cygwin envirnoment.
-Remember that clicking <code><span class="glyphicon glyphicon-refresh"></span></code> in the package browser cycles through the possible actions for a package.
-It's a confusing user interface, but you don't have to use it often.</p>
-<p>Cygwin Terminal and XWin Server appear in your Windows start menu after installation.</p>
-<p><span class="text-muted"><i>Hint: XWin Server is Cygwin/X.</i></span></p>
-<p><img src="assets/png/cygwin-terminal-8.png" class="img-responsive center-block" alt="Cygwin Terminal start menu entry"></p>
-<p><img src="assets/png/xwin-01.png" class="img-responsive center-block" alt="XWin Server start menu entry"></p>
+
+<p><img src="assets/png/cygwin-setup-18.png" class="img-responsive
+center-block" alt="Cygwin Setup: Finished"></p>
+
+<p>Run Cygwin Setup any time you want to install, uninstall, update, or
+reinstall packages in your Cygwin envirnoment. Remember that clicking
+<code><span class="glyphicon glyphicon-refresh"></span></code> in the
+package browser cycles through the possible actions for a package. It's
+a confusing user interface, but you don't have to use it often.</p>
+
+<p>Cygwin Terminal and XWin Server appear in your Windows start menu
+after installation.</p>
+
+<p><span class="text-muted"><i>Hint: XWin Server is
+    Cygwin/X.</i></span></p>
+
+<p><img src="assets/png/cygwin-terminal-8.png" class="img-responsive
+center-block" alt="Cygwin Terminal start menu entry"></p>
+
+<p><img src="assets/png/xwin-01.png" class="img-responsive center-block"
+alt="XWin Server start menu entry"></p>
+
 <h2>Cygwin Directory Structure</h2>
-<p>The rest of this article will assume that <code>C:\cygwin</code> is the Cygwin root directory.</p>
-<p>There are a few directories under <code>C:\cygwin</code> that I'd like to point out.
-Open <code>C:\cygwin</code> in Windows File Explorer.</p>
+
+<p>The rest of this article will assume that <code>C:\cygwin</code> is
+the Cygwin root directory.</p>
+
+<p>There are a few directories under <code>C:\cygwin</code> that I'd
+like to point out. Open <code>C:\cygwin</code> in Windows File
+Explorer.</p>
+
 <h3>User Home Directories</h3>
+
 <p>Cygwin Setup creates a home directory for each user on your computer.
-Home directories appear under <code>C:\cygwin\home</code>.
-If your user name is "jdoe", then your Cygwin home directory is <code>C:\cygwin\home\jdoe</code>.</p>
+Home directories appear under <code>C:\cygwin\home</code>. If your user
+name is "jdoe", then your Cygwin home directory is
+<code>C:\cygwin\home\jdoe</code>.</p>
+
 <h3><code>cygdrive</code> Directory</h3>
+
 <p>Cygwin Setup creates a <code>C:\cygwin\cygdrive</code> directory.
-<code>C:\cygwin\cygdrive</code> contains shortcut links to each drive on your computer.
-For example, <code>C:\cygwin\cygdrive\c</code> is a shortcut to <code>C:\</code>.
-If you have a <code>D:\</code> drive, you can access it via <code>C:\cygwin\cygdrive\d</code>.
-These shortcut links allow you to access all files on your computer from within the Cygwin environment.</p>
+<code>C:\cygwin\cygdrive</code> contains shortcut links to each drive on
+your computer. For example, <code>C:\cygwin\cygdrive\c</code> is a
+shortcut to <code>C:\</code>. If you have a <code>D:\</code> drive, you
+can access it via <code>C:\cygwin\cygdrive\d</code>. These shortcut
+links allow you to access all files on your computer from within the
+Cygwin environment.</p>
+
 <h2>Cygwin Terminal Appearance</h2>
-<p>The default Cygwin Terminal appearance is difficult to read.
-Let's customize the terminal appearance.</p>
+
+<p>The default Cygwin Terminal appearance is difficult to read. Let's
+customize the terminal appearance.</p>
+
 <p>Start Cygwin Terminal from the Windows start menu.</p>
-<p><img src="assets/png/cygwin-terminal-2.png" class="img-responsive center-block" alt="Cygwin Terminal"></p>
-<p>Right click on the Cygwin Terminal window, and choose <code>Options...</code></p>
-<p><img src="assets/png/cygwin-terminal-3.png" class="img-responsive center-block" alt="Cygwin Terminal context menu"></p>
+
+<p><img src="assets/png/cygwin-terminal-2.png" class="img-responsive
+center-block" alt="Cygwin Terminal"></p>
+
+<p>Right click on the Cygwin Terminal window, and choose
+<code>Options...</code></p>
+
+<p><img src="assets/png/cygwin-terminal-3.png" class="img-responsive
+center-block" alt="Cygwin Terminal context menu"></p>
+
 <p>In the "Looks" section, change the cursor style to "Block".</p>
-<p><img src="assets/png/cygwin-terminal-5.png" class="img-responsive center-block" alt="Cygwin Terminal looks options"></p>
-<p>In the "Text" section, check "Show bold as font" and "Show bold as colour".
-Set "Font smoothing" to "Default".
-Select an attractive font and font size.</p>
+
+<p><img src="assets/png/cygwin-terminal-5.png" class="img-responsive
+center-block" alt="Cygwin Terminal looks options"></p>
+
+<p>In the "Text" section, check "Show bold as font" and "Show bold as
+colour". Set "Font smoothing" to "Default". Select an attractive font
+and font size.</p>
+
 <p>Click <button class="btn btn-default btn-xs">OK</button>.</p>
-<p><img src="assets/png/cygwin-terminal-6.png" class="img-responsive center-block" alt="Cygwin Terminal text options"></p>
+
+<p><img src="assets/png/cygwin-terminal-6.png" class="img-responsive
+center-block" alt="Cygwin Terminal text options"></p>
+
 <h2>Cygwin/X</h2>
-<p>To run GUI applications in our Linux virtual machine, we must start Cygwin Terminal through Cygwin/X.
-Let's try that now.</p>
+
+<p>To run GUI applications in our Linux virtual machine, we must start
+Cygwin Terminal through Cygwin/X. Let's try that now.</p>
+
 <p>Start XWin Server from the Windows start menu.</p>
-<p><img src="assets/png/xwin-01.png" class="img-responsive center-block" alt="XWin Server start menu entry"></p>
+
+<p><img src="assets/png/xwin-01.png" class="img-responsive center-block"
+alt="XWin Server start menu entry"></p>
+
 <p>This adds two icons to your Windows system tray:</p>
+
 <ul>
   <li>XWin Server (X with an orange circle)</li>
   <li>Cygwin/X (C with a green X)</li>
 </ul>
-<p><img src="assets/png/xwin-02.png" class="img-responsive center-block" alt="XWin Server and Cygwin/X system tray icons"></p>
+
+<p><img src="assets/png/xwin-02.png" class="img-responsive center-block"
+alt="XWin Server and Cygwin/X system tray icons"></p>
+
 <p>Click on the Cygwin/X icon.</p>
-<p><img src="assets/png/xwin-03.png" class="img-responsive center-block" alt="Cygwin/X menu"></p>
-<p>Select <code>System Tools</code> &gt; <code>Cygwin Terminal</code>.</p>
-<p><img src="assets/png/xwin-04.png" class="img-responsive center-block" alt="Cygwin/X menu with Cygwin Terminal highlighted"></p>
+
+<p><img src="assets/png/xwin-03.png" class="img-responsive center-block"
+alt="Cygwin/X menu"></p>
+
+<p>Select <code>System Tools</code> &gt; <code>Cygwin
+  Terminal</code>.</p>
+
+<p><img src="assets/png/xwin-04.png" class="img-responsive center-block"
+alt="Cygwin/X menu with Cygwin Terminal highlighted"></p>
+
 <p>This is how you start Cygwin Terminal through Cygwin/X.</p>
-<p>To shut down XWin Server and Cygwin/X, click on the Cygwin/X icon in the system tray and select <code>XDG Menu</code> &gt; <code>Exit</code>.</p>
-<p><img src="assets/png/xwin-05.png" class="img-responsive center-block" alt="Cygwin/X menu with Exit highlighted"></p>
+
+<p>To shut down XWin Server and Cygwin/X, click on the Cygwin/X icon in
+the system tray and select <code>XDG Menu</code> &gt;
+<code>Exit</code>.</p>
+
+<p><img src="assets/png/xwin-05.png" class="img-responsive center-block"
+alt="Cygwin/X menu with Exit highlighted"></p>
+
 <div class="page-header"><h1>Virtual Machine Setup</h1></div>
+
 <h2>Intro</h2>
-<p>To create our Linux virtual machine, we'll start by using Vagrant to generate a generic Vagrantfile.
-The Vagrantfile is a configuration file that tells Vagrant what kind of virtual machine we want.
-We'll create a generic Vagrantfile using the <code>vagrant init</code> command on the command line.
-Then we'll use Notepad++ to edit a few lines in the Vagrantfile to customize our virtual machine.</p>
-<p>Once we have our Vagrantfile, we'll run <code>vagrant up</code> to create the virtual machine.
-Vagrant reads the configuration in the Vagrantfile, then uses VirtualBox to create the virtual machine for us.
-After the virtual machine is created, Vagrant turns on the virtual machine.
-This is just like pressing the power button to turn on a physical computer.</p>
+
+<p>To create our Linux virtual machine, we'll start by using Vagrant to
+generate a generic Vagrantfile. The Vagrantfile is a configuration file
+that tells Vagrant what kind of virtual machine we want. We'll create a
+generic Vagrantfile using the <code>vagrant init</code> command on the
+command line. Then we'll use Notepad++ to edit a few lines in the
+Vagrantfile to customize our virtual machine.</p>
+
+<p>Once we have our Vagrantfile, we'll run <code>vagrant up</code> to
+create the virtual machine. Vagrant reads the configuration in the
+Vagrantfile, then uses VirtualBox to create the virtual machine for us.
+After the virtual machine is created, Vagrant turns on the virtual
+machine. This is just like pressing the power button to turn on a
+physical computer.</p>
+
 <p>Once the virtual machine is up and running, we need to connect to it.
-We'll run <code>vagrant ssh</code> to begin an SSH session on the virtual machine.
-While we are in the SSH session, all commands we enter on the command line are sent straight to the virtual machine.
-Using SSH is basically like opening a terminal on the virtual machine; the only difference is that we're doing it remotely through SSH.
-When we're ready to quit the SSH session, we'll run <code>exit</code> to close the SSH connection and return to our local command line.</p>
+We'll run <code>vagrant ssh</code> to begin an SSH session on the
+virtual machine. While we are in the SSH session, all commands we enter
+on the command line are sent straight to the virtual machine. Using SSH
+is basically like opening a terminal on the virtual machine; the only
+difference is that we're doing it remotely through SSH. When we're ready
+to quit the SSH session, we'll run <code>exit</code> to close the SSH
+connection and return to our local command line.</p>
+
 <p>After we exit the SSH session, the virtual machine is still running.
 We'll run <code>vagrant halt</code> to shut down the virtual machine.
-This is just like pressing the power button to shut down a physical computer.</p>
+This is just like pressing the power button to shut down a physical
+computer.</p>
+
 <h2>Walkthrough</h2>
-<p>We need to create a directory to put our Vagrantfile in.
-Let's create a <code>virt\linux</code> directory under our Cygwin home directory, and put our Vagrantfile there.
-Open your Cygwin home directory in Windows File Explorer.
-Use Windows File Explorer to create the <code>virt\linux</code> directory under your Cygwin home directory.</p>
-<p>Now we need to run <code>vagrant init</code> in our newly-created <code>virt\linux</code> directory to generate a generic Vagrantfile.
-We'll use Cygwin Terminal to do this.
-Start Cygwin Terminal through Cygwin/X.</p>
-<p><img src="assets/png/vm-00.png" class="img-responsive center-block" alt="Cygwin Terminal"></p>
-<p>Right now the terminal is in our Cygwin home directory.
-If we run <code>vagrant init</code> right now, it will create the generic Vagrantfile in our home directory.
-We want to create the Vagrantfile in the <code>virt\linux</code> directory we just created, not in our home directory.
-So, we have to change directories to the <code>virt\linux</code> directory before we run <code>vagrant init</code>.</p>
-<p>Run <code>cd virt/linux</code> to move to the <code>virt\linux</code> directory you created.</p>
-<p><span class="text-muted"><i>Hint: Windows uses "\" (backslash) as a directory separator.
-Cygwin and Linux use "/" (forward slash) as a directory separator.</i></span></p>
-<p>Now the terminal is in the <code>virt\linux</code> directory, and we are ready to run <code>vagrant init</code>.
-Run <code>vagrant init</code> to generate a generic VagrantFile in the <code>virt\linux</code> directory.
-Open the <code>virt\linux</code> directory in Windows File Explorer to see the newly-created Vagrantfile.</p>
+
+<p>We need to create a directory to put our Vagrantfile in. Let's create
+a <code>virt\linux</code> directory under our Cygwin home directory, and
+put our Vagrantfile there. Open your Cygwin home directory in Windows
+File Explorer. Use Windows File Explorer to create the
+<code>virt\linux</code> directory under your Cygwin home directory.</p>
+
+<p>Now we need to run <code>vagrant init</code> in our newly-created
+<code>virt\linux</code> directory to generate a generic Vagrantfile.
+We'll use Cygwin Terminal to do this. Start Cygwin Terminal through
+Cygwin/X.</p>
+
+<p><img src="assets/png/vm-00.png" class="img-responsive center-block"
+alt="Cygwin Terminal"></p>
+
+<p>Right now the terminal is in our Cygwin home directory. If we run
+<code>vagrant init</code> right now, it will create the generic
+Vagrantfile in our home directory. We want to create the Vagrantfile in
+the <code>virt\linux</code> directory we just created, not in our home
+directory. So, we have to change directories to the
+<code>virt\linux</code> directory before we run <code>vagrant
+init</code>.</p>
+
+<p>Run <code>cd virt/linux</code> to move to the <code>virt\linux</code>
+directory you created.</p>
+
+<p><span class="text-muted"><i>Hint: Windows uses "\" (backslash) as a
+    directory separator. Cygwin and Linux use "/" (forward slash) as a
+directory separator.</i></span></p>
+
+<p>Now the terminal is in the <code>virt\linux</code> directory, and we
+are ready to run <code>vagrant init</code>. Run <code>vagrant
+init</code> to generate a generic VagrantFile in the
+<code>virt\linux</code> directory. Open the <code>virt\linux</code>
+directory in Windows File Explorer to see the newly-created
+Vagrantfile.</p>
+
 <div class="panel panel-default">
   <div class="panel-heading">Note: "command not found" error</div>
   <div class="panel-body">
-    If you get a "command not found" error when you run <code>vagrant init</code>, it is because the <code>vagrant.exe</code> executable is not on your command line search path.
-    The <code>vagrant.exe</code> file is installed in <code>/cygdrive/c/HashiCorp/Vagrant/bin</code>.
+
+    If you get a "command not found" error when you run <code>vagrant
+      init</code>, it is because the <code>vagrant.exe</code> executable
+    is not on your command line search path. The
+    <code>vagrant.exe</code> file is installed in
+    <code>/cygdrive/c/HashiCorp/Vagrant/bin</code>.
+
     <br>
     <br>
-    Run <code>PATH="${PATH}:/cygdrive/c/HashiCorp/Vagrant/bin"</code> to add the directory to your command line search path.
+    
+    Run <code>PATH="${PATH}:/cygdrive/c/HashiCorp/Vagrant/bin"</code> to
+    add the directory to your command line search path.
+
   </div>
 </div>
-<p><img src="assets/png/vm-01.png" class="img-responsive center-block" alt="Creating a generic Vagrantfile"></p>
-<p>Now it's time to edit the generic Vagrantfile to customize our virtual machine configuration.</p>
-<p>First, we'll tell Vagrant that we want to use the "ubuntu/trusty32" box for our virtual machine template.
-Let me explain this a bit.</p>
-<p>Vagrant creates a virtual machine by cloning a "box".
-A "box" is a Vagrant virtual machine image.
-The "ubuntu/trusty32" box is a virtual machine image with Ubuntu installed.
-Ubuntu is a common Linux operating system.
-"Trusty" is a codename for Ubuntu version 14.04.
-There are many boxes to choose from, and you can even make your own.
-For now, we'll start with the "ubuntu/trusty32" box.</p>
+
+<p><img src="assets/png/vm-01.png" class="img-responsive center-block"
+alt="Creating a generic Vagrantfile"></p>
+
+<p>Now it's time to edit the generic Vagrantfile to customize our
+virtual machine configuration.</p>
+
+<p>First, we'll tell Vagrant that we want to use the "ubuntu/trusty32"
+box for our virtual machine template. Let me explain this a bit.</p>
+
+<p>Vagrant creates a virtual machine by cloning a "box". A "box" is a
+Vagrant virtual machine image. The "ubuntu/trusty32" box is a virtual
+machine image with Ubuntu installed. Ubuntu is a common Linux operating
+system. "Trusty" is a codename for Ubuntu version 14.04. There are many
+boxes to choose from, and you can even make your own. For now, we'll
+start with the "ubuntu/trusty32" box.</p>
+
 <p>To use the "ubuntu/trusty32" box, we need to edit the Vagrantfile.
-Open the Vagrantfile in Notepad++, and change the line that reads <code>config.vm.box = "base"</code> to <code>config.vm.box = "ubuntu/trusty32"</code>.
-This tells Vagrant to use the "ubuntu/trusty32" box as the template for our virtual machine.</p>
-<p>Next, we need to tell Vagrant to allow X11 forwarding over SSH.
-X11 forwarding allows us to launch GUI applications during our SSH session.
-To do this, use Notepad++ to add a new line after <code>config.vm.box = "ubuntu/trusty32"</code>.
-Type <code>config.ssh.forward_x11 = true</code> on the new line.</p>
+Open the Vagrantfile in Notepad++, and change the line that reads
+<code>config.vm.box = "base"</code> to <code>config.vm.box =
+"ubuntu/trusty32"</code>. This tells Vagrant to use the
+"ubuntu/trusty32" box as the template for our virtual machine.</p>
+
+<p>Next, we need to tell Vagrant to allow X11 forwarding over SSH. X11
+forwarding allows us to launch GUI applications during our SSH session.
+To do this, use Notepad++ to add a new line after <code>config.vm.box =
+"ubuntu/trusty32"</code>. Type <code>config.ssh.forward_x11 =
+true</code> on the new line.</p>
+
 <p>Save the edited Vagrantfile.</p>
-<p>Now it's time to create the virtual machine.
-Go to the Cygwin Terminal and run <code>vagrant up</code>.</p>
-<p><img src="assets/png/vm-02.png" class="img-responsive center-block" alt="Creating the virtual machine"></p>
-<p>Vagrant reads the Vagrantfile, and gets to work downloading and cloning the "ubuntu/trusty32" box.
-After the box is downloaded and cloned, Vagrant starts up the newly-created virtual machine.</p>
-<p>Now that the virtual machine has been created and started up, we can connect to it via SSH.
-Run <code>vagrant ssh</code> to start a new SSH session on the virtual machine.</p>
-<p><img src="assets/png/vm-03.png" class="img-responsive center-block" alt="SSH into the virtual machine"></p>
-<p>Now we are in an SSH session on the virtual machine.
-Any commands we type are sent directly to the virtual machine, and run on the virtual machine.</p>
-<p>Let's check the operating system version on the virtual machine.
-To do this, run <code>lsb_release -a</code>.</p>
-<p><img src="assets/png/vm-04.png" class="img-responsive center-block" alt="Terminal: lsb_release -a"></p>
-<p>The command runs on the virtual machine, and tells us that the operating system is Ubuntu 14.04.</p>
-<p>Now, let's shut down the virtual machine.
-To shut down the virtual machine, we need to end our SSH session first.</p>
-<p>Run <code>exit</code> to end the SSH session, and return to your local computer's command line.</p>
-<p><img src="assets/png/vm-05.png" class="img-responsive center-block" alt="Terminal: exit"></p>
-<p>Now that we're back on our local computer, we can use Vagrant to shut down the virtual machine.
-Run <code>vagrant halt</code> to shut down the virtual machine.</p>
-<p><img src="assets/png/vm-06.png" class="img-responsive center-block" alt="Terminal: vagrant halt"></p>
-<p>Vagrant shuts down the virtual machine.
-Verify the status of the virtual machine by running <code>vagrant status</code>.</p>
-<p><img src="assets/png/vm-07.png" class="img-responsive center-block" alt="Terminal: vagrant status"></p>
-<p>If we wanted to delete the virtal machine entirely, we could run <code>vagrant destroy --force</code>.
-Let's keep the virtual machine for now.</p>
+
+<p>Now it's time to create the virtual machine. Go to the Cygwin
+Terminal and run <code>vagrant up</code>.</p>
+
+<p><img src="assets/png/vm-02.png" class="img-responsive center-block"
+alt="Creating the virtual machine"></p>
+
+<p>Vagrant reads the Vagrantfile, and gets to work downloading and
+cloning the "ubuntu/trusty32" box. After the box is downloaded and
+cloned, Vagrant starts up the newly-created virtual machine.</p>
+
+<p>Now that the virtual machine has been created and started up, we can
+connect to it via SSH. Run <code>vagrant ssh</code> to start a new SSH
+session on the virtual machine.</p>
+
+<p><img src="assets/png/vm-03.png" class="img-responsive center-block"
+alt="SSH into the virtual machine"></p>
+
+<p>Now we are in an SSH session on the virtual machine. Any commands we
+type are sent directly to the virtual machine, and run on the virtual
+machine.</p>
+
+<p>Let's check the operating system version on the virtual machine. To
+do this, run <code>lsb_release -a</code>.</p>
+
+<p><img src="assets/png/vm-04.png" class="img-responsive center-block"
+alt="Terminal: lsb_release -a"></p>
+
+<p>The command runs on the virtual machine, and tells us that the
+operating system is Ubuntu 14.04.</p>
+
+<p>Now, let's shut down the virtual machine. To shut down the virtual
+machine, we need to end our SSH session first.</p>
+
+<p>Run <code>exit</code> to end the SSH session, and return to your
+local computer's command line.</p>
+
+<p><img src="assets/png/vm-05.png" class="img-responsive center-block"
+alt="Terminal: exit"></p>
+
+<p>Now that we're back on our local computer, we can use Vagrant to shut
+down the virtual machine. Run <code>vagrant halt</code> to shut down the
+virtual machine.</p>
+
+<p><img src="assets/png/vm-06.png" class="img-responsive center-block"
+alt="Terminal: vagrant halt"></p>
+
+<p>Vagrant shuts down the virtual machine. Verify the status of the
+virtual machine by running <code>vagrant status</code>.</p>
+
+<p><img src="assets/png/vm-07.png" class="img-responsive center-block"
+alt="Terminal: vagrant status"></p>
+
+<p>If we wanted to delete the virtal machine entirely, we could run
+<code>vagrant destroy --force</code>. Let's keep the virtual machine for
+now.</p>
+
 <div class="page-header"><h1>Virtual Machine Exploration</h1></div>
+
 <h2>Intro</h2>
+
 <p>Let's explore our Linux virtual machine a bit.</p>
-<p>We'll start this exploration by installing the following programs on the virtual machine:</p>
+
+<p>We'll start this exploration by installing the following programs on
+the virtual machine:</p>
+
 <dl class="dl-horizontal">
   <dt>Leafpad</dt>
   <dd>A program for editing text files (similar to Windows Notepad).</dd>
   <dt>PCManFM</dt>
   <dd>A program for navigating files and folders (similar to Windows File Explorer).</dd>
 </dl>
-<p>We'll use Leafpad and PCManFM to create a new text file on the virtual machine.
-Then we'll copy the new file to a shared folder and view the file from Windows.</p>
-<p>Leafpad and PCManFM are GUI applications.
-To use these GUI applications on our virtual machine, we'll need to run Cygwin Terminal through Cygwin/X.</p>
+
+<p>We'll use Leafpad and PCManFM to create a new text file on the
+virtual machine. Then we'll copy the new file to a shared folder and
+view the file from Windows.</p>
+
+<p>Leafpad and PCManFM are GUI applications. To use these GUI
+applications on our virtual machine, we'll need to run Cygwin Terminal
+through Cygwin/X.</p>
+
 <p>Let's get started.</p>
+
 <h2>Walkthrough</h2>
+
 <p>Complete the following steps using the skills you've learned:</p>
+
 <ol>
   <li>Start Cygwin Terminal through Cygwin/X.</li>
   <li>Change to the <code>virt\linux</code> directory (<code>cd virt/linux</code>).</li>
   <li>Start the virtual machine (<code>vagrant up</code>).</li>
   <li>SSH into the virtual machine (<code>vagrant ssh</code>).</li>
 </ol>
-<p>Now we're ready to install Leafpad and PCManFM on the virtual machine.
-To do this, we'll use Ubuntu's package manager, which is called "APT".
-APT is similar to the Cygwin Setup program we used before: you select packages you want to install, the package manager resolves dependencies, and the package manager downloads and installs the packages and dependencies.
-Let's ask APT to install Leafpad and PCManFM.</p>
-<p>First, we should make sure APT has downloaded the most up-to-date package metadata.
-(Recall that Cygwin setup performed a similar step.)
-To download the latest package metadata, run <code>sudo apt-get update</code>.</p>
-<p><span class="text-muted"><i>Hint: Installing packages requires administrator privileges. <code>sudo</code> is used to run a command with administrator privileges.</i></span></p>
-<p><img src="assets/png/explore-1-01.png" class="img-responsive center-block" alt="Terminal: sudo apt-get update"></p>
-<p>Run <code>sudo apt-get install leafpad pcmanfm</code> to ask APT to install Leafpad and PCManFM.
-APT resolves the dependencies for Leafpad and PCManFM, and confirms the installation.</p>
-<p><img src="assets/png/explore-1-02.png" class="img-responsive center-block" alt="Terminal: Confirm package installation"></p>
-<p>Enter <code>y</code> to confirm that you would like to install Leafpad and PCManFM, as well as the listed dependencies.
-APT gets to work downloading and installing the required packages.</p>
+
+<p>Now we're ready to install Leafpad and PCManFM on the virtual
+machine. To do this, we'll use Ubuntu's package manager, which is called
+"APT". APT is similar to the Cygwin Setup program we used before: you
+select packages you want to install, the package manager resolves
+dependencies, and the package manager downloads and installs the
+packages and dependencies. Let's ask APT to install Leafpad and
+PCManFM.</p>
+
+<p>First, we should make sure APT has downloaded the most up-to-date
+package metadata. (Recall that Cygwin setup performed a similar step.)
+To download the latest package metadata, run <code>sudo apt-get
+update</code>.</p>
+
+<p><span class="text-muted"><i>Hint: Installing packages requires
+    administrator privileges. <code>sudo</code> is used to run a command
+with administrator privileges.</i></span></p>
+
+<p><img src="assets/png/explore-1-01.png" class="img-responsive
+center-block" alt="Terminal: sudo apt-get update"></p>
+
+<p>Run <code>sudo apt-get install leafpad pcmanfm</code> to ask APT to
+install Leafpad and PCManFM. APT resolves the dependencies for Leafpad
+and PCManFM, and confirms the installation.</p>
+
+<p><img src="assets/png/explore-1-02.png" class="img-responsive
+center-block" alt="Terminal: Confirm package installation"></p>
+
+<p>Enter <code>y</code> to confirm that you would like to install
+Leafpad and PCManFM, as well as the listed dependencies. APT gets to
+work downloading and installing the required packages.</p>
+
 <p>Wait for it to finish.</p>
-<p><img src="assets/png/explore-1-03.png" class="img-responsive center-block" alt="APT finished installing Leafpad and PCManFM"></p>
-<p>Leafpad and PCManFM are now installed on the virtual machine.
-Now we can run Leafpad and PCManFM from the command line.
-Let's run PCManFM to take a look at the files and folders on our virtual machine.</p>
+
+<p><img src="assets/png/explore-1-03.png" class="img-responsive
+center-block" alt="APT finished installing Leafpad and PCManFM"></p>
+
+<p>Leafpad and PCManFM are now installed on the virtual machine. Now we
+can run Leafpad and PCManFM from the command line. Let's run PCManFM to
+take a look at the files and folders on our virtual machine.</p>
+
 <p>Run <code>pcmanfm</code>.</p>
-<p><img src="assets/png/explore-1-04.png" class="img-responsive center-block" alt="PCManFM window"></p>
-<p>The PCManFM GUI appears in a new window. To display the folders as a tree, click on the <code>Places</code> dropdown.</p>
-<p><img src="assets/png/explore-1-05.png" class="img-responsive center-block" alt="PCManFM places dropdown"></p>
+
+<p><img src="assets/png/explore-1-04.png" class="img-responsive
+center-block" alt="PCManFM window"></p>
+
+<p>The PCManFM GUI appears in a new window. To display the folders as a
+tree, click on the <code>Places</code> dropdown.</p>
+
+<p><img src="assets/png/explore-1-05.png" class="img-responsive
+center-block" alt="PCManFM places dropdown"></p>
+
 <p>Select <code>Directory Tree</code>.</p>
-<p><img src="assets/png/explore-1-06.png" class="img-responsive center-block" alt="PCManFM directory tree view"></p>
+
+<p><img src="assets/png/explore-1-06.png" class="img-responsive
+center-block" alt="PCManFM directory tree view"></p>
+
 <p>Now we can see all the files and directories on the virtual machine.
-Browse around the files to convince yourself that these are not the files on your Windows computer.</p>
+Browse around the files to convince yourself that these are not the
+files on your Windows computer.</p>
+
 <p>Let's use Leafpad to make a new text file on our virtual machine.
-Navigate back to <code>/home/vagrant</code> in PCManFM, and right click to bring up a context menu.</p>
-<p><img src="assets/png/explore-1-07.png" class="img-responsive center-block" alt="PCManFM: Create new empty file"></p>
-<p>Select <code>Create New...</code> &gt; <code>Empty File</code> to create a new empty file.</p>
-<p><img src="assets/png/explore-1-08.png" class="img-responsive center-block" alt="PCManFM: New file name"></p>
+Navigate back to <code>/home/vagrant</code> in PCManFM, and right click
+to bring up a context menu.</p>
+
+<p><img src="assets/png/explore-1-07.png" class="img-responsive
+center-block" alt="PCManFM: Create new empty file"></p>
+
+<p>Select <code>Create New...</code> &gt; <code>Empty File</code> to
+create a new empty file.</p>
+
+<p><img src="assets/png/explore-1-08.png" class="img-responsive
+center-block" alt="PCManFM: New file name"></p>
+
 <p>Name the new file <code>test-file</code>.</p>
-<p><img src="assets/png/explore-1-09.png" class="img-responsive center-block" alt="PCManFM: New file name is test-file"></p>
-<p>Click <button class="btn btn-default btn-xs">OK</button> to create the new file.</p>
-<p><img src="assets/png/explore-1-10.png" class="img-responsive center-block" alt="PCManFM: New test-file created"></p>
-<p>Let's edit <code>test-file</code> in Leafpad. Right click on <code>test-file</code> to bring up a context menu.</p>
-<p><img src="assets/png/explore-1-11.png" class="img-responsive center-block" alt="PCManFM: Leafpad selected in context menu"></p>
+
+<p><img src="assets/png/explore-1-09.png" class="img-responsive
+center-block" alt="PCManFM: New file name is test-file"></p>
+
+<p>Click <button class="btn btn-default btn-xs">OK</button> to create
+the new file.</p>
+
+<p><img src="assets/png/explore-1-10.png" class="img-responsive
+center-block" alt="PCManFM: New test-file created"></p>
+
+<p>Let's edit <code>test-file</code> in Leafpad. Right click on
+<code>test-file</code> to bring up a context menu.</p>
+
+<p><img src="assets/png/explore-1-11.png" class="img-responsive
+center-block" alt="PCManFM: Leafpad selected in context menu"></p>
+
 <p>Select <code>Leafpad</code> from the context menu.</p>
-<p><img src="assets/png/explore-1-12.png" class="img-responsive center-block" alt="Leafpad window"></p>
-<p>A new Leafpad window opens our empty <code>test-file</code>.
-Type something silly in Leafpad.
-I typed "Hello Windows! My name is Linux!".</p>
-<p><img src="assets/png/explore-1-13.png" class="img-responsive center-block" alt="Silly message in Leafpad"></p>
-<p>Let's save the edited <code>test-file</code>. Click <code>File</code> &gt; <code>Save</code>.</p>
-<p><img src="assets/png/explore-1-14.png" class="img-responsive center-block" alt="Leafpad: File save menu"></p>
-<p>Let's share our new <code>test-file</code> with Windows.
-We can do this by copying <code>test-file</code> into a shared directory.
+
+<p><img src="assets/png/explore-1-12.png" class="img-responsive
+center-block" alt="Leafpad window"></p>
+
+<p>A new Leafpad window opens our empty <code>test-file</code>. Type
+something silly in Leafpad. I typed "Hello Windows! My name is
+Linux!".</p>
+
+<p><img src="assets/png/explore-1-13.png" class="img-responsive
+center-block" alt="Silly message in Leafpad"></p>
+
+<p>Let's save the edited <code>test-file</code>. Click <code>File</code>
+&gt; <code>Save</code>.</p>
+
+<p><img src="assets/png/explore-1-14.png" class="img-responsive
+center-block" alt="Leafpad: File save menu"></p>
+
+<p>Let's share our new <code>test-file</code> with Windows. We can do
+this by copying <code>test-file</code> into a shared directory.
 Conveniently, Vagrant has already created a shared directory for us.</p>
-<p>By default, Vagrant shares the directory that our Vagrantfile is in with the virtual machine.
-The shared directory is accessed at <code>/vagrant</code> on the virtual machine.
-Navigate to <code>/vagrant</code> in PCManFM.
-You can see our Vagrantfile there.
-This is the same Vagrantfile that is on our Windows host in the <code>virt/linux</code> directory, under our Cygwin home directory.</p>
-<p>Use PCManFM to copy and paste our <code>test-file</code> from <code>/home/vagrant</code> to <code>/vagrant</code>.
-Open the <code>virt/linux</code> directory in Windows File Explorer to confirm that the new <code>test-file</code> is there.
-Now open the <code>test-file</code> in Notepad++ to see the message we wrote on the Linux virtual machine.</p>
+
+<p>By default, Vagrant shares the directory that our Vagrantfile is in
+with the virtual machine. The shared directory is accessed at
+<code>/vagrant</code> on the virtual machine. Navigate to
+<code>/vagrant</code> in PCManFM. You can see our Vagrantfile there.
+This is the same Vagrantfile that is on our Windows host in the
+<code>virt/linux</code> directory, under our Cygwin home directory.</p>
+
+<p>Use PCManFM to copy and paste our <code>test-file</code> from
+<code>/home/vagrant</code> to <code>/vagrant</code>. Open the
+<code>virt/linux</code> directory in Windows File Explorer to confirm
+that the new <code>test-file</code> is there. Now open the
+<code>test-file</code> in Notepad++ to see the message we wrote on the
+Linux virtual machine.</p>
+
 <div class="page-header"><h1>Conclusion</h1></div>
-<p>The skills you've learned in this article enable you to interact with Linux on Windows.
-No Linux tutorial is out of your reach now.
-You can run commands on your Linux virtual machine with reckless abandon.
-If something breaks, run <code>vagrant destroy --force</code> to destroy the virtual machine, then run <code>vagrant up</code> to create a fresh virtual machine.</p>
-<p>Keep in mind, the files under your shared directory are accessible from the Linux virtual machine, so they will be wiped out if you run something like <code>rm -r /vagrant</code> to delete the <code>/vagrant</code> directory.
-If you do run destructive commands like that, only the files and directories under the shared directory will be wiped out.
-Be mindful of this, and watch where you place your Vagrantfiles.
-Any subdirectory below the Vagrantfile can be wiped out by running <code>rm -r /vagrant</code> on the virtual machine.</p>
+
+<p>The skills you've learned in this article enable you to interact with
+Linux on Windows. No Linux tutorial is out of your reach now. You can
+run commands on your Linux virtual machine with reckless abandon. If
+something breaks, run <code>vagrant destroy --force</code> to destroy
+the virtual machine, then run <code>vagrant up</code> to create a fresh
+virtual machine.</p>
+
+<p>Keep in mind, the files under your shared directory are accessible
+from the Linux virtual machine, so they will be wiped out if you run
+something like <code>rm -r /vagrant</code> to delete the
+<code>/vagrant</code> directory. If you do run destructive commands like
+that, only the files and directories under the shared directory will be
+wiped out. Be mindful of this, and watch where you place your
+Vagrantfiles. Any subdirectory below the Vagrantfile can be wiped out by
+running <code>rm -r /vagrant</code> on the virtual machine.</p>
