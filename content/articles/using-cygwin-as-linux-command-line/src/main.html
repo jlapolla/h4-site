@@ -3,29 +3,49 @@
 </div>
 
 <p>The first hurdle you encounter when learning Linux is actually
-getting Linux installed on your computer. Installing a completely
-foreign operating system is daunting, and you are not willing to risk
-breaking your current Windows installation. Fortunately we can use a
-virtual machine to learn Linux without touching our current Windows
-installation.</p>
+getting Linux installed on your computer. Installing a foreign operating
+system is daunting, and you are not willing to risk breaking your
+current Windows installation. Fortunately we can use a virtual machine
+to learn Linux without touching our current Windows installation.</p>
 
-<p>In this article we'll create a Linux virtual machine. Then you can
-try out Linux in the virtual machine, and if you break something you can
-spawn a new virtual machine with a fresh Linux install.</p>
+<p>In this tutorial we'll create a Linux virtual machine. Then you can
+experiment with Linux on the virtual machine, and if you break something
+you can spawn a new virtual machine with a fresh Linux install. This
+tutorial is not meant to teach Linux. It is meant to give you access to
+a working Linux installation, and thus enable you to follow along with
+other Linux tutorials.</p>
 
-<p>To work with Linux virtual machines in Windows, we'll need to install
-the following programs:</p>
+<p>To work with Linux virtual machines in Windows, we'll install the
+following programs:</p>
 
 <dl class="dl-horizontal">
   <dt>Notepad++</dt>
-  <dd>A text editor that works with both Linux style line endings and Windows style line endings.</dd>
+
+  <dd>A text editor (similar to Windows Notepad) that recognizes both
+  Linux-style line endings and Windows-style line endings. We'll use it
+  to view and edit text files we create in the Linux virtual
+  machine.</dd>
+
   <dt>VirtualBox</dt>
-  <dd>Virtualization software which provides an environment for virtual machines.</dd>
+
+  <dd>Provides a platform for running virtual machines. This is the
+  software that enables your computer to host virtual machines.</dd>
+
   <dt>Vagrant</dt>
-  <dd>A command line tool for configuring, creating, and connecting to virtual machines.</dd>
+
+  <dd>A command-line tool for quickly creating virtual machines (uses
+  VirtualBox internally). We'll use this to get our virtual machine up
+  and running quickly.</dd>
+
   <dt>Cygwin</dt>
-  <dd>A Linux-like command line environment for Windows.</dd>
+
+  <dd>A Linux-like command line for Windows. We'll use this to run
+  Vagrant on our Windows machine, and to run commands on the Linux
+  virtual machine.</dd>
+
 </dl>
+
+<p>Let's get started.</p>
 
 <div class="page-header">
   <h1>Notepad++</h1>
@@ -33,7 +53,8 @@ the following programs:</p>
 
 <h2>Download Notepad++</h2>
 
-<p>Use the button below to download the Notepad++ installer.</p>
+<p>Use the button below to download the latest Notepad++ installer
+version.</p>
 
 <p><a href="https://notepad-plus-plus.org/download" class="btn btn-lg
   btn-success" target="_blank"><span class="glyphicon
@@ -41,82 +62,98 @@ glyphicon-download-alt"></span> Download Notepad++</a></p>
 
 <h2>Install Notepad++</h2>
 
-<p>Double click the downloaded <code>npp.Installer.exe</code> file to
-run the Notepad++ installer.</p>
+<p>Double click the downloaded <code>npp.#.#.#.Installer.exe</code> file
+to launch Notepad++ Setup.</p>
 
 <h3>1. Choose a Language</h3>
 
-<p>Select a language from the dropdown, then click <button class="btn
-  btn-default btn-xs">OK</button>.</p>
+<p>Choose <code>English</code> from the dropdown.</p>
+
+<p>Click <button class="btn btn-default btn-xs">OK</button> to
+  continue.</p>
 
 <p><img src="assets/png/npp-install-01.png" class="img-responsive
 center-block" alt="Notepad++ Setup: Select a language"></p>
 
 <h3>2. Welcome Screen</h3>
 
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
 <p><img src="assets/png/npp-install-02.png" class="img-responsive
 center-block" alt="Notepad++ Setup: Welcome screen"></p>
 
 <h3>3. License Agreement</h3>
 
-<p>Review the license agreement, then click <button class="btn
-  btn-default btn-xs">I Agree</button>.</p>
+<p>Review the license agreement.</p>
+
+<p>Click <button class="btn btn-default btn-xs">I Agree</button> to
+  accept the license agreement and continue.</p>
 
 <p><img src="assets/png/npp-install-03.png" class="img-responsive
 center-block" alt="Notepad++ Setup: License agreement"></p>
 
 <h3>4. Choose Installation Directory</h3>
 
-<p>Choose an installation directory. I use the default.</p>
+<p>Let Notepad++ install in its default directory.</p>
 
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
 <p><img src="assets/png/npp-install-04.png" class="img-responsive
 center-block" alt="Notepad++ Setup: Choose installation directory"></p>
 
 <h3>5. Choose Program Features</h3>
 
-<p>Choose the program features you wish to install. I use the
-defaults.</p>
+<p>Let Notepad++ install the default program features.</p>
 
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
 <p><img src="assets/png/npp-install-05.png" class="img-responsive
 center-block" alt="Notepad++ Setup: Choose program features"></p>
 
 <h3>6. Choose Additional Options</h3>
 
-<p>Choose any additional options you want. You may wish to create a
-desktop shortcut.</p>
+<p>Check <code>Create Shortcut on Desktop</code>. Leave the other boxes
+unchecked.</p>
 
-<p>Click <button class="btn btn-default btn-xs">Install</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Install</button> to
+begin installing Notepad++.</p>
 
-<p><img src="assets/png/npp-install-06.png" class="img-responsive
+<p><img src="assets/png/npp-install-06.png.NEWIMG" class="img-responsive
 center-block" alt="Notepad++ Setup: Choose additional options"></p>
 
 <h3>7. Installing Notepad++</h3>
 
-<p>The Notepad++ installer installs Notepad++.</p>
+<p>Notepad++ Setup begins installing Notepad++.</p>
 
-<p>Wait for it to finish.</p>
+<p>Wait for Notepad++ Setup to finish installing Notepad++. This should
+take a few minutes. <strong>TODO: Get a specific time
+estimate.</strong></p>
 
 <p><img src="assets/png/npp-install-07.png" class="img-responsive
 center-block" alt="Notepad++ Setup: Installing"></p>
 
 <h3>8. Finish</h3>
 
-<p>Uncheck "Run Notepad++", then click <button class="btn btn-default
-  btn-xs">Finish</button>.</p>
+<p>Check <code>Run Notepad++ v#.#.#</code> to launch Notepad++ after
+installation.</p>
 
-<p><img src="assets/png/npp-install-09.png" class="img-responsive
+<p>Click <button class="btn btn-default btn-xs">Finish</button> to
+complete Notepad++ Setup.</p>
+
+<p><img src="assets/png/npp-install-09.png.NEWIMG" class="img-responsive
 center-block" alt="Notepad++ Setup: Finished"></p>
 
-<p>Notepad++ appears in your Windows start menu after installation.</p>
+<h3>9. Running Notepad++</h3>
 
-<p><img src="assets/png/npp-01.png" class="img-responsive center-block"
-alt="Notepad++ start menu entry"></p>
+<p>Notepad++ launches.</p>
+
+<p>Close Notepad++ for now. We won't need it until later.</p>
+
+<p><img src="assets/png/npp-install-10.png.NEWIMG" class="img-responsive
+center-block" alt="Notepad++ window"></p>
 
 <div class="page-header"><h1>VirtualBox</h1></div>
 
@@ -276,7 +313,15 @@ center-block" alt="Vagrant Setup: Restart your computer"></p>
 <p>Vagrant does not appear in the Windows start menu because it is a
 command line utility.</p>
 
-<div class="page-header"><h1>Cygwin</h1></div>
+<div class="page-header">
+  <h1>BIOS Virtualization Features (Optional)</h1>
+</div>
+
+<p><strong>TODO: Flesh out this section.</strong></p>
+
+<div class="page-header">
+  <h1>Cygwin</h1>
+</div>
 
 <h2>Cygwin Intro</h2>
 
