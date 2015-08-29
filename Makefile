@@ -7,7 +7,8 @@ export PATH := $(abspath bin):$(PATH)
 
 # Directory to deploy to.
 export DOC_ROOT := /usr/local/apache2/htdocs
-export DIST_DIR := $(DOC_ROOT)/blog2
+export PREFIX := blog2
+export DIST_DIR := $(DOC_ROOT)/$(PREFIX)
 
 HELP_TEXT = $(info Targets:)
 

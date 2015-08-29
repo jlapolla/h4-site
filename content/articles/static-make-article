@@ -40,20 +40,69 @@ $content->store_comments(1);
 $content->warn(1);
 $content->parse_file($sArticleContent)
   or die $!;
-$wrapper = $page->look_down('id', 'article-content');
+$wrapper = $page->look_down('id', 'placeholder-article');
 foreach ($content->disembowel()) {
+  $wrapper->id(undef);
   $wrapper->push_content($_);
 }
 
 # Populate template based on article config information.
-#print $sArticleConfig;
 $content = YAML::XS::LoadFile($sArticleConfig)
   or die $!;
+
+# Populate page title.
 if (exists $content->{'title'}) {
   $page->find_by_tag_name('title')->delete_content()->push_content($content->{'title'} . ' - 4He');
 }
 else {
   $page->find_by_tag_name('title')->delete_content()->push_content('Untitled Article - 4He');
+}
+
+# Populate page contents.
+sub populate_contents {
+  my $dropdown = shift;
+  my $template = shift;
+  my $configArr = shift;
+  my $depth = shift;
+
+  $depth = 0 unless defined $depth;
+
+  foreach my $config (@{$configArr}){
+    my $item = $template->clone();
+    if (exists $config->{'title'}){
+      my $textTarget = ($item->content_list())[0];
+      if ($depth > 0){
+        my $margin = 0;
+        for (my $i = 0; $i < $depth; $i++){
+          $margin += 8;
+        }
+        $textTarget->push_content(['span']);
+        $textTarget = ($textTarget->content_list())[0];
+        $textTarget->attr('style', 'margin-left: ' . $margin . 'px;');
+      }
+      $textTarget->push_content($config->{'title'})
+    }
+    if (exists $config->{'href'}){
+      ($item->content_list())[0]->attr('href', '#content-' . $config->{'href'});
+    }
+    $dropdown->push_content($item);
+    if (exists $config->{'children'}){
+      populate_contents($dropdown, $template, $config->{'children'}, $depth + 1);
+    }
+  }
+}
+
+if (exists $content->{'contents'}){
+  my $dropdown = $page->look_down('id', 'placeholder-contents');
+  $dropdown->id(undef);
+  my $item = ($dropdown->detach_content())[0];
+  ($item->content_list())[0]->delete_content();
+  my $config = $content->{'contents'};
+  populate_contents($dropdown, $item, $config);
+}
+else {
+  # Remove content dropdown entirely.
+  $page->look_down('id', 'placeholder-contents')->parent()->delete();
 }
 
 # Output HTML and DTD.
