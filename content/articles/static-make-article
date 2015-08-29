@@ -70,12 +70,17 @@ sub populate_contents {
   foreach my $config (@{$configArr}){
     my $item = $template->clone();
     if (exists $config->{'title'}){
-      my $margin = 0;
-      for (my $i = 0; $i < $depth; $i++){
-        $margin += 8;
+      my $textTarget = ($item->content_list())[0];
+      if ($depth > 0){
+        my $margin = 0;
+        for (my $i = 0; $i < $depth; $i++){
+          $margin += 8;
+        }
+        $textTarget->push_content(['span']);
+        $textTarget = ($textTarget->content_list())[0];
+        $textTarget->attr('style', 'margin-left: ' . $margin . 'px;');
       }
-      ($item->content_list())[0]->attr('style', 'margin-left: ' . $margin . 'px;');
-      ($item->content_list())[0]->push_content($config->{'title'})
+      $textTarget->push_content($config->{'title'})
     }
     if (exists $config->{'href'}){
       ($item->content_list())[0]->attr('href', '#content-' . $config->{'href'});
