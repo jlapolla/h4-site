@@ -21,7 +21,7 @@ help:
 	$(HELP_TEXT)
 
 # Template population.
-$(DIST_DIR)/articles/%/index.html: %/out/main.html %/out/head.html %/out/config.yml static-template.html | %/assets
+$(DIST_DIR)/articles/%/index.html: %/out/main.html %/out/head.html %/out/config.yml static-template.html static-make-article | %/assets
 	$(call MKDIR)
 	./static-make-article static-template.html $^ > $@
 
