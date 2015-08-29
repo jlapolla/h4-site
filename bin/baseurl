@@ -24,7 +24,7 @@ $tree->ignore_unknown(0);
 $tree->implicit_tags(0);
 $tree->store_comments(1);
 $tree->warn(1);
-$tree->parse_file($sFile);
+$tree->parse_file($sFile)
   or die $!;
 $tree->traverse($traverseCallback, 1);
 
