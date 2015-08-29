@@ -336,26 +336,27 @@ center-block" alt="Vagrant Setup: Restart your computer"></p>
   <h1>Cygwin</h1>
 </div>
 
+<p>Cygwin is different from the other program's we've installed so far.
+It is important for us to understand these differences.</p>
+
+<p>Let's go over these differences before we install Cygwin.</p>
+
 <h2>Cygwin Intro</h2>
 
-<p>Cygwin is different from the other program's we've installed so
-far.</p>
-
-<p>Let me explain.</p>
-
-<h3>Cygwin Explained</h3>
-
-<p>The first thing you need to understand about Cygwin is that it is not
-a single program. A Cygwin installation is a collection of many programs
-and files which work together to form the Cygwin environment. These
-programs and files are distributed in the form of "Cygwin packages".</p>
+<p>The first thing to understand is that Cygwin is not a single program.
+A Cygwin installation is a collection of many programs and files which
+work together to form the "Cygwin environment". We add programs and
+files to our Cygwin installation by installing "packages". Each package
+contains a collection of related programs and files which are installed
+(and uninstalled) together, as a single unit.</p>
 
 <p>There are hundreds of packages available for Cygwin. Typically, you
-will install packages on an as-needed basis, instead of installing all
-Cygwin packages at once.</p>
+install packages on an as-needed basis, instead of installing all Cygwin
+packages at once. You can always install more packages later if you need
+them.</p>
 
 <p>The Cygwin Setup utility manages the packages in your Cygwin
-installation. You can run Cygwin Setup at any time to:</p>
+installation. Run Cygwin Setup at any time to:</p>
 
 <ul>
   <li>Add new packages to your Cygwin installation.</li>
@@ -366,17 +367,17 @@ installation. You can run Cygwin Setup at any time to:</p>
 <p>Packages work together, and many packages depend on other packages in
 order to function. These other required packages are called
 "dependencies". Typically, you tell the Cygwin Setup utility which
-packages you would like to install, and Cygwin Setup checks the packages
+packages you want to install, and Cygwin Setup checks the packages
 you've selected to make sure all their dependencies are installed. If
 any dependencies need to be installed, Cygwin Setup offers to install
 the dependencies. This process is called "dependency resolution".</p>
 
-<h3>Road Map</h3>
+<h2>Road Map</h2>
 
 <p>To set up our Cygwin installation, we'll begin by downloading the
 Cygwin Setup utility (it's a single executable file). We'll place the
 Cygwin Setup utility in a permanent location, so we know where to find
-it in the future when we want to update our Cygwin installation.</p>
+it in the future when we want to manage our Cygwin packages.</p>
 
 <p>Next, we'll launch the Cygwin Setup utility.</p>
 
@@ -393,46 +394,56 @@ installation.</p>
 
 <p>Let's get started.</p>
 
-<h2>Download Cygwin Setup</h2>
+<h2>Installing Cygwin</h2>
 
-<p>Use the button below to download Cygwin Setup.</p>
+<h3>1. Download Cygwin Setup</h3>
+
+<p>Click the button below to download the latest version of Cygwin
+Setup. (Today, I'm using v2.871 for 64-bit Windows.)</p>
+
+<p><span class="text-muted"><i>Hint: Choose <code>setup-x86.exe</code>
+    if you're using a 32-bit version of Windows. Choose
+<code>setup-x86_64.exe</code> if you're using a 64-bit version of
+Windows.</i></span></p>
 
 <p><a href="https://cygwin.com/install.html" class="btn btn-lg
   btn-success" target="_blank"><span class="glyphicon
 glyphicon-download-alt"></span> Download Cygwin</a></p>
 
-<p>After you've downloaded Cygwin Setup, move the downloaded
-<code>setup.exe</code> file to a convenient permanent location. Cygwin
-Setup will cache downloaded packages and package metadata in the same
-directory as <code>setup.exe</code>. Typically you keep
-<code>setup.exe</code> in the same place to take advantage of the
-caching feature. I usually create a <code>C:\cygwin-setup</code>
-directory and put <code>setup.exe</code> in that directory.</p>
+<p>We'll keep the Cygwin Setup utility in
+<code>C:\cygwin-setup</code>.</p>
 
-<h2>Install Cygwin Packages</h2>
+<p>Open Windows File Explorer and create a <code>C:\cygwin-setup</code>
+directory. Move the downloaded <code>setup-x86_64.exe</code> file to
+<code>C:\cygwin-setup</code>.</p>
 
-<p>Double click the downloaded <code>setup.exe</code> file to run Cygwin
-Setup.</p>
+<h3>2. Run Cygwin Setup</h3>
 
-<h3>1. Welcome Screen</h3>
+<p>Double click the downloaded <code>setup-x86_64.exe</code> file to
+launch Cygwin Setup.</p>
 
-<p>This welcome screen has some good information.</p>
+<h3>3. Welcome Screen</h3>
+
+<p>This welcome screen actually has some helpful information on it.</p>
 
 <p>Read the welcome screen, then click <button class="btn btn-default
-  btn-xs">Next &gt;</button>.</p>
+  btn-xs">Next &gt;</button> to continue.</p>
 
 <p><img src="assets/png/cygwin-setup-01.png" class="img-responsive
 center-block" alt="Cygwin Setup: Welcome screen"></p>
 
-<h3>2. Choose Package Source</h3>
+<h3>4. Choose Package Source</h3>
 
-<p>Choose "Install from Internet", then click <button class="btn
-  btn-default btn-xs">Next &gt;</button>.</p>
+<p>Choose "Install from Internet" to download Cygwin packages from the
+Internet.</p>
+
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+  continue.</p>
 
 <p><img src="assets/png/cygwin-setup-02.png" class="img-responsive
 center-block" alt="Cygwin Setup: Choose package source"></p>
 
-<h3>3. Choose Installation Directory</h3>
+<h3>5. Choose Installation Directory</h3>
 
 <p>Choose the root directory where your Cygwin environment will be
 installed. I usually choose <code>C:\cygwin</code> for my Cygwin root
@@ -443,7 +454,7 @@ directory.</p>
 <p><img src="assets/png/cygwin-setup-03.png" class="img-responsive
 center-block" alt="Cygwin Setup: Choose installation directory"></p>
 
-<h3>4. Choose Package Cache Directory</h3>
+<h3>6. Choose Package Cache Directory</h3>
 
 <p>Choose where you want Cygwin Setup to store its cached package files.
 I usually store cached package files in <code>C:\cygwin-setup</code>,
@@ -454,7 +465,7 @@ right next to <code>setup.exe</code>.</p>
 <p><img src="assets/png/cygwin-setup-04.png" class="img-responsive
 center-block" alt="Cygwin Setup: Choose package cache directory"></p>
 
-<h3>5. Configure Network Settings</h3>
+<h3>7. Configure Network Settings</h3>
 
 <p>Configure network settings appropriate for your Internet connection.
 I use "Direct Connection".</p>
@@ -464,7 +475,7 @@ I use "Direct Connection".</p>
 <p><img src="assets/png/cygwin-setup-05.png" class="img-responsive
 center-block" alt="Cygwin Setup: Configure network settings"></p>
 
-<h3>6. Choose a Mirror</h3>
+<h3>8. Choose a Mirror</h3>
 
 <p>The official Cygwin package repository is available from multiple
 servers throughout the world. They all have the same Cygwin packages
@@ -482,7 +493,7 @@ to your geographic location.</p>
 <p><img src="assets/png/cygwin-setup-06.png" class="img-responsive
 center-block" alt="Cygwin Setup: Choose a mirror"></p>
 
-<h3>7. Downloading Package Metadata</h3>
+<h3>9. Downloading Package Metadata</h3>
 
 <p>Cygwin Setup downloads the latest package metadata from your selected
 mirror and updates its local cache.</p>
@@ -492,7 +503,7 @@ mirror and updates its local cache.</p>
 <p><img src="assets/png/cygwin-setup-07.png" class="img-responsive
 center-block" alt="Cygwin Setup: Downloading package metadata"></p>
 
-<h3>8. Select Packages to Install</h3>
+<h3>10. Select Packages to Install</h3>
 
 <p>Now we're ready to browse for packages and select the Cygwin packages
 we want to install.</p>
@@ -565,7 +576,7 @@ operations.</p>
 <p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
 execute the pending operations.</p>
 
-<h3>9. Resolve Dependencies</h3>
+<h3>11. Resolve Dependencies</h3>
 
 <p>Some of the packages we've selected depend on other packages. Cygwin
 Setup computes the required dependencies and offers to install them for
@@ -577,7 +588,7 @@ us.</p>
 <p><img src="assets/png/cygwin-setup-14.png" class="img-responsive
 center-block" alt="Cygwin Setup: Resolve dependencies"></p>
 
-<h3>10. Installing Selected Packages and Dependencies</h3>
+<h3>12. Installing Selected Packages and Dependencies</h3>
 
 <p>Cygwin Setup downloads and installs the selected packages and
 dependencies.</p>
@@ -588,7 +599,7 @@ dependencies.</p>
 center-block" alt="Cygwin Setup: Downloading and installing
 packages"></p>
 
-<h3>11. Finish</h3>
+<h3>13. Finish</h3>
 
 <p>Click <button class="btn btn-default btn-xs">Finish</button>.</p>
 
@@ -709,7 +720,9 @@ the system tray and select <code>XDG Menu</code> &gt;
 <p><img src="assets/png/xwin-05.png" class="img-responsive center-block"
 alt="Cygwin/X menu with Exit highlighted"></p>
 
-<div class="page-header"><h1>Virtual Machine Setup</h1></div>
+<div class="page-header">
+  <h1>Virtual Machine Setup</h1>
+</div>
 
 <h2>Intro</h2>
 
@@ -742,6 +755,8 @@ This is just like pressing the power button to shut down a physical
 computer.</p>
 
 <h2>Walkthrough</h2>
+
+<p><strong>TODO: Set up Cygwin PATH.</strong></p>
 
 <p>We need to create a directory to put our Vagrantfile in. Let's create
 a <code>virt\linux</code> directory under our Cygwin home directory, and
