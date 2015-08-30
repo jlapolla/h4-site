@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav id="main-nav" class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <!-- Navbar header -->
         <div class="navbar-header">
@@ -48,5 +48,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/assets/js/smooth-scroll.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+      // Close dropdown when a link is clicked.
+      $('.dropdown-menu a').click(function(){
+        $(this).closest('.dropdown-menu').prev().dropdown('toggle');
+      });
+      // Collapse navbar when content dropdown link is clicked.
+      $('#navbar-collapse .dropdown-menu a').click(function(){
+        $(this).closest('#navbar-collapse').collapse('hide');
+      });
+      // Collapse navbar on click outside of navbar.
+      $('html').click(function(ev){
+        if (! $.contains($('#main-nav').get(0), ev.target))
+          $('#navbar-collapse').collapse('hide');
+      });
+    </script>
   </body>
 </html>
