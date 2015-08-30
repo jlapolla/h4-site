@@ -16,6 +16,14 @@ contents:
         href: cygwin-intro
       - title: Road Map
         href: cygwin-road-map
-      - title: Installing Cygwin
-        href: cygwin-installing
+      - title: Install Cygwin
+        href: cygwin-install
+      - title: Launch Cygwin Terminal
+        href: cygwin-launch
+      - title: Customize Terminal Appearance
+        href: cygwin-terminal
+      - title: Cygwin Directory Structure
+        href: cygwin-directories
+  - title: Virtual Machine Setup
+    href: vm-setup
 ...
