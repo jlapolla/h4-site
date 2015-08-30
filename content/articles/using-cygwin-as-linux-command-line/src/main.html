@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Intro</h1>
+  <h1 id="content-intro">Intro</h1>
 </div>
 
 <p>The first hurdle you encounter when learning Linux is actually
@@ -48,7 +48,7 @@ following programs:</p>
 <p>Let's get started.</p>
 
 <div class="page-header">
-  <h1>Notepad++</h1>
+  <h1 id="content-notepad">Notepad++</h1>
 </div>
 
 <h2>1. Download Notepad++</h2>
@@ -56,8 +56,7 @@ following programs:</p>
 <p>Click the button below to download the latest version of Notepad++.
 (Today, I'm installing Notepad++ v6.8.2.)</p>
 
-<p><span class="text-muted"><i>Hint: Choose the "Notepad++
-    Installer".</i></span></p>
+<p><strong>Choose the "Notepad++ Installer".</strong></p>
 
 <p><a href="https://notepad-plus-plus.org/download" class="btn btn-lg
   btn-success" target="_blank"><span class="glyphicon
@@ -156,7 +155,7 @@ center-block" alt="Notepad++ Setup: Finished"></p>
 center-block" alt="Notepad++ window"></p>
 
 <div class="page-header">
-  <h1>VirtualBox</h1>
+  <h1 id="content-virtualbox">VirtualBox</h1>
 </div>
 
 <h2>1. Download VirtualBox</h2>
@@ -164,8 +163,8 @@ center-block" alt="Notepad++ window"></p>
 <p>Click the button below to download the latest version of VirtualBox.
 (Today, I'm installing VirtualBox v5.0.2.)</p>
 
-<p><span class="text-muted"><i>Hint: Choose "VirtualBox for Windows
-    hosts", under "VirtualBox binaries".</i></span></p>
+<p><strong>Choose "VirtualBox for Windows hosts", under "VirtualBox
+  binaries".</strong></p>
 
 <p><a href="https://www.virtualbox.org/wiki/Downloads" class="btn btn-lg
   btn-success" target="_blank"><span class="glyphicon
@@ -253,7 +252,7 @@ center-block" alt="VirtualBox Setup: Finished"></p>
 class="img-responsive center-block" alt="VirtualBox window"></p>
 
 <div class="page-header">
-  <h1>Vagrant</h1>
+  <h1 id="content-vagrant">Vagrant</h1>
 </div>
 
 <h2>1. Download Vagrant</h2>
@@ -333,7 +332,7 @@ center-block" alt="Vagrant Setup: Finished"></p>
 center-block" alt="Vagrant Setup: Restart your computer"></p>
 
 <div class="page-header">
-  <h1>Cygwin</h1>
+  <h1 id="content-cygwin">Cygwin</h1>
 </div>
 
 <p>Cygwin is different from the other program's we've installed so far.
@@ -341,7 +340,7 @@ It is important for us to understand these differences.</p>
 
 <p>Let's go over these differences before we install Cygwin.</p>
 
-<h2>Cygwin Intro</h2>
+<h2 id="content-cygwin-intro">Cygwin Intro</h2>
 
 <p>The first thing to understand is that Cygwin is not a single program.
 A Cygwin installation is a collection of many programs and files which
@@ -372,7 +371,7 @@ you've selected to make sure all their dependencies are installed. If
 any dependencies need to be installed, Cygwin Setup offers to install
 the dependencies. This process is called "dependency resolution".</p>
 
-<h2>Road Map</h2>
+<h2 id="content-cygwin-road-map">Road Map</h2>
 
 <p>To set up our Cygwin installation, we'll begin by downloading the
 Cygwin Setup utility (it's a single executable file). We'll place the
@@ -394,28 +393,25 @@ installation.</p>
 
 <p>Let's get started.</p>
 
-<h2>Installing Cygwin</h2>
+<h2 id="content-cygwin-installing">Installing Cygwin</h2>
 
 <h3>1. Download Cygwin Setup</h3>
 
 <p>Click the button below to download the latest version of Cygwin
 Setup. (Today, I'm using v2.871 for 64-bit Windows.)</p>
 
-<p><span class="text-muted"><i>Hint: Choose <code>setup-x86.exe</code>
-    if you're using a 32-bit version of Windows. Choose
-<code>setup-x86_64.exe</code> if you're using a 64-bit version of
-Windows.</i></span></p>
+<p><strong>Choose <code>setup-x86.exe</code> if you're using a 32-bit
+  version of Windows. Choose <code>setup-x86_64.exe</code> if you're
+using a 64-bit version of Windows.</strong></p>
 
 <p><a href="https://cygwin.com/install.html" class="btn btn-lg
   btn-success" target="_blank"><span class="glyphicon
 glyphicon-download-alt"></span> Download Cygwin</a></p>
 
-<p>We'll keep the Cygwin Setup utility in
-<code>C:\cygwin-setup</code>.</p>
-
-<p>Open Windows File Explorer and create a <code>C:\cygwin-setup</code>
-directory. Move the downloaded <code>setup-x86_64.exe</code> file to
-<code>C:\cygwin-setup</code>.</p>
+<p>We'll put the Cygwin Setup utility in <code>C:\cygwin-setup</code>.
+To do this, open Windows File Explorer and create a
+<code>C:\cygwin-setup</code> directory. Then, move the downloaded
+<code>setup-x86_64.exe</code> file to <code>C:\cygwin-setup</code>.</p>
 
 <h3>2. Run Cygwin Setup</h3>
 
@@ -424,7 +420,7 @@ launch Cygwin Setup.</p>
 
 <h3>3. Welcome Screen</h3>
 
-<p>This welcome screen actually has some helpful information on it.</p>
+<p>This welcome screen has some helpful information on it.</p>
 
 <p>Read the welcome screen, then click <button class="btn btn-default
   btn-xs">Next &gt;</button> to continue.</p>
@@ -445,136 +441,143 @@ center-block" alt="Cygwin Setup: Choose package source"></p>
 
 <h3>5. Choose Installation Directory</h3>
 
-<p>Choose the root directory where your Cygwin environment will be
-installed. I usually choose <code>C:\cygwin</code> for my Cygwin root
-directory.</p>
+<p>Choose <code>C:\cygwin</code> for your installation directory. This
+is where Cygwin Setup will install packages.</p>
 
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
-<p><img src="assets/png/cygwin-setup-03.png" class="img-responsive
+<p><img src="assets/png/cygwin-setup-03.png.NEWIMG" class="img-responsive
 center-block" alt="Cygwin Setup: Choose installation directory"></p>
 
-<h3>6. Choose Package Cache Directory</h3>
+<h3>6. Choose Package Download Directory</h3>
 
-<p>Choose where you want Cygwin Setup to store its cached package files.
-I usually store cached package files in <code>C:\cygwin-setup</code>,
-right next to <code>setup.exe</code>.</p>
+<p>Choose <code>C:\cygwin-setup</code> for your package download
+directory. This is where Cygwin Setup will place downloaded package
+files before they are installed.</p>
 
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
-<p><img src="assets/png/cygwin-setup-04.png" class="img-responsive
+<p><img src="assets/png/cygwin-setup-04.png.NEWIMG" class="img-responsive
 center-block" alt="Cygwin Setup: Choose package cache directory"></p>
 
-<h3>7. Configure Network Settings</h3>
+<h3>7. Choose Internet Settings</h3>
 
-<p>Configure network settings appropriate for your Internet connection.
-I use "Direct Connection".</p>
+<p>Choose "Direct Connection" to allow Cygwin Setup to connect directly
+to the Internet.</p>
 
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button>.</p>
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
 <p><img src="assets/png/cygwin-setup-05.png" class="img-responsive
 center-block" alt="Cygwin Setup: Configure network settings"></p>
 
-<h3>8. Choose a Mirror</h3>
+<h3>8. Choose Package Download Site</h3>
 
-<p>The official Cygwin package repository is available from multiple
-servers throughout the world. They all have the same Cygwin packages
-available, but download times vary from server to server. I usually just
-pick one at random.</p>
+<p>In this step, we'll choose the site that we want Cygwin Setup to
+download packages from. All of these sites have the same packages, but
+download times vary from site to site. I usually just pick one at
+random.</p>
 
-<p>If you get slow download speeds, try a different mirror. You can
-check the <a href="https://cygwin.com/mirrors.html"
-target="_blank">Cygwin mirrors list</a> to find a mirror that is close
-to your geographic location.</p>
+<p>If you get slow download speeds, try a different site. You can check
+the <a href="https://cygwin.com/mirrors.html" target="_blank">Cygwin
+mirrors list</a> to find a site that is close to your geographic
+location.</p>
 
-<p>Choose a mirror, then click <button class="btn btn-default
-  btn-xs">Next &gt;</button>.</p>
+<p>When we click <button class="btn btn-default btn-xs">Next
+  &gt;</button>, Cygwin Setup will begin downloading the most recent
+list of available packages from our selected download site.</p>
+
+<p>Choose a download site, then click <button class="btn btn-default
+  btn-xs">Next &gt;</button> to begin downloading the list of available
+packages.</p>
 
 <p><img src="assets/png/cygwin-setup-06.png" class="img-responsive
 center-block" alt="Cygwin Setup: Choose a mirror"></p>
 
-<h3>9. Downloading Package Metadata</h3>
+<h3>9. Package List Download Progress</h3>
 
-<p>Cygwin Setup downloads the latest package metadata from your selected
-mirror and updates its local cache.</p>
-
-<p>Wait for it to finish.</p>
+<p>Wait for Cygwin Setup to finish downloading the list of available
+packages. This should take less than a minute. <strong>TODO: Get a
+specific time estimate.</strong></p>
 
 <p><img src="assets/png/cygwin-setup-07.png" class="img-responsive
 center-block" alt="Cygwin Setup: Downloading package metadata"></p>
 
-<h3>10. Select Packages to Install</h3>
+<h3>10. Choose Packages to Install</h3>
 
-<p>Now we're ready to browse for packages and select the Cygwin packages
-we want to install.</p>
+<p>The Cygwin package browser opens when Cygwin Setup finishes
+downloading the list of available packages. We'll use the package
+browser to search through the list of available packages, and choose the
+packages we want to install.</p>
 
-<p>Let's take some time to get familiar with the Cygwin package browser
-first. Right now we're looking at all Cygwin packages, organized by
-category.</p>
+<p>Today, we will install the following packages:</p>
+
+<ul>
+
+  <li>All packages in the "Base" category: These are the minimum
+  packages required for a working Cygwin installation. These packages
+  are selected by default.</li>
+
+  <li><code>xorg-server</code>: Allows us to run GUI applications on our
+  virtual machine.</li>
+
+  <li><code>xinit</code>: Used to launch <code>xorg-server</code>.</li>
+
+  <li><code>openssh</code>: Allows us to connect to our virtual machine
+  from our Windows host.</li>
+
+</ul>
+
+<p>The Cygwin package browser has two search features:</p>
+
+<dl class="dl-horizontal">
+
+  <dt>Views</dt>
+
+  <dd>Views organize the package list in different ways. For example,
+  the "Category" view shows packages by category, and the "Pending" view
+    shows all packages that we are installing, uninstalling, updating,
+      or reinstalling. Hover your mouse over the <button class="btn
+        btn-default btn-xs">View</button> button for a description of
+      the different views.</dd>
+
+  <dt>Search box</dt>
+
+  <dd>The search box filters the packages in current view. For example,
+  if you type "o" in the search box, only packages that start with the
+  letter "o" are shown. If you type "op" in the search, only packages
+  that start with the letters "op" are shown. If no packages in the
+  current view match your search filter, no packages are shown.</dd>
+
+</dl>
+
+<p>When you find the package you're looking for, click the <code><span
+    class="glyphicon glyphicon-refresh"></span></code> symbol to cycle
+    through the possible actions for that package. For example, to
+        uninstall a package, click the <code><span class="glyphicon
+            glyphicon-refresh"></span></code> symbol until it says
+        "Uninstall". It's a bit trickier when installing or updating a
+        package though. Instead of saying "Install" or "Update", it
+        shows the version number of the package it will install or
+        update (in the case of update, we are updating the package to
+        the new version number shown).</p>
+
+<p>Go ahead and select the packages in the list above for installation
+(make sure you are installing the latest version). The "Base" packages
+are already selected for you. When you've selected the above packages,
+switch to "Pending" view to review your selections.</p>
+
+<p>When we click <button class="btn btn-default btn-xs">Next
+  &gt;</button>, Cygwin Setup will check the dependencies for our
+selected packages, and offer to install the required dependencies.</p>
+
+<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
+continue.</p>
 
 <p><img src="assets/png/cygwin-setup-08.png" class="img-responsive
 center-block" alt="Cygwin Setup: Package browser"></p>
-
-<p>Click <button class="btn btn-default btn-xs">View</button> twice to
-switch to "Pending" view. "Pending" view shows the packages that are
-currently selected for installation. Hover your mouse over the <button
-class="btn btn-default btn-xs">View</button> button for an explanation
-of the different views.</p>
-
-<p>Right now all of the packages under the "Base" category are selected
-for installation. The Base category includes all packages required for a
-minimal Cygwin installation.</p>
-
-<p><img src="assets/png/cygwin-setup-09.png" class="img-responsive
-center-block" alt="Cygwin Setup: Package browser"></p>
-
-<p>In addition to the base packages, we want to install the packages
-required for Cygwin/X. Cygwin/X is required to run GUI applications in
-our Linux virtual machine. According to the Cygwin/X website, Cygwin/X
-requires the following packages:</p>
-
-<ul>
-  <li>xorg-server</li>
-  <li>xinit</li>
-  <li>openssh</li>
-</ul>
-
-<p>Switch to "Full" view, and type "xorg-server" in the search box.</p>
-
-<p><img src="assets/png/cygwin-setup-10.png" class="img-responsive
-center-block" alt="Cygwin Setup: Package browser"></p>
-
-<p>The first package is the one we want.</p>
-
-<p>Click <code><span class="glyphicon glyphicon-refresh"></span></code>
-to cycle through options until it shows the latest version of
-xorg-server. This selects xorg-server for installation.</p>
-
-<p><img src="assets/png/cygwin-setup-11.png" class="img-responsive
-center-block" alt="Cygwin Setup: Package browser"></p>
-
-<p>Switch to "Pending" view to confirm that xorg-server is selected for
-installation. Notice that the base packages are hidden since we have
-typed "xorg-server" into the search filter box.</p>
-
-<p><img src="assets/png/cygwin-setup-12.png" class="img-responsive
-center-block" alt="Cygwin Setup: Package browser"></p>
-
-<p>Click <button class="btn btn-default btn-xs">Clear</button> to clear
-the search filter and see the full list of all pending operations. This
-unhides the base packages that are selected for installation.</p>
-
-<p><img src="assets/png/cygwin-setup-13.png" class="img-responsive
-center-block" alt="Cygwin Setup: Package browser"></p>
-
-<p>Switch to "Full" view and use the search filter to find xinit and
-openssh. Click <code><span class="glyphicon
-glyphicon-refresh"></span></code> to select xinit and openssh for
-installation. Switch to "Pending" view to review your pending
-operations.</p>
-
-<p>Click <button class="btn btn-default btn-xs">Next &gt;</button> to
-execute the pending operations.</p>
 
 <h3>11. Resolve Dependencies</h3>
 

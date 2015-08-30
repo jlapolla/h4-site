@@ -1,3 +1,21 @@
 ---
 title: Get Started with Linux, on Windows!
+contents:
+  - title: Intro
+    href: intro
+  - title: Notepad++
+    href: notepad
+  - title: VirtualBox
+    href: virtualbox
+  - title: Vagrant
+    href: vagrant
+  - title: Cygwin
+    href: cygwin
+    children:
+      - title: Cygwin Intro
+        href: cygwin-intro
+      - title: Road Map
+        href: cygwin-road-map
+      - title: Installing Cygwin
+        href: cygwin-installing
 ...
