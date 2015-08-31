@@ -272,6 +272,8 @@ class="img-responsive center-block" alt="VirtualBox window"></p>
 <p>Click the button below to download the latest version of Vagrant.
 (Today, I'm installing Vagrant v1.7.4.)</p>
 
+<p><strong>Choose "Windows Universal (32 and 64-bit)".</strong></p>
+
 <p><a href="https://www.vagrantup.com/downloads.html" class="btn btn-lg
   btn-success" target="_blank"><span class="glyphicon
 glyphicon-download-alt"></span> Download Vagrant</a></p>
@@ -294,7 +296,8 @@ center-block" alt="Vagrant Setup: Welcome screen"></p>
 <p>Review the license agreement.</p>
 
 <p>Check "I accept the terms in the License Agreement", then click
-<button class="btn btn-default btn-xs">Next</button> to continue.</p>
+<button class="btn btn-default btn-xs">Next</button> to accept the
+license agreement and continue.</p>
 
 <p><img src="assets/png/vagrant-install-03.png" class="img-responsive
 center-block" alt="Vagrant Setup: License agreement"></p>
@@ -376,12 +379,14 @@ installation. Run Cygwin Setup at any time to:</p>
 </ul>
 
 <p>Packages work together, and many packages depend on other packages in
-order to function. These other required packages are called
-"dependencies". Typically, you tell the Cygwin Setup utility which
-packages you want to install, and Cygwin Setup checks the packages
-you've selected to make sure all their dependencies are installed. If
-any dependencies need to be installed, Cygwin Setup offers to install
-the dependencies. This process is called "dependency resolution".</p>
+order to function. When a package "depends" on another package, it is
+said to have a "dependency" on the other package. A package's
+"dependencies" are all the other packages on which it "depends".
+Typically, you tell the Cygwin Setup utility which packages you want to
+install, and Cygwin Setup checks the packages you've selected to make
+sure all their dependencies are installed. If any dependencies need to
+be installed, Cygwin Setup offers to install the dependencies. This
+process is called "dependency resolution".</p>
 
 <h2 id="content-cygwin-road-map">Road Map</h2>
 
@@ -395,9 +400,11 @@ it in the future when we want to manage our Cygwin packages.</p>
 <p>Cygwin Setup will first download a list of available packages from
 the Internet. Then it will open a package browser, where we can search
 through the available packages and choose the packages we want to
-install. Once we finalize our choices, Cygwin Setup will check if the
-packages we selected require any dependencies. Then, Cygwin Setup will
-download and install our selected packages and their dependencies.</p>
+install (I'll give you a list of specific packages to install when we
+get to this step). Once we finalize our choices, Cygwin Setup will check
+if the packages we selected require any dependencies. Then, Cygwin Setup
+will download and install our selected packages and their
+dependencies.</p>
 
 <p>Remember, you can always run Cygwin Setup again to add packages to
 your Cygwin installation, or remove packages from your Cygwin
@@ -952,7 +959,9 @@ alt="Terminal: vagrant status"></p>
 <code>vagrant destroy --force</code>. Let's keep the virtual machine for
 now.</p>
 
-<div class="page-header"><h1>Virtual Machine Exploration</h1></div>
+<div class="page-header">
+  <h1>Virtual Machine Exploration</h1>
+</div>
 
 <h2>Intro</h2>
 
