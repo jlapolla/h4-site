@@ -10,9 +10,10 @@ to learn Linux without touching our current Windows installation.</p>
 
 <p>In this tutorial we'll create a Linux virtual machine. Then you can
 experiment with Linux on the virtual machine, and if you break something
-you can spawn a new virtual machine with a fresh Linux install. This
-tutorial is not meant to teach Linux. It is meant to give you access to
-a working Linux installation, and thus enable you to follow along with
+you can spawn a new virtual machine with a fresh Linux install.</p>
+
+<p>This tutorial is not meant to teach Linux. It is meant to give you
+access to a working Linux installation, and thus enable you complete
 other Linux tutorials.</p>
 
 <p>To work with Linux virtual machines in Windows, we'll install the
@@ -40,8 +41,8 @@ following programs:</p>
   <dt>Cygwin</dt>
 
   <dd>A Linux-like command line for Windows. We'll use this to run
-  Vagrant on our Windows machine, and to run commands on the Linux
-  virtual machine.</dd>
+  Vagrant on our Windows machine, and to access the command line on the
+  Linux virtual machine.</dd>
 
 </dl>
 
@@ -746,6 +747,8 @@ center-block" alt="Cygwin Terminal looks options"></p>
   <li>Select an attractive font and font size.</li>
 </ul>
 
+<!-- TODO: Change font to "Consolas 11 pt" and base pictures on that. -->
+
 <p><img src="assets/png/cygwin-terminal-6.png" class="img-responsive
 center-block" alt="Cygwin Terminal text options"></p>
 
@@ -780,9 +783,9 @@ computer from within the Cygwin environment.</p>
 
 <p>To create our Linux virtual machine, we'll start by using Vagrant to
 generate a generic "Vagrantfile". A Vagrantfile is a configuration file
-that tells Vagrant what kind of virtual machine we want. We'll create a
-generic Vagrantfile using the <code>vagrant init</code> command on the
-command line. Then we'll use Notepad++ to edit a few lines in the
+that tells Vagrant what kind of virtual machine we want to create. We'll
+create a generic Vagrantfile using the <code>vagrant init</code> command
+on the command line. Then we'll use Notepad++ to edit a few lines in the
 Vagrantfile to customize our virtual machine.</p>
 
 <p>Once we have our Vagrantfile, we'll run the <code>vagrant up</code>
@@ -792,37 +795,83 @@ Vagrant turns on the virtual machine. This is just like pressing the
 power button to turn on a real computer.</p>
 
 <p>Once the virtual machine is up and running, we need to connect to it.
-We'll use SSH to connect to the virtual machine. SSH is used to run
-commands on other computers over a network. We'll be running commands on
-our virtual machine, which is actually running on our local computer,
-not somewhere else on the network. But, the virtual machine is just like
-a real computer, and your Windows operating system sees it as another
-computer on the network. It's like there's a fake network between your
-Windows host, and the guest virtual machine. The special network drivers
-that VirtualBox installed make this "virtual network" possible.</p>
+We'll use "SSH" to connect to the virtual machine. SSH is used to access
+the command line of a remote computer over a network. We'll be accessing
+the command line of our virtual machine, which is actually running on
+our local computer, not somewhere else on the network. But, the virtual
+machine is just like a real computer, and your Windows operating system
+sees it as a separate, remote computer on the network. It's like there's
+a fake network between your Windows host, and the guest virtual machine.
+The network drivers that VirtualBox installed make this "virtual
+network" possible.</p>
 
 <p>We'll run <code>vagrant ssh</code> to begin an SSH session on the
-virtual machine. Once we are in the SSH session, we are interacting
-directly with the virtual machine's command line. All commands we enter
-on the command line are sent straight to the virtual machine, and run on
-the virtual machine. When we're ready to quit the SSH session, we'll run
-<code>exit</code> to close the SSH connection and return to our local
-command line.</p>
+virtual machine. During the SSH session, we are accessing the virtual
+machine's command line directly. All commands we enter on the command
+line are sent straight to the virtual machine, and run on the virtual
+machine. To test drive our virtual machine, we'll run a command to
+display the operating system version on the virtual machine.</p>
 
-<p>After we exit the SSH session, the virtual machine is still running.
-We'll run <code>vagrant halt</code> to shut down the virtual machine.
-This is just like pressing the power button to shut down a real
-computer.</p>
+<p>After our quick test drive, we'll quit the SSH session and shut down
+the virtual machine. To quit the SSH session, we'll run
+<code>exit</code> to close the SSH connection and return to our local
+machine's command line. After we exit the SSH session, the virtual
+machine is still running in the background. We'll run <code>vagrant
+halt</code> to shut down the virtual machine. This is just like pressing
+the power button to shut down a real computer.</p>
+
+<p>Let's get started.</p>
 
 <h2>Walkthrough</h2>
 
-<p><strong>TODO: Set up Cygwin PATH.</strong></p>
+<p>To start, launch Cygwin Terminal through XWin Server.</p>
 
-<p>We need to create a directory to put our Vagrantfile in. Let's create
-a <code>virt\linux</code> directory under our Cygwin home directory, and
-put our Vagrantfile there. Open your Cygwin home directory in Windows
-File Explorer. Use Windows File Explorer to create the
-<code>virt\linux</code> directory under your Cygwin home directory.</p>
+<p><img src="assets/png/vm-00.png" class="img-responsive center-block"
+alt="Cygwin Terminal"></p>
+
+<p>Now we need to make sure Cygwin knows where to find
+the main Vagrant executable so we can run <code>vagrant init</code>. To
+check this, run <code>which vagrant</code>.
+
+<!-- TODO: Update this image. -->
+
+<p><img src="assets/png/noexist" class="img-responsive center-block"
+alt="Cygwin Terminal"></p>
+
+<p>If the terminal responds with
+<code>/cygdrive/c/HashiCorp/Vagrant/bin/vagrant</code> (or something
+similar) then you're all set, and you can skip the next few paragraphs
+and <a href="#content-found-vagrant">jump to this paragraph</a>. If,
+instead, we get no response, it means that Cygwin could not find the
+main Vagrant executable, and you must read on to solve the problem.</p>
+
+<!-- TODO: Add images to this section. -->
+
+<p>To tell Cygwin where the main Vagrant executable is, we need to find
+the directory where the main Vagrant executable is installed, and add
+that directory to Cygwin's "PATH". The "PATH" is a special variable in
+the Cygwin command line environment. The "PATH" variable contains a
+colon-separated list of directories. When you type a command on the
+command line, Cygwin searches all the directories in the "PATH" for an
+executable file with the same name as the command you typed. You can see
+the directories on your "PATH" by running <code>echo $PATH</code>.</p>
+
+<p>Let's add the directory with the main Vagrant executable to our path.
+First, find the main Vagrant executable. It should be installed in
+<code>C:\HashiCorp\Vagrant\bin</code>, which is the same as
+<code>/cygdrive/c/HashiCorp/Vagrant/bin</code> in Cygwin. Once you find
+the directory with the main Vagrant executable, add it to Cygwin's path
+by running <code>PATH="/cygdrive/c/HashiCorp/Vagrant/bin:$PATH"</code>.
+Now run <code>echo $PATH</code> to see the new directory prepended to
+your path. Then, run <code>which vagrant</code> to confirm that Cygwin
+can now find the main Vagrant executable.</p>
+
+<p id="content-found-vagrant">We need to create a directory to put our
+Vagrantfile in. Let's create a <code>virt\linux</code> directory under
+our Cygwin home directory, and put our Vagrantfile there. Open your
+Cygwin home directory in Windows File Explorer. Use Windows File
+Explorer to create the <code>virt\linux</code> directory under your
+Cygwin home directory.</p>
 
 <p>Now we need to run <code>vagrant init</code> in our newly-created
 <code>virt\linux</code> directory to generate a generic Vagrantfile.
