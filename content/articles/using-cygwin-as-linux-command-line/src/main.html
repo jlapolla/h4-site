@@ -829,9 +829,13 @@ the power button to shut down a real computer.</p>
 <p><img src="assets/png/vm-00.png" class="img-responsive center-block"
 alt="Cygwin Terminal"></p>
 
-<p>Now we need to make sure Cygwin knows where to find
-the main Vagrant executable so we can run <code>vagrant init</code>. To
-check this, run <code>which vagrant</code>.</p>
+<p>Before we run <code>vagrant init</code> to generate our generic
+Vagrantfile, we need to make sure Cygwin knows where to find the main
+<code>vagrant.exe</code> file. The <code>vagrant.exe</code> file is
+Vagrant's main executable file. It was installed when we installed
+Vagrant, and it contains the Vagrant program itself. To search for the
+<code>vagrant.exe</code> executable from Cygwin, run <code>which
+vagrant</code>.</p>
 
 <!-- TODO: Update this image. -->
 
@@ -840,96 +844,69 @@ alt="Cygwin Terminal"></p>
 
 <p>If the terminal responds with
 <code>/cygdrive/c/HashiCorp/Vagrant/bin/vagrant</code> (or something
-similar) then you're all set, and you can skip the next few paragraphs
-and <a href="#content-found-vagrant">jump to this paragraph</a>. If,
-instead, we get no response, it means that Cygwin could not find the
-main Vagrant executable, and you must read on to solve the problem.</p>
+similar) then Cygwin has successfully found <code>vagrant.exe</code>,
+and you can skip the next three paragraphs and <a
+href="#content-found-vagrant">jump to this paragraph</a>. If,
+instead, we get no response, it means that Cygwin could not find
+<code>vagrant.exe</code>, and you must read on to solve the
+problem.</p>
 
 <!-- TODO: Add images to this section. -->
 
-<p>To tell Cygwin where the main Vagrant executable is, we need to find
-the directory where the main Vagrant executable is installed, and add
+<p>To tell Cygwin where to find <code>vagrant.exe</code>, we need to
+find the directory where <code>vagrant.exe</code> is installed, and add
 that directory to Cygwin's "PATH". The "PATH" is a special variable in
 the Cygwin command line environment. The "PATH" variable contains a
 colon-separated list of directories. When you type a command on the
 command line, Cygwin searches all the directories in the "PATH" for an
 executable file with the same name as the command you typed. You can see
-the directories on your "PATH" by running <code>echo $PATH</code>.</p>
+the directories in your "PATH" by running <code>echo $PATH</code> to
+output the colon-separated list of directories.</p>
 
-<p>Let's add the directory with the main Vagrant executable to our path.
-First, find the main Vagrant executable. It should be installed in
-<code>C:\HashiCorp\Vagrant\bin</code>, which is the same as
-<code>/cygdrive/c/HashiCorp/Vagrant/bin</code> in Cygwin. Once you find
-the directory with the main Vagrant executable, add it to Cygwin's path
-by running <code>PATH="/cygdrive/c/HashiCorp/Vagrant/bin:$PATH"</code>.
-Now run <code>echo $PATH</code> to see the new directory prepended to
+<p>Let's add the directory that contains <code>vagrant.exe</code> to our
+path so we can run Vagrant from the Cygwin command line. First, use
+Windows File Explorer to find the <code>vagrant.exe</code> file. It
+should be installed in <code>C:\HashiCorp\Vagrant\bin</code> (which is
+the same as <code>/cygdrive/c/HashiCorp/Vagrant/bin</code> in Cygwin).
+Once you find the directory that contains <code>vagrant.exe</code>, add
+it to Cygwin's path by running
+<code>PATH="/cygdrive/c/path/to/directory:$PATH"</code>. Of course,
+replace <code>path/to/directory</code> with the actual directory path.
+For instance, if <code>vagrant.exe</code> were located in
+<code>/cygdrive/c/HashiCorp/Vagrant/bin</code>, we would run
+<code>PATH="/cygdrive/c/HashiCorp/Vagrant/bin:$PATH"</code>.</p>
+
+<p>Now run <code>echo $PATH</code> to see the new directory prepended to
 your path. Then, run <code>which vagrant</code> to confirm that Cygwin
-can now find the main Vagrant executable.</p>
+can now find <code>vagrant.exe</code>.</p>
 
-<p id="content-found-vagrant">We need to create a directory to put our
-Vagrantfile in. Let's create a <code>virt\linux</code> directory under
-our Cygwin home directory, and put our Vagrantfile there. Open your
-Cygwin home directory in Windows File Explorer. Use Windows File
-Explorer to create the <code>virt\linux</code> directory under your
-Cygwin home directory.</p>
+<p id="content-found-vagrant">When we start Cygwin, the command line
+places us in our Cygwin home directory (which is symbolized by
+<code>~</code>). If we were to run <code>vagrant init</code> right now,
+it would create the generic Vagrantfile in our Cygwin home directory.
+Instead, let's put the Vagrantfile in a <code>vm/linux</code>
+subdirectory under our home directory.</p>
 
-<p>Now we need to run <code>vagrant init</code> in our newly-created
-<code>virt\linux</code> directory to generate a generic Vagrantfile.
-We'll use Cygwin Terminal to do this. Start Cygwin Terminal through
-Cygwin/X.</p>
-
-<p><img src="assets/png/vm-00.png" class="img-responsive center-block"
-alt="Cygwin Terminal"></p>
-
-<p>Right now the terminal is in our Cygwin home directory. If we run
-<code>vagrant init</code> right now, it will create the generic
-Vagrantfile in our home directory. We want to create the Vagrantfile in
-the <code>virt\linux</code> directory we just created, not in our home
-directory. So, we have to change directories to the
-<code>virt\linux</code> directory before we run <code>vagrant
-init</code>.</p>
-
-<p>Run <code>cd virt/linux</code> to move to the <code>virt\linux</code>
-directory you created.</p>
-
-<p><span class="text-muted"><i>Hint: Windows uses "\" (backslash) as a
-    directory separator. Cygwin and Linux use "/" (forward slash) as a
-directory separator.</i></span></p>
-
-<p>Now the terminal is in the <code>virt\linux</code> directory, and we
-are ready to run <code>vagrant init</code>. Run <code>vagrant
-init</code> to generate a generic VagrantFile in the
-<code>virt\linux</code> directory. Open the <code>virt\linux</code>
+<p>First, run <code>mkdir -p ~/vm/linux</code> on the Cygwin command
+line to create the <code>vm/linux</code> subdirectory. Then, run
+<code>cd ~/vm/linux</code> to move to the <code>vm/linux</code>
+directory we just created. Now when we run <code>vagrant init</code> it
+will create the Vagrantfile in the <code>vm/linux</code> directory. Run
+<code>vagrant init</code> to generate a generic Vagrantfile in the
+<code>vm/linux</code> directory. Then open the <code>vm/linux</code>
 directory in Windows File Explorer to see the newly-created
 Vagrantfile.</p>
 
-<div class="panel panel-default">
-  <div class="panel-heading">Note: "command not found" error</div>
-  <div class="panel-body">
-
-    If you get a "command not found" error when you run <code>vagrant
-      init</code>, it is because the <code>vagrant.exe</code> executable
-    is not on your command line search path. The
-    <code>vagrant.exe</code> file is installed in
-    <code>/cygdrive/c/HashiCorp/Vagrant/bin</code>.
-
-    <br>
-    <br>
-    
-    Run <code>PATH="${PATH}:/cygdrive/c/HashiCorp/Vagrant/bin"</code> to
-    add the directory to your command line search path.
-
-  </div>
-</div>
+<!-- TODO: Update this image -->
 
 <p><img src="assets/png/vm-01.png" class="img-responsive center-block"
 alt="Creating a generic Vagrantfile"></p>
 
-<p>Now it's time to edit the generic Vagrantfile to customize our
-virtual machine configuration.</p>
+<p>Now we'll use Notepad++ to edit the generic Vagrantfile and customize
+our virtual machine configuration.</p>
 
 <p>First, we'll tell Vagrant that we want to use the "ubuntu/trusty32"
-box for our virtual machine template. Let me explain this a bit.</p>
+box as our virtual machine template. Let me explain this a bit.</p>
 
 <p>Vagrant creates a virtual machine by cloning a "box". A "box" is a
 Vagrant virtual machine image. The "ubuntu/trusty32" box is a virtual
@@ -946,14 +923,16 @@ Open the Vagrantfile in Notepad++, and change the line that reads
 
 <p>Next, we need to tell Vagrant to allow X11 forwarding over SSH. X11
 forwarding allows us to launch GUI applications during our SSH session.
-To do this, use Notepad++ to add a new line after <code>config.vm.box =
-"ubuntu/trusty32"</code>. Type <code>config.ssh.forward_x11 =
+To do this, use Notepad++ to add a new line after <code>config.vm.box
+= "ubuntu/trusty32"</code>. Type <code>config.ssh.forward_x11 =
 true</code> on the new line.</p>
 
-<p>Save the edited Vagrantfile.</p>
+<p>Finally, save the edited Vagrantfile.</p>
 
-<p>Now it's time to create the virtual machine. Go to the Cygwin
-Terminal and run <code>vagrant up</code>.</p>
+<p>Now it's time to create the virtual machine. Go to the Cygwin command
+line and run <code>vagrant up</code>.</p>
+
+<!-- TODO: Update this image -->
 
 <p><img src="assets/png/vm-02.png" class="img-responsive center-block"
 alt="Creating the virtual machine"></p>
@@ -962,19 +941,24 @@ alt="Creating the virtual machine"></p>
 cloning the "ubuntu/trusty32" box. After the box is downloaded and
 cloned, Vagrant starts up the newly-created virtual machine.</p>
 
-<p>Now that the virtual machine has been created and started up, we can
-connect to it via SSH. Run <code>vagrant ssh</code> to start a new SSH
-session on the virtual machine.</p>
+<p>Now that the virtual machine is up and running, we can connect to it
+via SSH. Run <code>vagrant ssh</code> to start a new SSH session on the
+virtual machine.</p>
+
+<!-- TODO: Update this image -->
 
 <p><img src="assets/png/vm-03.png" class="img-responsive center-block"
 alt="SSH into the virtual machine"></p>
 
-<p>Now we are in an SSH session on the virtual machine. Any commands we
+<p>Now we are in an SSH session on the virtual machine, and we are
+accessing the virtual machine's command line directly. Any commands we
 type are sent directly to the virtual machine, and run on the virtual
 machine.</p>
 
 <p>Let's check the operating system version on the virtual machine. To
 do this, run <code>lsb_release -a</code>.</p>
+
+<!-- TODO: Update this image -->
 
 <p><img src="assets/png/vm-04.png" class="img-responsive center-block"
 alt="Terminal: lsb_release -a"></p>
@@ -988,53 +972,80 @@ machine, we need to end our SSH session first.</p>
 <p>Run <code>exit</code> to end the SSH session, and return to your
 local computer's command line.</p>
 
+<!-- TODO: Update this image -->
+
 <p><img src="assets/png/vm-05.png" class="img-responsive center-block"
 alt="Terminal: exit"></p>
 
-<p>Now that we're back on our local computer, we can use Vagrant to shut
-down the virtual machine. Run <code>vagrant halt</code> to shut down the
-virtual machine.</p>
+<p>Now that we're back on our local computer's command line, we can use
+Vagrant to shut down the virtual machine. Run <code>vagrant halt</code>
+to shut down the virtual machine.</p>
+
+<!-- TODO: Update this image -->
 
 <p><img src="assets/png/vm-06.png" class="img-responsive center-block"
 alt="Terminal: vagrant halt"></p>
 
-<p>Vagrant shuts down the virtual machine. Verify the status of the
-virtual machine by running <code>vagrant status</code>.</p>
+<p>Vagrant shuts down the virtual machine. Run <code>vagrant
+  status</code> to verify that the virtual machine is shut down.</p>
+
+<!-- TODO: Update this image -->
 
 <p><img src="assets/png/vm-07.png" class="img-responsive center-block"
 alt="Terminal: vagrant status"></p>
 
-<p>If we wanted to delete the virtal machine entirely, we could run
+<p>If we wanted to delete the virtual machine entirely, we could run
 <code>vagrant destroy --force</code>. Let's keep the virtual machine for
 now.</p>
 
 <div class="page-header">
-  <h1>Virtual Machine Exploration</h1>
+  <h1 id="content-vm-exploration">Virtual Machine Exploration</h1>
 </div>
 
-<h2>Intro</h2>
+<h2>Road Map</h2>
 
-<p>Let's explore our Linux virtual machine a bit.</p>
+<p>In this section, we'll explore the files and folders on our virtual
+machine, and learn how to transfer files between our Windows host
+machine and the guest virtual machine.</p>
 
 <p>We'll start this exploration by installing the following programs on
 the virtual machine:</p>
 
 <dl class="dl-horizontal">
-  <dt>Leafpad</dt>
-  <dd>A program for editing text files (similar to Windows Notepad).</dd>
   <dt>PCManFM</dt>
-  <dd>A program for navigating files and folders (similar to Windows File Explorer).</dd>
+  <dd>A GUI application for browsing files and folders (similar to Windows File Explorer).</dd>
+  <dt>Leafpad</dt>
+  <dd>A GUI application for editing text files (similar to Windows Notepad).</dd>
 </dl>
 
-<p>We'll use Leafpad and PCManFM to create a new text file on the
-virtual machine. Then we'll copy the new file to a shared folder and
-view the file from Windows.</p>
+<p>After we install PCManFM and Leafpad, we'll launch PCManFM from the
+command line. Then we'll use PCManFM to take a quick look around the
+virtual machine's directory tree to convince ourselves that we are not
+looking at the files on our Windows computer.</p>
 
-<p>Leafpad and PCManFM are GUI applications. To use these GUI
-applications on our virtual machine, we'll need to run Cygwin Terminal
-through Cygwin/X.</p>
+<p>Next, we'll use PCManFM to create a new text file on the virtual
+machine. Then we'll open the text file in Leafpad and type some text in
+the text file. At this point, we've created a new text file on our Linux
+virtual machine, using 100% Linux software.</p>
+
+<p>After that, it's time to share the new text file with our Windows
+host machine. To do this, we'll copy the text file to a shared folder
+which is readable from both the Windows host and the guest virtual
+machine. Conveniently, Vagrant has already set up a shared folder for
+us: the <code>vm/linux</code> directory where we put our Vagrantfile is
+shared with the virtual machine. We can access this shared directory in
+the <code>/vagrant</code> directory on the virtual machine. We'll use
+PCManFM to copy our new text file to the <code>/vagrant</code> directory
+on the virtual machine. Then, on our Windows host, we'll open the
+<code>vm/linux</code> directory in Windows File Explorer to see the new
+text file.</p>
+
+<p>Finally, we'll open the new text file in Notepad++ to see the text we
+typed in Leafpad on the virtual machine.</p>
 
 <p>Let's get started.</p>
+
+<!-- TODO: YOU ARE HERE -->
 
 <h2>Walkthrough</h2>
 

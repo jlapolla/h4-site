@@ -26,4 +26,6 @@ contents:
         href: cygwin-directories
   - title: Virtual Machine Setup
     href: vm-setup
+  - title: Virtual Machine Exploration
+    href: vm-exploration
 ...
