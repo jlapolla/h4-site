@@ -19,4 +19,7 @@ out/config.yml: src/config.yml
 	$(call MKDIR)
 	$(call LINK)
 
+assets:
+	mkdir -p assets
+
 include $(INC_DIR)/syntax.mk

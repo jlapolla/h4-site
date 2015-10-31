@@ -6,8 +6,8 @@ include $(INC_DIR)/common.mk
 export PATH := $(abspath bin):$(PATH)
 
 # Directory to deploy to.
-export DOC_ROOT := /usr/local/apache2/htdocs
-export PREFIX := blog2
+export DOC_ROOT := $(shell pwd)/server
+export PREFIX := blog
 export DIST_DIR := $(DOC_ROOT)/$(PREFIX)
 
 HELP_TEXT = $(info Targets:)
@@ -26,7 +26,7 @@ all: $(addsuffix /all,$(RECURSE))
 
 HELP_TEXT += $(info [clean] Delete built files, leaving only source files.)
 clean: $(addsuffix /clean,$(RECURSE))
-	rm -rf $(DIST_DIR)
+	rm -rf $(DOC_ROOT)
 
 HELP_TEXT += $(info [check] Check deployed files. Be sure to build [all] first.)
 check: $(patsubst $(DIST_DIR)/%,$(DIST_DIR)/check/%,$(shell find $(DIST_DIR) -path $(DIST_DIR)/check -prune -o -type f -name '*.html' -print))
