@@ -20,10 +20,12 @@ HELP_TEXT += $(info [help] Display this help text.)
 help:
 	$(HELP_TEXT)
 
+$(eval populate_template = $(abspath static-make-article) $(abspath static-template.html) $$(1) $$(2) $$(3))
+
 # Template population.
 build/%/index.html: %/out/main.html %/out/head.html %/out/config.yml static-template.html static-make-article | %/assets
 	mkdir -p $(@D)
-	./static-make-article static-template.html $^ > $@
+	$(call populate_template,$(word 1,$^),$(word 2,$^),$(word 3,$^)) > $@
 
 $(DIST_DIR)/articles/%/index.html: build/%/index.html
 	mkdir -p $(@D)
