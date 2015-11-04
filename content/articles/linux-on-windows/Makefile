@@ -1,25 +1,14 @@
-include $(INC_DIR)/common.mk
+define $(d)template
+$(d)index.html: $(d)main.html $(d)config.yml
+	$$(if $(populate_template),,$$(error populate_template function is not defined))
+	$(call populate_template,$(d)main.html,/dev/null,$(d)config.yml) >$(d)index.html
 
-.PHONY: all clean
+.PHONY: $(D)CLEAN
+$(d)clean:
+	rm -f $(d)index.html
 
-all: out/main.html out/head.html out/config.yml | assets
+$(eval exports := $(d)index.html)
+endef
 
-clean:
-	rm -rf build out
-
-out/main.html: src/main.html
-	$(call MKDIR)
-	$(call LINK)
-
-out/head.html:
-	$(call MKDIR)
-	$(call MKFILE)
-
-out/config.yml: src/config.yml
-	$(call MKDIR)
-	$(call LINK)
-
-assets:
-	mkdir -p assets
-
-include $(INC_DIR)/syntax.mk
+$(eval $($(d)template))
+$(eval $(d)template :=)

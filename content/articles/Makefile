@@ -1,42 +1,33 @@
-HELP_TEXT = $(info Targets:)
+##
+# Populate the article page template with contents
+#
+# USAGE
+# $(call populate_template,main.html,head.html,config.yml)
+#
+# @param $(1) Path to article body partial HTML file
+# @param $(2) Path to article head content partial HTML file
+# @param $(3) Path to article configuration YAML file
+$(eval populate_template = $(abspath populate-template) $(abspath template.html) $$(1) $$(2) $$(3))
 
-include $(INC_DIR)/common.mk
+include require.mk
+article_exports := $(call require,$(addsuffix Makefile,linux-on-windows/))
 
-# Collect list of article directories to recurse into.
-RECURSE = $(patsubst ./%,%,$(shell find . -mindepth 1 -maxdepth 1 -path ./build -prune -o -type d -print))
-
-.DEFAULT_GOAL := help
-
-.PHONY: all clean help
-
-HELP_TEXT += $(info [all] Build and deploy all articles.)
-all: $(addsuffix /all,$(RECURSE)) $(foreach VAR,/index.html /assets,$(addsuffix $(VAR),$(addprefix $(DIST_DIR)/articles/,$(RECURSE))))
-
-HELP_TEXT += $(info [clean] Remove build artifacts, including deployed articles.)
-clean: $(addsuffix /clean,$(RECURSE))
-	rm -rf build $(DIST_DIR)/articles
-
-HELP_TEXT += $(info [help] Display this help text.)
-help:
-	$(HELP_TEXT)
-
-$(eval populate_template = $(abspath static-make-article) $(abspath static-template.html) $$(1) $$(2) $$(3))
-
-# Template population.
-build/%/index.html: %/out/main.html %/out/head.html %/out/config.yml static-template.html static-make-article | %/assets
-	mkdir -p $(@D)
-	$(call populate_template,$(word 1,$^),$(word 2,$^),$(word 3,$^)) > $@
-
-$(DIST_DIR)/articles/%/index.html: build/%/index.html
-	mkdir -p $(@D)
-	baseurl $< /$(PREFIX) > $@
-
-define TEMPLATE
-$$(DIST_DIR)/articles/$(1)/assets: $$(shell find $(1)/assets -type f)
-	$$(call MKDIR)
-	@rm -rf $$@
-	cp -R $(1)/assets $$@
+define $(d)template
+$(DIST_DIR)/articles/$(patsubst $(d)%,%,$(1)): $(1)
+	mkdir -p $$(dir $$@)
+	baseurl $$< /$(PREFIX) > $$@
 endef
-$(foreach VAR,$(patsubst ./%,%,$(shell find . -mindepth 1 -maxdepth 1 -type d)),$(eval $(call TEMPLATE,$(VAR))))
+$(foreach VAR,$(article_exports),$(eval $(call $(d)template,$(VAR))))
+$(eval $(d)template :=)
 
-$(foreach VAR,$(RECURSE),$(eval $(call RECURSE_TEMPLATE,$(VAR))))
+define $(d)template
+.PHONY: $(d)all
+$(d)all: $(addprefix $(DIST_DIR)/articles/,$(patsubst $(d)%,%,$(article_exports)))
+
+.PHONY: $(d)clean
+$(d)clean: $(addsuffix clean,linux-on-windows/)
+	rm -rf $(DIST_DIR)/articles
+endef
+
+$(eval $($(d)template))
+$(eval $(d)template :=)
