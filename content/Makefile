@@ -1,18 +1,26 @@
-# Define directories that Make should recurse into.
-RECURSE = articles
-define RECURSE_TEMPLATE
-$(1)/%:
-	$$(MAKE) -C $(1) $$*
+include require.mk
+article_exports := $(call require,$(addsuffix Makefile,$(d)articles/))
+
+define $(d)template
+$(DIST_DIR)/articles/$(patsubst $(d)articles/%,%,$(1)): $(1)
+	mkdir -p $$(dir $$@)
+	baseurl $$< /$(PREFIX) > $$@
 endef
-$(foreach VAR,$(RECURSE),$(eval $(call RECURSE_TEMPLATE,$(VAR))))
+$(foreach VAR,$(article_exports),$(eval $(call $(d)template,$(VAR))))
+$(eval $(d)template :=)
 
-.PHONY: all clean
+define $(d)template
+$(DIST_DIR)/assets/js/smooth-scroll.js: $(d)assets/js/smooth-scroll.js
+	mkdir -p $(DIST_DIR)/assets/js/
+	cp $(d)assets/js/smooth-scroll.js $(DIST_DIR)/assets/js/smooth-scroll.js
 
-all: $(addsuffix /all,$(RECURSE)) $(DIST_DIR)/assets
+.PHONY: $(d)all
+$(d)all: $(DIST_DIR)/assets/js/smooth-scroll.js $(addprefix $(DIST_DIR)/articles/,$(patsubst $(d)articles/%,%,$(article_exports)))
 
-clean: $(addsuffix /clean,$(RECURSE))
+.PHONY: $(d)clean
+$(d)clean: $(addsuffix clean,articles/)
+	rm -rf $(DIST_DIR)/articles
+endef
 
-$(DIST_DIR)/assets: $(shell find assets -type f)
-	mkdir -p $(@D)
-	rm -rf $@
-	cp -R assets $@
+$(eval $($(d)template))
+$(eval $(d)template :=)
