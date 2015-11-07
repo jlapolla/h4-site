@@ -7,7 +7,7 @@
 # @param $(1) Path to article body partial HTML file
 # @param $(2) Path to article head content partial HTML file
 # @param $(3) Path to article configuration YAML file
-$(eval populate_template = $(abspath $(d)populate-template) $(abspath $(d)template.html) $$(1) $$(2) $$(3))
+$(eval populate_template = $(d)populate-template $(d)template.html $$(1) $$(2) $$(3))
 
 include require.mk
 article_exports := $(call require,$(addsuffix Makefile,$(d)linux-on-windows/))
