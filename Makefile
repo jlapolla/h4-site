@@ -12,10 +12,10 @@ $(call helpdoc,$(d)all)
 .PHONY: $(d)all
 $(d)all: $(d)site/all
 
-$(call helpdoc,$(d)serve,Start a web server to serve build project files from the "$(d)server/" directory)
+$(call helpdoc,$(d)serve,Start a web server to serve built project files from the "$(d)server/" directory)
 .PHONY: $(d)serve
 $(d)serve:
-	exec http-server $(d)server
+	exec http-server $(DOC_ROOT)
 
 $(call helpdoc,$(d)clean)
 .PHONY: $(d)clean
