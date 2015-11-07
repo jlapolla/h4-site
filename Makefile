@@ -20,7 +20,6 @@ $(d)serve:
 $(call helpdoc,$(d)clean)
 .PHONY: $(d)clean
 $(d)clean: $(d)site/clean
-	rm -rf $(DOC_ROOT)
 endef
 
 $(eval $($(d)template))
