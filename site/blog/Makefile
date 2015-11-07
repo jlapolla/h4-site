@@ -4,20 +4,20 @@
 # USAGE
 # $(call populate_template,main.html,head.html,config.yml)
 #
-# @param $(1) Path to article body partial HTML file
-# @param $(2) Path to article head content partial HTML file
-# @param $(3) Path to article configuration YAML file
+# @param main.html  Path to article body partial HTML file
+# @param head.html  Path to article head content partial HTML file
+# @param config.yml Path to article configuration YAML file
 $(eval populate_template = $(d)populate-template $(d)template.html $$(1) $$(2) $$(3))
 
 include require.mk
-article_exports := $(call require,$(addsuffix Makefile,$(d)linux-on-windows/))
+posts_exports := $(call require,$(addsuffix Makefile,$(d)posts/))
 
 define $(d)template
 .PHONY: $(d)clean
-$(d)clean: $(addsuffix clean,$(d)linux-on-windows/)
+$(d)clean: $(addsuffix clean,$(d)posts/)
 endef
 
 $(eval $($(d)template))
 $(eval $(d)template :=)
 
-exports := $(article_exports)
+exports := $(posts_exports)

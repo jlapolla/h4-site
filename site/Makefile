@@ -1,17 +1,17 @@
 include require.mk
-article_exports := $(call require,$(addsuffix Makefile,$(d)blog/))
+blog_exports := $(call require,$(addsuffix Makefile,$(d)blog/))
 
 define $(d)template
 $(DOC_ROOT)/blog/$(patsubst $(d)blog/%,%,$(1)): $(1)
 	mkdir -p $$(dir $$@)
 	cp $$< $$@
 endef
-$(foreach VAR,$(article_exports),$(eval $(call $(d)template,$(VAR))))
+$(foreach VAR,$(blog_exports),$(eval $(call $(d)template,$(VAR))))
 $(eval $(d)template :=)
 
 define $(d)template
 .PHONY: $(d)all
-$(d)all: $(addprefix $(DOC_ROOT)/blog/,$(patsubst $(d)blog/%,%,$(article_exports)))
+$(d)all: $(addprefix $(DOC_ROOT)/blog/,$(patsubst $(d)blog/%,%,$(blog_exports)))
 
 .PHONY: $(d)clean
 $(d)clean: $(addsuffix clean,$(d)blog/)
