@@ -1,3 +1,10 @@
+# Check for blog/ build module
+ifeq ($(wildcard $(d)blog/Makefile),) # If blog/ build modules is not installed
+  # Download blog/ build module
+  include exec.mk
+  $(call exec,git clone https://github.com/jlapolla/h4-blog.git $(d)blog,Failed to download "$(d)blog/" module)
+endif # End check for blog/ build module
+
 include require.mk
 blog_exports := $(call require,$(addsuffix Makefile,$(d)blog/))
 
