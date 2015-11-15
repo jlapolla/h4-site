@@ -5,7 +5,15 @@ ifeq ($(wildcard $(d)blog/Makefile),) # If blog/ build module does not exist
   $(call exec,git clone https://github.com/jlapolla/h4-blog.git $(d)blog,Failed to download "$(d)blog/" module)
 endif # End check for blog/ build module
 
+# Check for slide-buzz/ build module
+ifeq ($(wildcard $(d)slide-buzz/Makefile),) # If slide-buzz/ build module does not exist
+  # Download slide-buzz/ build module
+  include exec.mk
+  $(call exec,git clone https://github.com/jlapolla/h4-slide-skin.git $(d)slide-buzz,Failed to download "$(d)slide-buzz/" module)
+endif # End check for slide-buzz/ build module
+
 include require.mk
+$(call require,$(addsuffix Makefile,$(d)slide-buzz/))
 blog_exports := $(call require,$(addsuffix Makefile,$(d)blog/))
 
 define $(d)template
