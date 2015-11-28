@@ -5,34 +5,34 @@ ifeq ($(wildcard $(d)blog/Makefile),) # If blog/ build module does not exist
   $(call exec,git clone https://github.com/jlapolla/h4-blog.git $(d)blog,Failed to download "$(d)blog/" module)
 endif # End check for blog/ build module
 
-# Check for slide-buzz/ build module
-ifeq ($(wildcard $(d)slide-buzz/Makefile),) # If slide-buzz/ build module does not exist
-  # Download slide-buzz/ build module
+# Check for slide-buzz/linux-on-windows/ module
+ifeq ($(wildcard $(d)slide-buzz/linux-on-windows/index.html),) # If module does not exist
+  # Download module
   include exec.mk
-  $(call exec,git clone https://github.com/jlapolla/h4-slide-skin.git $(d)slide-buzz,Failed to download "$(d)slide-buzz/" module)
-endif # End check for slide-buzz/ build module
+  $(call exec,git clone https://github.com/jlapolla/h4-slide-content.git $(d)slide-buzz/linux-on-windows/,Failed to download "$(d)slide-buzz/linux-on-windows/" module)
+endif # End check for slide-buzz/linux-on-windows/ module
 
 include require.mk
-$(call require,$(addsuffix Makefile,$(d)slide-buzz/))
 blog_exports := $(call require,$(addsuffix Makefile,$(d)blog/))
+slide_buzz_exports := $(shell find $(d)slide-buzz/ -path '*/.git/*' -prune -o -type f ! -name '.*' -print)
 
 define $(d)template
-$(DOC_ROOT)/blog/$(patsubst $(d)blog/%,%,$(1)): $(1)
+$(DOC_ROOT)/$(patsubst $(d)%,%,$(1)): $(1)
 	mkdir -p $$(dir $$@)
 	cp $$< $$@
 endef
-$(foreach VAR,$(blog_exports),$(eval $(call $(d)template,$(VAR))))
+$(foreach VAR,$(blog_exports) $(slide_buzz_exports),$(eval $(call $(d)template,$(VAR))))
 $(eval $(d)template :=)
 
 define $(d)template
 include helpdoc.mk
 
 .PHONY: $(d)all
-$(d)all: $(addprefix $(DOC_ROOT)/blog/,$(patsubst $(d)blog/%,%,$(blog_exports)))
+$(d)all: $(addprefix $(DOC_ROOT)/,$(patsubst $(d)%,%,$(blog_exports) $(slide_buzz_exports)))
 
 .PHONY: $(d)clean
 $(d)clean: $(addsuffix clean,$(d)blog/)
-	rm -rf $(DOC_ROOT)/blog/
+	rm -rf $(DOC_ROOT)/blog/ $(DOC_ROOT)/slide-buzz/
 
 .DEFAULT_GOAL := help
 endef
