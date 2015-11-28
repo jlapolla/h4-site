@@ -12,6 +12,13 @@ ifeq ($(wildcard $(d)slide-buzz/linux-on-windows/index.html),) # If module does 
   $(call exec,git clone https://github.com/jlapolla/h4-slide-content.git $(d)slide-buzz/linux-on-windows/,Failed to download "$(d)slide-buzz/linux-on-windows/" module)
 endif # End check for slide-buzz/linux-on-windows/ module
 
+# Check for slide-buzz/resume/ module
+ifeq ($(wildcard $(d)slide-buzz/resume/index.html),) # If module does not exist
+  # Download module
+  include exec.mk
+  $(call exec,git clone https://github.com/jlapolla/resume.git $(d)slide-buzz/resume/,Failed to download "$(d)slide-buzz/resume/" module)
+endif # End check for slide-buzz/resume/ module
+
 include require.mk
 blog_exports := $(call require,$(addsuffix Makefile,$(d)blog/))
 slide_buzz_exports := $(shell find $(d)slide-buzz/ -path '*/.git/*' -prune -o -type f ! -name '.*' -print)
